@@ -1,4 +1,6 @@
-package Fakturowanie.client.application.dodajprodukt;
+package Fakturowanie.client.application.dodajusluge;
+
+import javax.inject.Inject;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
@@ -11,19 +13,18 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import Fakturowanie.serwer.Pozycja;
 import Fakturowanie.shared.PozycjaDTO;
 import Fakturowanie.shared.ProduktDTO;
+import Fakturowanie.shared.UslugaDTO;
 
-class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
-		implements Editor<PozycjaDTO>, DodajProduktPresenter.MyView {
-	interface Binder extends UiBinder<Widget, DodajProduktView> {
+class DodajUslugeView extends ViewWithUiHandlers<DodajUslugeUiHandlers>
+		implements Editor<PozycjaDTO>, DodajUslugePresenter.MyView {
+	interface Binder extends UiBinder<Widget, DodajUslugeView> {
 	}
 
-	interface Driver extends SimpleBeanEditorDriver<PozycjaDTO, DodajProduktView> {
+	interface Driver extends SimpleBeanEditorDriver<PozycjaDTO, DodajUslugeView> {
 	}
 
 	Driver driver = GWT.create(Driver.class);
@@ -32,25 +33,22 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 	TextBox textBoxNazwa;
 
 	@UiField
-	@Path("produktDTO.cena")
-	TextBox textBoxCena;
+	@Path("uslugaDTO.cenaZaGodzine")
+	TextBox textBoxCenaZaGodzine;
 
 	@UiField
-	@Path("produktDTO.jednostka")
-	TextBox textBoxJednostka;
-
-	@UiField
-	@Path("produktDTO.vat")
-	TextBox textBoxVAT;
+	@Path("uslugaDTO.jednostkaPodstawowaVAT")
+	TextBox textBoxJednostkaPodstawowaVAT;
 
 	@UiField
 	Button buttonDodaj;
 
 	@Inject
-	DodajProduktView(Binder uiBinder) {
+	DodajUslugeView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 		driver.initialize(this);
-		driver.edit(new PozycjaDTO(null, new ProduktDTO(null, null, null)));
+		textBoxJednostkaPodstawowaVAT.setEnabled(false);
+		driver.edit(new PozycjaDTO(null, new UslugaDTO(null, "23%")));
 	}
 
 	public PozycjaDTO OdbierzZawartoscTextBoxow() {
@@ -62,7 +60,7 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 
 	@UiHandler("buttonDodaj")
 	void dodajClick(ClickEvent e) {
-
+		
 		Window.alert("NIE DZIALAM JESZCZE");
 	}
 

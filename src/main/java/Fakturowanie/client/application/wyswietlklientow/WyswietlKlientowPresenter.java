@@ -17,7 +17,7 @@ public class WyswietlKlientowPresenter
 		extends Presenter<WyswietlKlientowPresenter.MyView, WyswietlKlientowPresenter.MyProxy>
 		implements WyswietlKlientowUiHandlers {
 	interface MyView extends View, HasUiHandlers<WyswietlKlientowUiHandlers> {
-		public DataGrid<Klient> getDataGridWyswietlKlientow();
+		
 	}
 
 	@NameToken(NameTokens.wyswietlKlientow)

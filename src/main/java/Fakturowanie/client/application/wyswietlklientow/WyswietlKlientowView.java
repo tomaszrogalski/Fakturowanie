@@ -13,6 +13,7 @@ import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import Fakturowanie.serwer.Klient;
+import Fakturowanie.shared.KlientDTO;
 
 class WyswietlKlientowView extends ViewWithUiHandlers<WyswietlKlientowUiHandlers>
 		implements WyswietlKlientowPresenter.MyView {
@@ -20,7 +21,7 @@ class WyswietlKlientowView extends ViewWithUiHandlers<WyswietlKlientowUiHandlers
 	}
 
 	@UiField
-	DataGrid<Klient> dataGridWyswietlKlientow;
+	DataGrid<KlientDTO> dataGridWyswietlKlientow;
 
 	@UiField
 	Button buttonDodajNowegoKlienta;
@@ -29,53 +30,53 @@ class WyswietlKlientowView extends ViewWithUiHandlers<WyswietlKlientowUiHandlers
 	WyswietlKlientowView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 
-		TextColumn<Klient> textColumnId = new TextColumn<Klient>() {
+		TextColumn<KlientDTO> textColumnId = new TextColumn<KlientDTO>() {
 
 			@Override
-			public String getValue(Klient klient) {
+			public String getValue(KlientDTO klient) {
 				return klient.getId().toString();
 			}
 		};
-		TextColumn<Klient> textColumnImie = new TextColumn<Klient>() {
+		TextColumn<KlientDTO> textColumnImie = new TextColumn<KlientDTO>() {
 
 			@Override
-			public String getValue(Klient klient) {
+			public String getValue(KlientDTO klient) {
 				return klient.getImie();
 			}
 		};
-		TextColumn<Klient> textColumnNazwisko = new TextColumn<Klient>() {
+		TextColumn<KlientDTO> textColumnNazwisko = new TextColumn<KlientDTO>() {
 
 			@Override
-			public String getValue(Klient klient) {
+			public String getValue(KlientDTO klient) {
 				return klient.getNazwisko();
 			}
 		};
-		TextColumn<Klient> textColumnUlica = new TextColumn<Klient>() {
+		TextColumn<KlientDTO> textColumnUlica = new TextColumn<KlientDTO>() {
 
 			@Override
-			public String getValue(Klient klient) {
-				return klient.getAdres().getUlica();
+			public String getValue(KlientDTO klient) {
+				return klient.getAdresDTO().getUlica();
 			}
 		};
-		TextColumn<Klient> textColumnNrDomu = new TextColumn<Klient>() {
+		TextColumn<KlientDTO> textColumnNrDomu = new TextColumn<KlientDTO>() {
 
 			@Override
-			public String getValue(Klient klient) {
-				return klient.getAdres().getNrDomu();
+			public String getValue(KlientDTO klient) {
+				return klient.getAdresDTO().getNrDomu();
 			}
 		};
-		TextColumn<Klient> textColumnMiejscowosc = new TextColumn<Klient>() {
+		TextColumn<KlientDTO> textColumnMiejscowosc = new TextColumn<KlientDTO>() {
 
 			@Override
-			public String getValue(Klient klient) {
-				return klient.getAdres().getMiejscowosc();
+			public String getValue(KlientDTO klient) {
+				return klient.getAdresDTO().getMiejscowosc();
 			}
 		};
-		TextColumn<Klient> textColumnKodPocztowy = new TextColumn<Klient>() {
+		TextColumn<KlientDTO> textColumnKodPocztowy = new TextColumn<KlientDTO>() {
 
 			@Override
-			public String getValue(Klient klient) {
-				return klient.getAdres().getKodPocztowy();
+			public String getValue(KlientDTO klient) {
+				return klient.getAdresDTO().getKodPocztowy();
 			}
 		};
 
@@ -96,7 +97,5 @@ class WyswietlKlientowView extends ViewWithUiHandlers<WyswietlKlientowUiHandlers
 		Window.alert("Nie działam");
 	}
 
-	public DataGrid<Klient> getDataGridWyswietlKlientow() {
-		return dataGridWyswietlKlientow;
-	}
+	
 }

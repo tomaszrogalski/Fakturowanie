@@ -7,7 +7,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
@@ -62,7 +61,7 @@ class DodajKlientaView extends ViewWithUiHandlers<DodajKlientaUiHandlers>
 		driver.edit(new KlientDTO(null, null, new AdresDTO(null, null, null, null)));
 	}
 
-	public KlientDTO OdbierzZawartoscTextBoxowIZwrocJakoKlient() {
+	public KlientDTO OdbierzZawartoscTextBoxow() {
 
 		KlientDTO klientDTO = driver.flush();
 

@@ -23,7 +23,7 @@
 	}
 	</ui:style>
 	<g:HTMLPanel styleName="{style.html_panel}">
-		<h1 align="center">DODAJ PRODUKT</h1>
+		<h1 align="center">DODAJ USLUGE</h1>
 		<hr />
 
 		<g:HorizontalPanel styleName="{style.horizontal_panel}">
@@ -32,18 +32,13 @@
 		</g:HorizontalPanel>
 
 		<g:HorizontalPanel styleName="{style.horizontal_panel}">
-			<g:Label text="CENA" styleName="{style.label}"></g:Label>
-			<g:TextBox ui:field="textBoxCena"></g:TextBox>
+			<g:Label text="CENA/H" styleName="{style.label}"></g:Label>
+			<g:TextBox ui:field="textBoxCenaZaGodzine"></g:TextBox>
 		</g:HorizontalPanel>
 
 		<g:HorizontalPanel styleName="{style.horizontal_panel}">
-			<g:Label text="JEDNOSTKA" styleName="{style.label}"></g:Label>
-			<g:TextBox ui:field="textBoxJednostka"></g:TextBox>
-		</g:HorizontalPanel>
-
-		<g:HorizontalPanel styleName="{style.horizontal_panel}">
-			<g:Label text="VAT" styleName="{style.label}"></g:Label>
-			<g:TextBox ui:field="textBoxVAT"></g:TextBox>
+			<g:Label text="JEDNOSTKA PODSTAWOWA VAT" styleName="{style.label}"></g:Label>
+			<g:TextBox ui:field="textBoxJednostkaPodstawowaVAT"></g:TextBox>
 		</g:HorizontalPanel>
 
 		<hr />

@@ -16,7 +16,7 @@ import Fakturowanie.shared.KlientDTO;
 public class DodajKlientaPresenter extends Presenter<DodajKlientaPresenter.MyView, DodajKlientaPresenter.MyProxy>
 		implements DodajKlientaUiHandlers {
 	interface MyView extends View, HasUiHandlers<DodajKlientaUiHandlers> {
-		public KlientDTO OdbierzZawartoscTextBoxowIZwrocJakoKlient();
+		public KlientDTO OdbierzZawartoscTextBoxow();
 	}
 
 	@NameToken(NameTokens.dodajKlienta)
@@ -32,7 +32,7 @@ public class DodajKlientaPresenter extends Presenter<DodajKlientaPresenter.MyVie
 
 	@Override
 	public void buttonAkcjaDodajKlienta() {
-		KlientDTO klientDTO = getView().OdbierzZawartoscTextBoxowIZwrocJakoKlient();
+		KlientDTO klientDTO = getView().OdbierzZawartoscTextBoxow();
 		Window.alert(klientDTO.toString());
 	}
 }

@@ -6,15 +6,42 @@ public class PozycjaDTO {
 
 	private String nazwa;
 
+	private String typ;
+
+	private ProduktDTO produktDTO;
+
+	private UslugaDTO uslugaDTO;
+
 	/////////////////////////////////
 
-	public PozycjaDTO(Long id, String nazwa) {
+	public PozycjaDTO() {
 		super();
-		this.id = id;
+	}
+
+	public PozycjaDTO(String nazwa, UslugaDTO uslugaDTO) {
+		super();
 		this.nazwa = nazwa;
+		this.uslugaDTO = uslugaDTO;
+		this.produktDTO = null;
+		
+	}
+
+	public PozycjaDTO(String nazwa, ProduktDTO produktDTO) {
+		super();
+		this.nazwa = nazwa;
+		this.produktDTO = produktDTO;
+		this.uslugaDTO = null;
 	}
 
 	/////////////////////////////////
+
+	public String getTyp() {
+		return typ;
+	}
+
+	public void setTyp(String typ) {
+		this.typ = typ;
+	}
 
 	public Long getId() {
 		return id;
@@ -32,8 +59,37 @@ public class PozycjaDTO {
 		this.nazwa = nazwa;
 	}
 
+	public ProduktDTO getProduktDTO() {
+		return produktDTO;
+	}
+
+	public void setProduktDTO(ProduktDTO produktDTO) {
+		this.produktDTO = produktDTO;
+	}
+
+	public UslugaDTO getUslugaDTO() {
+		return uslugaDTO;
+	}
+
+	public void setUslugaDTO(UslugaDTO uslugaDTO) {
+		this.uslugaDTO = uslugaDTO;
+	}
+
+	public String toStringProdukt() {
+		return "PozycjaDTO [nazwa=" + nazwa + "," + getProduktDTO().toString() + "]";
+	}
+
+	public String toStringUsluga() {
+		return "PozycjaDTO [nazwa=" + nazwa + "," + getUslugaDTO().toString() + "]";
+	}
+
 	@Override
 	public String toString() {
-		return "PozycjaDTO [id=" + id + ", nazwa=" + nazwa + "]";
+		if (uslugaDTO == null) {
+			return toStringProdukt();
+		} else {
+			return toStringUsluga();
+		}
+
 	}
 }

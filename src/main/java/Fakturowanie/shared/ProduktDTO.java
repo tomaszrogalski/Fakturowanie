@@ -1,6 +1,6 @@
 package Fakturowanie.shared;
 
-public class ProduktDTO extends PozycjaDTO {
+public class ProduktDTO {
 
 	private String cena;
 
@@ -10,11 +10,15 @@ public class ProduktDTO extends PozycjaDTO {
 
 	/////////////////////////////////
 
-	public ProduktDTO(Long id, String nazwa, String cena, String jednostka, String vat) {
-		super(id, nazwa);
+	public ProduktDTO(String cena, String jednostka, String vat) {
+
 		this.cena = cena;
 		this.jednostka = jednostka;
 		this.vat = vat;
+	}
+
+	public ProduktDTO() {
+
 	}
 
 	/////////////////////////////////
@@ -45,7 +49,6 @@ public class ProduktDTO extends PozycjaDTO {
 
 	@Override
 	public String toString() {
-		return "ProduktDTO [cena=" + cena + ", jednostka=" + jednostka + ", vat=" + vat + ", toString()="
-				+ super.toString() + "]";
+		return "ProduktDTO [cena=" + cena + ", jednostka=" + jednostka + ", vat=" + vat + "]";
 	}
 }
