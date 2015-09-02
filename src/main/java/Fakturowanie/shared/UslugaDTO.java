@@ -32,6 +32,17 @@ public class UslugaDTO {
 		this.jednostkaPodstawowaVAT = jednostkaPodstawowaVAT;
 	}
 
+	public boolean czyJestemPusty() {
+
+		if (getJednostkaPodstawowaVAT() == null && getCenaZaGodzine() == null) {
+			return true;
+		} else {
+			return false;
+
+		}
+
+	}
+
 	@Override
 	public String toString() {
 		return "UslugaDTO [cenaZaGodzine=" + cenaZaGodzine + ", jednostkaPodstawowaVAT=" + jednostkaPodstawowaVAT + "]";

@@ -12,11 +12,17 @@ public class FakturaDTO {
 
 	/////////////////////////////////
 
+	
+	
 	public FakturaDTO(Long nrFaktury, KlientDTO klientDTO, List<PozycjaDTO> listaPozycjiDTO) {
 		super();
 		this.nrFaktury = nrFaktury;
 		this.klientDTO = klientDTO;
 		this.listaPozycjiDTO = listaPozycjiDTO;
+	}
+
+	public FakturaDTO() {
+		super();
 	}
 
 	/////////////////////////////////

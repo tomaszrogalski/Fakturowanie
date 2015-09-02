@@ -1,4 +1,55 @@
-<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <g:HTMLPanel>Hello World!</g:HTMLPanel>
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.html_panel_glowny {
+		background-color: aqua;
+		position: fixed;
+		width: 98%;
+		height: 98%;
+		padding: 1%;
+	}
+	
+	.html_panel_wewnetrzne1 {
+		position: fixed;
+		width: 19%;
+		height: 84%;
+		display: block;
+		float: left;
+	}
+	
+	.html_panel_wewnetrzne2 {
+		position: fixed;
+		background-color: red;
+		width: 78%;
+		height: 84%;
+		display: block;
+		float: left;
+		left: 21%;
+	}
+	
+	.cos {
+		
+	}
+	</ui:style>
+	<g:HTMLPanel styleName="{style.html_panel_glowny}">
+
+		<h1 align="center">STRONA STARTOWA</h1>
+		<hr />
+
+		<g:HorizontalPanel styleName="{style.cos}">
+
+			<g:HTMLPanel ui:field="htmlPanelMenu" styleName="{style.html_panel_wewnetrzne1}">
+
+			</g:HTMLPanel>
+
+			<g:HTMLPanel ui:field="htmlPanelRoboczy" styleName="{style.html_panel_wewnetrzne2}">
+
+			</g:HTMLPanel>
+		</g:HorizontalPanel>
+
+
+
+
+	</g:HTMLPanel>
 </ui:UiBinder>

@@ -22,15 +22,17 @@ public class PozycjaDTO {
 		super();
 		this.nazwa = nazwa;
 		this.uslugaDTO = uslugaDTO;
-		this.produktDTO = null;
-		
+		produktDTO = new ProduktDTO(null, null, null);
+		wyliczTyp();
+
 	}
 
 	public PozycjaDTO(String nazwa, ProduktDTO produktDTO) {
 		super();
 		this.nazwa = nazwa;
 		this.produktDTO = produktDTO;
-		this.uslugaDTO = null;
+		uslugaDTO = new UslugaDTO(null, null);
+		wyliczTyp();
 	}
 
 	/////////////////////////////////
@@ -75,6 +77,19 @@ public class PozycjaDTO {
 		this.uslugaDTO = uslugaDTO;
 	}
 
+	// zmienic na enum
+	public void wyliczTyp() {
+		if (uslugaDTO.czyJestemPusty()) {
+			setTyp("USŁUGA");
+		} else if (produktDTO.czyJestemPusty()) {
+			setTyp("PRODUKT");
+		}
+		// tymczasowe
+		else {
+			setTyp("COS TU NIE DZIAŁA");
+		}
+	}
+
 	public String toStringProdukt() {
 		return "PozycjaDTO [nazwa=" + nazwa + "," + getProduktDTO().toString() + "]";
 	}
@@ -85,10 +100,14 @@ public class PozycjaDTO {
 
 	@Override
 	public String toString() {
-		if (uslugaDTO == null) {
+		if (uslugaDTO.czyJestemPusty()) {
 			return toStringProdukt();
-		} else {
+		} else if (produktDTO.czyJestemPusty()) {
 			return toStringUsluga();
+		}
+		// tymczasowe
+		else {
+			return "cos nie dziala w metodzie to string";
 		}
 
 	}

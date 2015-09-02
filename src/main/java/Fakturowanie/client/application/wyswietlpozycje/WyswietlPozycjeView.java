@@ -103,11 +103,17 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 		dataGridWyswietlPozycje.addColumn(textColumnJednostka, "JEDNOSTKA");
 		dataGridWyswietlPozycje.addColumn(textColumnVat, "VAT");
 		dataGridWyswietlPozycje.addColumn(textColumnJednostkaPodstawowa, "JEDNOSTKA PODSTAWOWA VAT");
-	
+
 	}
 
 	@UiHandler("buttonDodajNowyProdukt")
 	void dodajProdukt(ClickEvent e) {
+
+		final List<PozycjaDTO> list = new ArrayList<>();
+
+		list.add(new PozycjaDTO("asdwewq", new ProduktDTO("asd", "asd", "asdasd")));
+		list.add(new PozycjaDTO("asdwewq", new UslugaDTO("asd", "asd")));
+		dataGridWyswietlPozycje.setRowData(list);
 		Window.alert("Nie działam");
 	}
 
