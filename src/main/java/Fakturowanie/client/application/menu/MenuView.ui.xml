@@ -22,14 +22,14 @@
 
 		<g:VerticalPanel ui:field="verticalPanel" styleName="{style.vertical}">
 
-<!-- 			<g:Button text="WYSWIETL KLIENTOW" ui:field="buttonWyswietlKlientow" -->
-<!-- 				styleName="{style.button}"></g:Button> -->
-<!-- 			<g:Button text="WYSWIETL PRODUKTY I USLUGI" ui:field="buttonWyswietlPozycje" -->
-<!-- 				styleName="{style.button}"></g:Button> -->
-<!-- 			<g:Button text="WYSWIETL FAKTURY" ui:field="buttonWyswietlFaktury" -->
-<!-- 				styleName="{style.button}"></g:Button> -->
-<!-- 			<g:Button text="DODAJ FAKTURE" ui:field="buttonDodajNowaFakture" -->
-<!-- 				styleName="{style.button}"></g:Button> -->
+			<g:Button text="WYSWIETL KLIENTOW" ui:field="buttonWyswietlKlientow"
+				styleName="{style.button}"></g:Button>
+			<g:Button text="WYSWIETL PRODUKTY I USLUGI" ui:field="buttonWyswietlPozycje"
+				styleName="{style.button}"></g:Button>
+			<g:Button text="WYSWIETL FAKTURY" ui:field="buttonWyswietlFaktury"
+				styleName="{style.button}"></g:Button>
+			<g:Button text="DODAJ FAKTURE" ui:field="buttonDodajNowaFakture"
+				styleName="{style.button}"></g:Button>
 
 		</g:VerticalPanel>
 

@@ -57,7 +57,6 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 		initWidget(uiBinder.createAndBindUi(this));
 		stworzDataGridListaPozycji();
 		stworzDataGridListaKlientow();
-
 	}
 
 	@UiHandler("buttonDodajNowaPozycje")
