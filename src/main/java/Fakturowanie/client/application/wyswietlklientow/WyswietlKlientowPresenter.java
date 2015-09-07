@@ -7,10 +7,14 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
+import com.gwtplatform.mvp.client.presenter.slots.PermanentSlot;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
+import Fakturowanie.client.application.dodajklienta.DodajKlientaPresenter;
 import Fakturowanie.client.application.home.HomePagePresenter;
+import Fakturowanie.client.application.menu.MenuPresenter;
 import Fakturowanie.client.place.NameTokens;
 
 public class WyswietlKlientowPresenter
@@ -19,17 +23,15 @@ public class WyswietlKlientowPresenter
 	interface MyView extends View, HasUiHandlers<WyswietlKlientowUiHandlers> {
 
 	}
-
+	static final NestedSlot SLOT_NA_DODAJ_KLIENTA = new NestedSlot();
+	
 	@NameToken(NameTokens.wyswietlKlientow)
 	@ProxyStandard
 	interface MyProxy extends ProxyPlace<WyswietlKlientowPresenter> {
 	}
 
-	@Override
-	protected void onBind() {
-		setInSlot(HomePagePresenter.SLOT_ROBOCZY, this);
-		super.onBind();
-	}
+	@Inject
+	DodajKlientaPresenter dodajKlientaPresenter;
 
 	@Inject
 	WyswietlKlientowPresenter(EventBus eventBus, MyView view, MyProxy proxy) {
@@ -39,9 +41,10 @@ public class WyswietlKlientowPresenter
 	}
 
 	@Override
-	protected void revealInParent() {
-		RevealContentEvent.fire(this, HomePagePresenter.SLOT_ROBOCZY, this);
-		super.revealInParent();
+	public void buttonAkcjaDodajKlienta() {
+		RevealContentEvent.fire(this, SLOT_NA_DODAJ_KLIENTA, dodajKlientaPresenter);
+		
 	}
+
 
 }

@@ -38,5 +38,7 @@
 			<g:Button text="DODAJ PRODUKT" ui:field="buttonDodajNowyProdukt"></g:Button>
 			<g:Button text="DODAJ USLUGE" ui:field="buttonDodajNowaUsluge"></g:Button>
 		</g:HorizontalPanel>
+		<g:HTMLPanel ui:field='htmlPanelNaDodajProduktLubUsluge'>  
+			</g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder>

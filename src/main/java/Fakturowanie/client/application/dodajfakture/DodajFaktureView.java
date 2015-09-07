@@ -22,6 +22,7 @@ import com.google.gwt.view.client.MultiSelectionModel;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import Fakturowanie.client.application.wyswietlpozycje.WyswietlPozycjePresenter;
 import Fakturowanie.shared.FakturaDTO;
 import Fakturowanie.shared.KlientDTO;
 import Fakturowanie.shared.PozycjaDTO;
@@ -40,8 +41,10 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 	DataGrid<KlientDTO> dataGridListaKlientow;
 
 	@UiField
-	Button buttonDodajNowaPozycje;
+	Button buttonDodajNowaUsluge;
 
+	@UiField
+	Button buttonDodajNowyProdukt;
 	@UiField
 	Button buttonDodajNowaFakture;
 
@@ -55,12 +58,14 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 	@Inject
 	DodajFaktureView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
+		bindSlot(DodajFakturePresenter.SLOT_NA_DODAJ_PRODUKT_USLUGE, htmlPanelDodajPozycje);
 		stworzDataGridListaPozycji();
 		stworzDataGridListaKlientow();
 	}
 
-	@UiHandler("buttonDodajNowaPozycje")
-	void dodajPozycje(ClickEvent e) {
+	@UiHandler("buttonDodajNowyProdukt")
+	void dodajProdukt(ClickEvent e) {
+		getUiHandlers().buttonAkcjaDodajProdukt();
 		// List<KlientDTO> listK = new ArrayList<>();
 		// KlientDTO kli = new KlientDTO("asd", "asdas", new AdresDTO("asd",
 		// "asdads", "asd", "sd"));
@@ -78,18 +83,13 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 		//
 		// dataGridListaPozycji.setRowData(list);
 
-		Window.alert("Nie działam");
+		// Window.alert("Nie działam");
 	}
 
-	public FakturaDTO OdbierzZawartoscZGridITextBoxa() {
-		FakturaDTO fakturaDTO = new FakturaDTO();
-		fakturaDTO.setKlientDTO(simpleSelectionModel.getSelectedObject());
-		//CZY MOGE TAK ZROBIC? SPRAWDZIC
-		fakturaDTO.setListaPozycjiDTO((List<PozycjaDTO>) multiSelectionModel.getSelectedSet());
-		
-		//TYMCZASOWE
-		fakturaDTO.setNrFaktury(2L);
-		return fakturaDTO;
+	@UiHandler("buttonDodajNowaUsluge")
+	void dodajUsluge(ClickEvent e) {
+		getUiHandlers().buttonAkcjaDodajUsluge();
+		// Window.alert("Nie działam");
 	}
 
 	@UiHandler("buttonDodajNowaFakture")
@@ -98,17 +98,28 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 		Window.alert("Nie działam");
 	}
 
-	//////// Z Internetu, brak zrodła, z projektu robionego wczesniej
-	@Override
-	public void addToSlot(Object slot, IsWidget content) {
-		if (slot == DodajFakturePresenter.SLOT_DodajFakture) {
-			if (content != null) {
-				htmlPanelDodajPozycje.add(content);
-			}
-		} else {
-			super.addToSlot(slot, content);
-		}
+	public FakturaDTO OdbierzZawartoscZGridITextBoxa() {
+		FakturaDTO fakturaDTO = new FakturaDTO();
+		fakturaDTO.setKlientDTO(simpleSelectionModel.getSelectedObject());
+		// CZY MOGE TAK ZROBIC? SPRAWDZIC
+		fakturaDTO.setListaPozycjiDTO((List<PozycjaDTO>) multiSelectionModel.getSelectedSet());
+
+		// TYMCZASOWE
+		fakturaDTO.setNrFaktury(2L);
+		return fakturaDTO;
 	}
+
+	//////// Z Internetu, brak zrodła, z projektu robionego wczesniej
+	// @Override
+	// public void addToSlot(Object slot, IsWidget content) {
+	// if (slot == DodajFakturePresenter.SLOT_DodajFakture) {
+	// if (content != null) {
+	// htmlPanelDodajPozycje.add(content);
+	// }
+	// } else {
+	// super.addToSlot(slot, content);
+	// }
+	// }
 
 	////////
 

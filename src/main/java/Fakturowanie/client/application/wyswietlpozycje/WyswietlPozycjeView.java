@@ -14,9 +14,11 @@ import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import Fakturowanie.client.application.wyswietlklientow.WyswietlKlientowPresenter;
 import Fakturowanie.shared.PozycjaDTO;
 import Fakturowanie.shared.ProduktDTO;
 import Fakturowanie.shared.UslugaDTO;
@@ -34,10 +36,13 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 	@UiField
 	Button buttonDodajNowaUsluge;
 
+	@UiField
+	HTMLPanel htmlPanelNaDodajProduktLubUsluge;
+
 	@Inject
 	WyswietlPozycjeView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
-
+		bindSlot(WyswietlPozycjePresenter.SLOT_NA_DODAJ_PRODUKT_USLUGE, htmlPanelNaDodajProduktLubUsluge);
 		TextColumn<PozycjaDTO> textColumnTyp = new TextColumn<PozycjaDTO>() {
 
 			@Override
@@ -108,18 +113,20 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 
 	@UiHandler("buttonDodajNowyProdukt")
 	void dodajProdukt(ClickEvent e) {
-
-		final List<PozycjaDTO> list = new ArrayList<>();
-
-		list.add(new PozycjaDTO("asdwewq", new ProduktDTO("asd", "asd", "asdasd")));
-		list.add(new PozycjaDTO("asdwewq", new UslugaDTO("asd", "asd")));
-		dataGridWyswietlPozycje.setRowData(list);
-		Window.alert("Nie działam");
+		getUiHandlers().buttonAkcjaDodajProdukt();
+		// final List<PozycjaDTO> list = new ArrayList<>();
+		//
+		// list.add(new PozycjaDTO("asdwewq", new ProduktDTO("asd", "asd",
+		// "asdasd")));
+		// list.add(new PozycjaDTO("asdwewq", new UslugaDTO("asd", "asd")));
+		// dataGridWyswietlPozycje.setRowData(list);
+		// Window.alert("Nie działam");
 	}
 
 	@UiHandler("buttonDodajNowaUsluge")
 	void dodajUsluge(ClickEvent e) {
-		Window.alert("Nie działam");
+		// Window.alert("Nie działam");
+		getUiHandlers().buttonAkcjaDodajUsluge();
 	}
 
 }

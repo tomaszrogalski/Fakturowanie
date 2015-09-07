@@ -37,5 +37,7 @@
 		<g:HorizontalPanel styleName="{style.horizontal_panel}">
 			<g:Button text="DODAJ NOWEGO KLIENTA" ui:field="buttonDodajNowegoKlienta"></g:Button>
 		</g:HorizontalPanel>
+		<g:HTMLPanel ui:field='htmlPanelNaDodajKlienta'>  
+			</g:HTMLPanel>
 	</g:HTMLPanel>
 </ui:UiBinder>

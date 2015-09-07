@@ -8,10 +8,12 @@ import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
+import Fakturowanie.client.application.home.HomePagePresenter;
 import Fakturowanie.serwer.Klient;
 import Fakturowanie.shared.KlientDTO;
 
@@ -26,10 +28,15 @@ class WyswietlKlientowView extends ViewWithUiHandlers<WyswietlKlientowUiHandlers
 	@UiField
 	Button buttonDodajNowegoKlienta;
 
+	@UiField
+	HTMLPanel htmlPanelNaDodajKlienta;
+
 	@Inject
 	WyswietlKlientowView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
-
+		bindSlot(WyswietlKlientowPresenter.SLOT_NA_DODAJ_KLIENTA, htmlPanelNaDodajKlienta);
+		
+		//zrobic na to funkcje
 		TextColumn<KlientDTO> textColumnId = new TextColumn<KlientDTO>() {
 
 			@Override
@@ -94,8 +101,7 @@ class WyswietlKlientowView extends ViewWithUiHandlers<WyswietlKlientowUiHandlers
 
 	@UiHandler("buttonDodajNowegoKlienta")
 	void dodajClick(ClickEvent e) {
-		Window.alert("Nie działam");
+		getUiHandlers().buttonAkcjaDodajKlienta();
 	}
 
-	
 }

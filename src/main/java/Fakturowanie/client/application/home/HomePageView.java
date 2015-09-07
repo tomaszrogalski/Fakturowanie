@@ -6,6 +6,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewImpl;
 
@@ -18,12 +19,17 @@ public class HomePageView extends ViewImpl implements HomePagePresenter.MyView {
 
 	@UiField
 	HTMLPanel htmlPanelRoboczy;
+//	@UiField
+//	ScrollPanel scrollPanel;
 
 	@Inject
 	HomePageView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 		bindSlot(HomePagePresenter.SLOT_MENU, htmlPanelMenu);
 		bindSlot(HomePagePresenter.SLOT_ROBOCZY, htmlPanelRoboczy);
+//		scrollPanel.setAlwaysShowScrollBars(true);
+//		scrollPanel.setVerticalScrollPosition(500);
+//		htmlPanelRoboczy.getElement().getStyle().set
 	}
 
 	//////// Z Internetu, brak zrodła, z projektu robionego wczesniej
