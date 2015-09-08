@@ -13,8 +13,8 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import Fakturowanie.shared.AdresDTO;
-import Fakturowanie.shared.KlientDTO;
+import Fakturowanie.shared.dto.AdresDTO;
+import Fakturowanie.shared.dto.KlientDTO;
 
 class DodajKlientaView extends ViewWithUiHandlers<DodajKlientaUiHandlers>
 		implements Editor<KlientDTO>, DodajKlientaPresenter.MyView {
@@ -61,7 +61,7 @@ class DodajKlientaView extends ViewWithUiHandlers<DodajKlientaUiHandlers>
 		driver.edit(new KlientDTO(null, null, new AdresDTO(null, null, null, null)));
 	}
 
-	public KlientDTO OdbierzZawartoscTextBoxow() {
+	public KlientDTO odbierzZawartoscTextBoxow() {
 
 		KlientDTO klientDTO = driver.flush();
 
@@ -72,4 +72,5 @@ class DodajKlientaView extends ViewWithUiHandlers<DodajKlientaUiHandlers>
 	void dodajClick(ClickEvent e) {
 		getUiHandlers().buttonAkcjaDodajKlienta();
 	}
+
 }

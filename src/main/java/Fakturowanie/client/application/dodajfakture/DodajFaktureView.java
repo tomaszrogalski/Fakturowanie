@@ -23,9 +23,9 @@ import com.google.gwt.view.client.SingleSelectionModel;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import Fakturowanie.client.application.wyswietlpozycje.WyswietlPozycjePresenter;
-import Fakturowanie.shared.FakturaDTO;
-import Fakturowanie.shared.KlientDTO;
-import Fakturowanie.shared.PozycjaDTO;
+import Fakturowanie.shared.dto.FakturaDTO;
+import Fakturowanie.shared.dto.KlientDTO;
+import Fakturowanie.shared.dto.PozycjaDTO;
 
 class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>implements DodajFakturePresenter.MyView {
 	interface Binder extends UiBinder<Widget, DodajFaktureView> {
@@ -45,6 +45,7 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 
 	@UiField
 	Button buttonDodajNowyProdukt;
+	
 	@UiField
 	Button buttonDodajNowaFakture;
 

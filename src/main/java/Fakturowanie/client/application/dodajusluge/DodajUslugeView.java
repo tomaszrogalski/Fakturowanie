@@ -15,9 +15,9 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import Fakturowanie.shared.PozycjaDTO;
-import Fakturowanie.shared.ProduktDTO;
-import Fakturowanie.shared.UslugaDTO;
+import Fakturowanie.shared.dto.PozycjaDTO;
+import Fakturowanie.shared.dto.ProduktDTO;
+import Fakturowanie.shared.dto.UslugaDTO;
 
 class DodajUslugeView extends ViewWithUiHandlers<DodajUslugeUiHandlers>
 		implements Editor<PozycjaDTO>, DodajUslugePresenter.MyView {

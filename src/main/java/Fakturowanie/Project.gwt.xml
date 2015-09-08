@@ -4,6 +4,7 @@
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name='com.google.gwt.inject.Inject' />
 	<inherits name='com.google.gwt.editor.Editor' />
+	
 	<!-- Default css -->
 	<inherits name='com.google.gwt.user.theme.standard.Standard' />
 	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
@@ -11,12 +12,12 @@
 
 	<!-- Other module inherits -->
 	<inherits name='com.gwtplatform.dispatch.Dispatch' />
-
+<inherits name="com.gwtplatform.dispatch.rest.DispatchRest" />
 	<inherits name='com.gwtplatform.mvp.MvpWithEntryPoint' />
-	<source path='serwer' />
+	<source path='server' />
 	<source path='client' />
 	<source path='shared' />
 
-	<set-configuration-property name="gin.ginjector.modules"
+	<extend-configuration-property name="gin.ginjector.modules"
 		value="Fakturowanie.client.gin.ClientModule" />
 </module>

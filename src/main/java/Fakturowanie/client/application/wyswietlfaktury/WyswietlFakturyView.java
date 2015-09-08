@@ -16,10 +16,10 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import Fakturowanie.shared.FakturaDTO;
-import Fakturowanie.shared.KlientDTO;
-import Fakturowanie.shared.PozycjaDTO;
-import Fakturowanie.shared.ProduktDTO;
+import Fakturowanie.shared.dto.FakturaDTO;
+import Fakturowanie.shared.dto.KlientDTO;
+import Fakturowanie.shared.dto.PozycjaDTO;
+import Fakturowanie.shared.dto.ProduktDTO;
 
 class WyswietlFakturyView extends ViewWithUiHandlers<WyswietlFakturyUiHandlers>
 		implements WyswietlFakturyPresenter.MyView {

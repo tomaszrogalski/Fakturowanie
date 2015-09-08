@@ -14,9 +14,9 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import Fakturowanie.serwer.Pozycja;
-import Fakturowanie.shared.PozycjaDTO;
-import Fakturowanie.shared.ProduktDTO;
+import Fakturowanie.server.Pozycja;
+import Fakturowanie.shared.dto.PozycjaDTO;
+import Fakturowanie.shared.dto.ProduktDTO;
 
 class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 		implements Editor<PozycjaDTO>, DodajProduktPresenter.MyView {
@@ -63,7 +63,7 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 	@UiHandler("buttonDodaj")
 	void dodajClick(ClickEvent e) {
 
-		Window.alert("NIE DZIALAM JESZCZE");
+		getUiHandlers().buttonAkcjaDodajProdukt();
 	}
 
 }

@@ -7,16 +7,19 @@
 	<persistence-unit name="cwiczenie2" transaction-type="JTA">
 		<jta-data-source>java:/PostgresDS</jta-data-source>
 
-		<class>Fakturowanie.serwer.Faktura</class>
-		<class>Fakturowanie.serwer.Klient</class>
-		<class>Fakturowanie.serwer.Pozycja</class>
-		<class>Fakturowanie.serwer.Produkt</class>
-		<class>Fakturowanie.serwer.Usluga</class>
+		<class>Fakturowanie.server.Faktura</class>
+		<class>Fakturowanie.server.Klient</class>
+		<class>Fakturowanie.server.Pozycja</class>
+		<class>Fakturowanie.server.Produkt</class>
+		<class>Fakturowanie.server.Usluga</class>
 		
 		<properties>
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="hibernate.temp.use_jdbc_metadata_defaults"
+				value="false" />
+			<property name="hibernate.show_sql" value="true" />
 
 		</properties>
 	</persistence-unit>

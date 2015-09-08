@@ -14,8 +14,8 @@ import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import Fakturowanie.client.application.home.HomePagePresenter;
-import Fakturowanie.serwer.Klient;
-import Fakturowanie.shared.KlientDTO;
+import Fakturowanie.server.Klient;
+import Fakturowanie.shared.dto.KlientDTO;
 
 class WyswietlKlientowView extends ViewWithUiHandlers<WyswietlKlientowUiHandlers>
 		implements WyswietlKlientowPresenter.MyView {

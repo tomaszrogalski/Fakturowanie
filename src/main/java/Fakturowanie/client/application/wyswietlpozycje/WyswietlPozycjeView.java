@@ -19,9 +19,9 @@ import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import Fakturowanie.client.application.wyswietlklientow.WyswietlKlientowPresenter;
-import Fakturowanie.shared.PozycjaDTO;
-import Fakturowanie.shared.ProduktDTO;
-import Fakturowanie.shared.UslugaDTO;
+import Fakturowanie.shared.dto.PozycjaDTO;
+import Fakturowanie.shared.dto.ProduktDTO;
+import Fakturowanie.shared.dto.UslugaDTO;
 
 class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 		implements WyswietlPozycjePresenter.MyView {
