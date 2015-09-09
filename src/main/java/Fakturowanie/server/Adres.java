@@ -3,6 +3,8 @@ package Fakturowanie.server;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import Fakturowanie.shared.dto.AdresDTO;
+
 @Embeddable
 public class Adres {
 
@@ -50,6 +52,11 @@ public class Adres {
 	public String toString() {
 		return "Adres [ulica=" + ulica + ", nrDomu=" + nrDomu + ", kodPocztowy=" + kodPocztowy + ", miejscowosc="
 				+ miejscowosc + "]";
+	}
+
+	public AdresDTO stworzAdresDTO() {
+		return new AdresDTO(getKodPocztowy(), getUlica(), getNrDomu(), getMiejscowosc());
+
 	}
 
 }

@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import Fakturowanie.shared.dto.KlientDTO;
+
 @Entity
 @Table(name = "klient", schema = "fakturowanie")
 public class Klient {
@@ -69,5 +71,13 @@ public class Klient {
 		return "Klient [id=" + id + ", imie=" + imie + ", nazwisko=" + nazwisko + ", adres=" + adres.toString() + "]";
 	}
 
-	
+	public KlientDTO stworzKlientaDTO() {
+		if (getAdres() != null) {
+			return new KlientDTO(getId(), getImie(), getNazwisko(), getAdres().stworzAdresDTO());
+		} else {
+			return new KlientDTO(getId(), getImie(), getNazwisko(), new Adres(null, null, null, null).stworzAdresDTO());
+		}
+
+	}
+
 }

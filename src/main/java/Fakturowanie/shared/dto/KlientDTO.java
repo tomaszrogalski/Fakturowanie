@@ -25,6 +25,14 @@ public class KlientDTO {
 		this.adresDTO = adresDTO;
 	}
 
+	public KlientDTO(Long id, String imie, String nazwisko, AdresDTO adresDTO) {
+		super();
+		this.id = id;
+		this.imie = imie;
+		this.nazwisko = nazwisko;
+		this.adresDTO = adresDTO;
+	}
+
 	public KlientDTO() {
 		super();
 	}
@@ -72,7 +80,13 @@ public class KlientDTO {
 
 	@Override
 	public String toString() {
-		return "KlientDTO [imie=" + imie + ", nazwisko=" + nazwisko + getAdresDTO().toString() + "]";
+		if (getAdresDTO() != null) {
+			return "KlientDTO [id=" + id + "imie=" + imie + ", nazwisko=" + nazwisko + getAdresDTO().toString() + "]";
+		} else {
+			//to chyba usunac moge bo w klient zrobione, SPRAWDZIC
+			return "KlientDTO [id=" + id + "imie=" + imie + ", nazwisko=" + nazwisko
+					+ new AdresDTO(null, null, null, null).toString() + "]";
+		}
 	}
 
 	public Klient stworzKlienta() {

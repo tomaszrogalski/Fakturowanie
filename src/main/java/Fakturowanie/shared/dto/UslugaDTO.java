@@ -7,11 +7,17 @@ public class UslugaDTO {
 	private String jednostkaPodstawowaVAT;
 
 	/////////////////////////////////
+	
+	
 
 	public UslugaDTO(String cenaZaGodzine, String jednostkaPodstawowaVAT) {
 
 		this.cenaZaGodzine = cenaZaGodzine;
 		this.jednostkaPodstawowaVAT = jednostkaPodstawowaVAT;
+	}
+
+	public UslugaDTO() {
+		super();
 	}
 
 	/////////////////////////////////
@@ -42,6 +48,8 @@ public class UslugaDTO {
 		}
 
 	}
+	
+	
 
 	@Override
 	public String toString() {

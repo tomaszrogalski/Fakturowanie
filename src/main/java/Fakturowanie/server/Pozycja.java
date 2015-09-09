@@ -32,6 +32,22 @@ public class Pozycja {
 	@JoinColumn(name = "nr_faktury")
 	private Faktura faktura;
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getNazwa() {
+		return nazwa;
+	}
+
+	public void setNazwa(String nazwa) {
+		this.nazwa = nazwa;
+	}
+
 	public Pozycja(String nazwa, Faktura faktura) {
 		this.nazwa = nazwa;
 		this.faktura = faktura;
@@ -39,7 +55,10 @@ public class Pozycja {
 
 	public Pozycja() {
 	}
-	
-	
+
+	public Pozycja(String nazwa) {
+		super();
+		this.nazwa = nazwa;
+	}
 
 }

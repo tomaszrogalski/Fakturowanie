@@ -10,18 +10,24 @@ import javax.ws.rs.core.MediaType;
 
 import com.gwtplatform.dispatch.rest.shared.RestAction;
 
-import Fakturowanie.shared.dto.KlientDTO;
+import Fakturowanie.shared.dto.PozycjaDTO;
 
-@Path("/Klient")
-public interface KlientResource {
+@Path("/Pozycja")
+public interface PozycjaResource {
 
 	@POST
-	@Path("/dodaj")
-	public RestAction<Void> create(KlientDTO klientDTO);
+	@Path("/dodajProdukt")
+	public RestAction<Void> createProdukt(PozycjaDTO pozycjaDTO);
+
+	@POST
+	@Path("/dodajUsluge")
+
+	public RestAction<Void> createUsluge(PozycjaDTO pozycjaDTO);
 
 	@POST
 	@Path("/wczytaj")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public RestAction<List<KlientDTO>> wczytaj();
+	public RestAction<List<PozycjaDTO>> wczytaj();
+
 }

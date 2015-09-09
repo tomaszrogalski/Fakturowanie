@@ -1,27 +1,19 @@
 package Fakturowanie.client.application.wyswietlpozycje;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import Fakturowanie.client.application.wyswietlklientow.WyswietlKlientowPresenter;
 import Fakturowanie.shared.dto.PozycjaDTO;
-import Fakturowanie.shared.dto.ProduktDTO;
-import Fakturowanie.shared.dto.UslugaDTO;
 
 class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 		implements WyswietlPozycjePresenter.MyView {
@@ -127,6 +119,10 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 	void dodajUsluge(ClickEvent e) {
 		// Window.alert("Nie działam");
 		getUiHandlers().buttonAkcjaDodajUsluge();
+	}
+
+	public DataGrid<PozycjaDTO> getDataGridWyswietlPozycje() {
+		return dataGridWyswietlPozycje;
 	}
 
 }

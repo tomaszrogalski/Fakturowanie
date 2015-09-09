@@ -52,14 +52,14 @@ public class ProduktDTO {
 		if (getJednostka() == null && getVat() == null && getCena() == null) {
 			return true;
 		} else {
-			
+
 			return false;
 		}
-
 	}
 
 	@Override
 	public String toString() {
 		return "ProduktDTO [cena=" + cena + ", jednostka=" + jednostka + ", vat=" + vat + "]";
 	}
+
 }

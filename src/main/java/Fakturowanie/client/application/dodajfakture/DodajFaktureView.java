@@ -15,14 +15,12 @@ import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.MultiSelectionModel;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import Fakturowanie.client.application.wyswietlpozycje.WyswietlPozycjePresenter;
 import Fakturowanie.shared.dto.FakturaDTO;
 import Fakturowanie.shared.dto.KlientDTO;
 import Fakturowanie.shared.dto.PozycjaDTO;
@@ -45,7 +43,7 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 
 	@UiField
 	Button buttonDodajNowyProdukt;
-	
+
 	@UiField
 	Button buttonDodajNowaFakture;
 

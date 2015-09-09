@@ -1,7 +1,6 @@
 package Fakturowanie.server.dao;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -11,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import Fakturowanie.server.Klient;
+import Fakturowanie.shared.dto.KlientDTO;
 
 @Stateless
 @Remote
@@ -21,23 +21,19 @@ public class KlientDAO {
 
 	public void stworzKlienta(Klient klient) {
 		entityManager.merge(klient);
-		wczytaj();
+
 	}
 
-	// List<Klient>
-	public void wczytaj() {
+	public List<KlientDTO> wczytaj() {
 
-		List<Klient> listaKlientow = new ArrayList<>();
+		List<KlientDTO> listaKlientowDTO = new ArrayList<>();
+		Query query = entityManager.createQuery("FROM Klient");
+		List<Klient> listaKlientow = query.getResultList();
 
-		Query query = entityManager.createQuery("FROM Klient ");
-		List<Klient> listaZTablicaObiektow = query.getResultList();
-
-		for (Klient klient : listaZTablicaObiektow) {
-			System.out.println(klient.toString());
-			System.out.println();
+		for (Klient klient : listaKlientow) {
+			listaKlientowDTO.add(klient.stworzKlientaDTO());
 		}
 
-		// return listaKlientow;
+		return listaKlientowDTO;
 	}
-
 }

@@ -9,14 +9,12 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 import Fakturowanie.shared.dto.PozycjaDTO;
-import Fakturowanie.shared.dto.ProduktDTO;
 import Fakturowanie.shared.dto.UslugaDTO;
 
 class DodajUslugeView extends ViewWithUiHandlers<DodajUslugeUiHandlers>
@@ -51,7 +49,7 @@ class DodajUslugeView extends ViewWithUiHandlers<DodajUslugeUiHandlers>
 		driver.edit(new PozycjaDTO(null, new UslugaDTO(null, "23%")));
 	}
 
-	public PozycjaDTO OdbierzZawartoscTextBoxow() {
+	public PozycjaDTO odbierzZawartoscTextBoxow() {
 
 		PozycjaDTO pozycjaDTO = driver.flush();
 
@@ -60,8 +58,8 @@ class DodajUslugeView extends ViewWithUiHandlers<DodajUslugeUiHandlers>
 
 	@UiHandler("buttonDodaj")
 	void dodajClick(ClickEvent e) {
-		
-		Window.alert("NIE DZIALAM JESZCZE");
+
+		getUiHandlers().buttonAkcjaDodajUsluge();
 	}
 
 }

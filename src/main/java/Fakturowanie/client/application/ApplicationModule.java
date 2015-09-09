@@ -4,7 +4,6 @@ import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 
 import Fakturowanie.client.application.dodajfakture.DodajFaktureModule;
 import Fakturowanie.client.application.dodajklienta.DodajKlientaModule;
-import Fakturowanie.client.application.dodajpozycje.DodajPozycjeModule;
 import Fakturowanie.client.application.dodajprodukt.DodajProduktModule;
 import Fakturowanie.client.application.dodajusluge.DodajUslugeModule;
 import Fakturowanie.client.application.home.HomeModule;
@@ -14,21 +13,19 @@ import Fakturowanie.client.application.wyswietlklientow.WyswietlKlientowModule;
 import Fakturowanie.client.application.wyswietlpozycje.WyswietlPozycjeModule;
 
 public class ApplicationModule extends AbstractPresenterModule {
-    @Override
-    protected void configure() {
-        install(new MenuModule());
+	@Override
+	protected void configure() {
+		install(new MenuModule());
 		install(new DodajFaktureModule());
 		install(new WyswietlFakturyModule());
 		install(new WyswietlPozycjeModule());
 		install(new DodajUslugeModule());
-		install(new DodajPozycjeModule());
 		install(new DodajProduktModule());
 		install(new DodajKlientaModule());
 		install(new WyswietlKlientowModule());
 		install(new HomeModule());
-		
 
-        bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
-                ApplicationPresenter.MyProxy.class);
-    }
+		bindPresenter(ApplicationPresenter.class, ApplicationPresenter.MyView.class, ApplicationView.class,
+				ApplicationPresenter.MyProxy.class);
+	}
 }

@@ -15,7 +15,6 @@ class MenuView extends ViewWithUiHandlers<MenuUiHandlers>implements MenuPresente
 	interface Binder extends UiBinder<Widget, MenuView> {
 	}
 
-	/// ???????????????
 	@UiField
 	Button buttonWyswietlKlientow;
 	@UiField

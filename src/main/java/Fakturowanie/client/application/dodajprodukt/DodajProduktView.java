@@ -7,14 +7,12 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import Fakturowanie.server.Pozycja;
 import Fakturowanie.shared.dto.PozycjaDTO;
 import Fakturowanie.shared.dto.ProduktDTO;
 
@@ -53,7 +51,7 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 		driver.edit(new PozycjaDTO(null, new ProduktDTO(null, null, null)));
 	}
 
-	public PozycjaDTO OdbierzZawartoscTextBoxow() {
+	public PozycjaDTO odbierzZawartoscTextBoxow() {
 
 		PozycjaDTO pozycjaDTO = driver.flush();
 

@@ -22,7 +22,6 @@ public class HomePagePresenter extends Presenter<HomePagePresenter.MyView, HomeP
 
 	public static final NestedSlot SLOT_ROBOCZY = new NestedSlot();
 
-
 	@ProxyCodeSplit
 	@NameToken(NameTokens.home)
 	public interface MyProxy extends ProxyPlace<HomePagePresenter> {
@@ -35,8 +34,6 @@ public class HomePagePresenter extends Presenter<HomePagePresenter.MyView, HomeP
 	protected void onBind() {
 		setInSlot(SLOT_MENU, menuPresenter);
 	}
-
-
 
 	@Inject
 	HomePagePresenter(EventBus eventBus, MyView view, MyProxy proxy) {

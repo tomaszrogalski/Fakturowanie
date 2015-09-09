@@ -11,8 +11,6 @@ public class NameTokens {
 
 	public static final String dodajUsluge = "dodajUsluge";
 
-	public static final String dodajPozycje = "dodajPozycje";
-
 	public static final String dodajProdukt = "dodajProdukt";
 
 	public static final String dodajKlienta = "dodajKlienta";
@@ -35,10 +33,6 @@ public class NameTokens {
 
 	public static String getDodajProdukt() {
 		return dodajProdukt;
-	}
-
-	public static String getDodajPozycje() {
-		return dodajPozycje;
 	}
 
 	public static String getDodajUsluge() {

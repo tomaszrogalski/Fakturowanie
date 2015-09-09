@@ -4,6 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+import Fakturowanie.shared.dto.PozycjaDTO;
+import Fakturowanie.shared.dto.ProduktDTO;
+
 @Entity
 @DiscriminatorValue(value = "produkt")
 public class Produkt extends Pozycja {
@@ -28,10 +31,29 @@ public class Produkt extends Pozycja {
 		this.vat = vat;
 	}
 
-	
+	public Produkt(String nazwa, String cena, String jednostka, String vat) {
+		super(nazwa);
+		this.cena = cena;
+		this.jednostka = jednostka;
+		this.vat = vat;
+	}
 
-	
-	
-	
+	public String getCena() {
+		return cena;
+	}
+
+	public String getJednostka() {
+		return jednostka;
+	}
+
+	public String getVat() {
+		return vat;
+	}
+
+	public PozycjaDTO stworzPozycjaDTO() {
+
+		return new PozycjaDTO(getNazwa(), new ProduktDTO(getCena(), getJednostka(), getVat()));
+
+	}
 
 }

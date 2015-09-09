@@ -1,5 +1,8 @@
 package Fakturowanie.shared.dto;
 
+import Fakturowanie.server.Produkt;
+import Fakturowanie.server.Usluga;
+
 public class PozycjaDTO {
 
 	private Long id;
@@ -80,9 +83,9 @@ public class PozycjaDTO {
 	// zmienic na enum
 	public void wyliczTyp() {
 		if (uslugaDTO.czyJestemPusty()) {
-			setTyp("USŁUGA");
-		} else if (produktDTO.czyJestemPusty()) {
 			setTyp("PRODUKT");
+		} else if (produktDTO.czyJestemPusty()) {
+			setTyp("USLUGA");
 		}
 		// tymczasowe
 		else {
@@ -110,5 +113,19 @@ public class PozycjaDTO {
 			return "cos nie dziala w metodzie to string";
 		}
 
+	}
+
+	public Produkt stworzProdukt() {
+		Produkt produkt = new Produkt(getNazwa(), getProduktDTO().getCena(), getProduktDTO().getJednostka(),
+				getProduktDTO().getVat());
+
+		return produkt;
+	}
+
+	public Usluga stworzUsluge() {
+		Usluga usluga = new Usluga(getNazwa(), getUslugaDTO().getCenaZaGodzine(),
+				getUslugaDTO().getJednostkaPodstawowaVAT());
+
+		return usluga;
 	}
 }

@@ -6,15 +6,12 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
-import Fakturowanie.client.application.home.HomePagePresenter;
-import Fakturowanie.server.Klient;
 import Fakturowanie.shared.dto.KlientDTO;
 
 class WyswietlKlientowView extends ViewWithUiHandlers<WyswietlKlientowUiHandlers>
@@ -103,5 +100,11 @@ class WyswietlKlientowView extends ViewWithUiHandlers<WyswietlKlientowUiHandlers
 	void dodajClick(ClickEvent e) {
 		getUiHandlers().buttonAkcjaDodajKlienta();
 	}
+
+	public DataGrid<KlientDTO> getDataGridWyswietlKlientow() {
+		return dataGridWyswietlKlientow;
+	}
+	
+	
 
 }

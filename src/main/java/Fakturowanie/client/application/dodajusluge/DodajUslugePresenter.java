@@ -1,37 +1,75 @@
 package Fakturowanie.client.application.dodajusluge;
 
-import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
-    import com.gwtplatform.mvp.client.Presenter;
+import com.gwtplatform.dispatch.rest.client.RestDispatch;
+import com.gwtplatform.mvp.client.HasUiHandlers;
+import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
-import com.gwtplatform.mvp.client.annotations.ContentSlot;
+import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
-import com.gwtplatform.mvp.client.annotations.NameToken;
-import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
-import com.gwtplatform.mvp.client.HasUiHandlers;
+
+import Fakturowanie.client.application.eventy.WczytajPozycjeZBazyEvent;
 import Fakturowanie.client.place.NameTokens;
-public class DodajUslugePresenter extends Presenter<DodajUslugePresenter.MyView, DodajUslugePresenter.MyProxy> implements DodajUslugeUiHandlers {
-    interface MyView extends View , HasUiHandlers<DodajUslugeUiHandlers> {
-    }
-    @ContentSlot
-    public static final Type<RevealContentHandler<?>> SLOT_DodajUsluge = new Type<RevealContentHandler<?>>();
+import Fakturowanie.shared.api.PozycjaResource;
+import Fakturowanie.shared.dto.PozycjaDTO;
 
-    @NameToken(NameTokens.dodajUsluge)
-    @ProxyStandard
-    interface MyProxy extends ProxyPlace<DodajUslugePresenter> {
-    }
+public class DodajUslugePresenter extends Presenter<DodajUslugePresenter.MyView, DodajUslugePresenter.MyProxy>
+		implements DodajUslugeUiHandlers {
+	interface MyView extends View, HasUiHandlers<DodajUslugeUiHandlers> {
 
-    @Inject
-    DodajUslugePresenter(
-            EventBus eventBus,
-            MyView view, 
-            MyProxy proxy) {
-        super(eventBus, view, proxy, RevealType.Root);
-        
-        getView().setUiHandlers(this);
-    }
-    
-    
+		PozycjaDTO odbierzZawartoscTextBoxow();
+	}
+
+	@NameToken(NameTokens.dodajUsluge)
+	@ProxyStandard
+	interface MyProxy extends ProxyPlace<DodajUslugePresenter> {
+	}
+
+	RestDispatch dispatcher;
+
+	PozycjaResource pozycjaResource;
+
+	@Inject
+	DodajUslugePresenter(EventBus eventBus, MyView view, MyProxy proxy, RestDispatch dispatcher,
+			PozycjaResource pozycjaResource) {
+		super(eventBus, view, proxy);
+		this.dispatcher = dispatcher;
+		this.pozycjaResource = pozycjaResource;
+
+		getView().setUiHandlers(this);
+	}
+
+	private void funkcjaDoFireEvent() {
+
+		WczytajPozycjeZBazyEvent.fire(this);
+	}
+
+	private void dodajDoBazy() {
+		dispatcher.execute(pozycjaResource.createUsluge(getView().odbierzZawartoscTextBoxow()),
+				new AsyncCallback<Void>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("COS NIE DZIAŁA - DODAJ PRODUKT");
+
+					}
+
+					@Override
+					public void onSuccess(Void result) {
+						funkcjaDoFireEvent();
+					}
+
+				});
+	}
+
+	@Override
+	public void buttonAkcjaDodajUsluge() {
+		dodajDoBazy();
+		removeFromParentSlot();
+	}
+
 }
