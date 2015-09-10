@@ -22,8 +22,8 @@ public class ClientModule extends AbstractPresenterModule {
 
 		bindConstant().annotatedWith(RestApplicationPath.class).to("http://localhost:8080/Fakturowanie-1.5/Fakturowanie");
 		bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.home);
-		bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.home);
-		bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.home);
+		bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.error);
+		bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.error);
 
 	}
 }

@@ -34,16 +34,11 @@
 	<g:HTMLPanel styleName="{style.html_panel}">
 		<h1 align="center">DODAJ FAKTURE</h1>
 		<hr />
-		<g:HorizontalPanel styleName="{style.horizontal_panel2}">
-			<g:Label text="NRFAKTURY" styleName="{style.label}"></g:Label>
-			<g:TextBox ui:field="textBoxNrFaktury"></g:TextBox>
-		</g:HorizontalPanel>
-
-
+		
 		<c:DataGrid ui:field="dataGridListaPozycji"></c:DataGrid>
+		<hr />
+		
 		<c:DataGrid ui:field="dataGridListaKlientow"></c:DataGrid>
-
-
 		<hr />
 
 		<g:HorizontalPanel styleName="{style.horizontal_panel}">
@@ -51,9 +46,8 @@
 			<g:Button text="DODAJ USLUGE" ui:field="buttonDodajNowaUsluge"></g:Button>
 			<g:Button text="DODAJ FAKTURE" ui:field="buttonDodajNowaFakture"></g:Button>
 		</g:HorizontalPanel>
+
 		<g:HTMLPanel ui:field="htmlPanelDodajPozycje">
 		</g:HTMLPanel>
 	</g:HTMLPanel>
-
-
 </ui:UiBinder>

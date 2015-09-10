@@ -13,7 +13,7 @@ import Fakturowanie.server.Klient;
 import Fakturowanie.shared.dto.KlientDTO;
 
 @Stateless
-@Remote
+
 public class KlientDAO {
 
 	@PersistenceContext(unitName = "cwiczenie2")

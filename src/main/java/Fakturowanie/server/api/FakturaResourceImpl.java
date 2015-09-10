@@ -11,7 +11,6 @@ import javax.ws.rs.core.MediaType;
 
 import Fakturowanie.server.dao.FakturaDAO;
 import Fakturowanie.shared.dto.FakturaDTO;
-import Fakturowanie.shared.dto.KlientDTO;
 
 @Path("/Faktura")
 public class FakturaResourceImpl {
@@ -22,7 +21,6 @@ public class FakturaResourceImpl {
 	@Path("/dodaj")
 	public void create(FakturaDTO fakturaDTO){
 		fakturaDAO.stworzFakture(fakturaDTO.stworzFakture());
-		System.out.println("IMPL");
 	}
 	@POST
 	@Path("/wczytaj")

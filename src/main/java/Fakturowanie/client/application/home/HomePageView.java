@@ -23,7 +23,5 @@ public class HomePageView extends ViewImpl implements HomePagePresenter.MyView {
 		initWidget(uiBinder.createAndBindUi(this));
 		bindSlot(HomePagePresenter.SLOT_MENU, htmlPanelMenu);
 		bindSlot(HomePagePresenter.SLOT_ROBOCZY, htmlPanelRoboczy);
-
 	}
-
 }

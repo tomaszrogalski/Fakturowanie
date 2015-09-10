@@ -19,18 +19,17 @@ import Fakturowanie.shared.dto.PozycjaDTO;
 
 public class DodajUslugePresenter extends Presenter<DodajUslugePresenter.MyView, DodajUslugePresenter.MyProxy>
 		implements DodajUslugeUiHandlers {
+	
 	interface MyView extends View, HasUiHandlers<DodajUslugeUiHandlers> {
 
 		PozycjaDTO odbierzZawartoscTextBoxow();
 	}
-
 	@NameToken(NameTokens.dodajUsluge)
 	@ProxyStandard
 	interface MyProxy extends ProxyPlace<DodajUslugePresenter> {
 	}
 
 	RestDispatch dispatcher;
-
 	PozycjaResource pozycjaResource;
 
 	@Inject
@@ -60,6 +59,7 @@ public class DodajUslugePresenter extends Presenter<DodajUslugePresenter.MyView,
 
 					@Override
 					public void onSuccess(Void result) {
+						Window.alert("DODANO!");
 						funkcjaDoFireEvent();
 					}
 

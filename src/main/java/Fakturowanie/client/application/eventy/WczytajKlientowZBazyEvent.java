@@ -10,8 +10,7 @@ public class WczytajKlientowZBazyEvent extends GwtEvent<WczytajKlientowZBazyEven
 	public interface WczytajKlientowZBazyHandler extends EventHandler {
 		void onWczytajKlientowZBazy(WczytajKlientowZBazyEvent event);
 	}
-
-	// albo zrobic tu zeby zassac tylko 1 ten dodany aktualnie
+	
 	public WczytajKlientowZBazyEvent() {
 
 	}

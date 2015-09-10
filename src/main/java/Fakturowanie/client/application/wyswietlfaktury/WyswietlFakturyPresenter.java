@@ -19,17 +19,16 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import Fakturowanie.client.place.NameTokens;
 import Fakturowanie.shared.api.FakturaResource;
 import Fakturowanie.shared.dto.FakturaDTO;
-import Fakturowanie.shared.dto.KlientDTO;
 
 public class WyswietlFakturyPresenter
 		extends Presenter<WyswietlFakturyPresenter.MyView, WyswietlFakturyPresenter.MyProxy>
 		implements WyswietlFakturyUiHandlers {
+
 	interface MyView extends View, HasUiHandlers<WyswietlFakturyUiHandlers> {
 		DataGrid<FakturaDTO> getDataGridWyswietlFaktury();
 	}
 
 	public static final NestedSlot SLOT_WyswietlFaktury = new NestedSlot();
-
 	@NameToken(NameTokens.wyswietlFaktury)
 	@ProxyStandard
 	interface MyProxy extends ProxyPlace<WyswietlFakturyPresenter> {
@@ -41,7 +40,7 @@ public class WyswietlFakturyPresenter
 	@Inject
 	WyswietlFakturyPresenter(EventBus eventBus, MyView view, MyProxy proxy, FakturaResource fakturaResource,
 			RestDispatch dispatcher) {
-		super(eventBus, view, proxy, RevealType.Root);
+		super(eventBus, view, proxy);
 		this.dispatcher = dispatcher;
 		this.fakturaResource = fakturaResource;
 
@@ -60,7 +59,6 @@ public class WyswietlFakturyPresenter
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert("COS NIE DZIAŁA - WCZYTAJ FAKTURY");
-
 			}
 
 			@Override

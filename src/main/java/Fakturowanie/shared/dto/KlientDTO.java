@@ -82,13 +82,7 @@ public class KlientDTO {
 
 	@Override
 	public String toString() {
-		if (getAdresDTO() != null) {
 			return "KlientDTO [id=" + id + "imie=" + imie + ", nazwisko=" + nazwisko + getAdresDTO().toString() + "]";
-		} else {
-			// to chyba usunac moge bo w klient zrobione, SPRAWDZIC
-			return "KlientDTO [id=" + id + "imie=" + imie + ", nazwisko=" + nazwisko
-					+ new AdresDTO(null, null, null, null).toString() + "]";
-		}
 	}
 	public Klient stworzKlientaZIdNaPotrzebyFaktury() {
 		Klient klient = new Klient(getId(),getImie(), getNazwisko(), getAdresDTO().stworzAdres());

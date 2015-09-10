@@ -3,23 +3,19 @@ package Fakturowanie.server.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import Fakturowanie.server.Faktura;
-import Fakturowanie.server.Klient;
 import Fakturowanie.server.Pozycja;
 import Fakturowanie.server.Produkt;
 import Fakturowanie.server.Usluga;
 import Fakturowanie.shared.dto.FakturaDTO;
-import Fakturowanie.shared.dto.KlientDTO;
 import Fakturowanie.shared.dto.PozycjaDTO;
 
 @Stateless
-@Remote
 public class FakturaDAO {
 
 	@PersistenceContext(unitName = "cwiczenie2")
@@ -27,7 +23,6 @@ public class FakturaDAO {
 
 	public void stworzFakture(Faktura faktura) {
 		entityManager.merge(faktura);
-		System.out.println("DAO");
 	}
 
 	public List<FakturaDTO> wczytaj() {

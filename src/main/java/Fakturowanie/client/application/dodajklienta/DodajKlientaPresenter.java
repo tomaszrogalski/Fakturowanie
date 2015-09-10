@@ -19,11 +19,10 @@ import Fakturowanie.shared.dto.KlientDTO;
 
 public class DodajKlientaPresenter extends Presenter<DodajKlientaPresenter.MyView, DodajKlientaPresenter.MyProxy>
 		implements DodajKlientaUiHandlers {
+	
 	interface MyView extends View, HasUiHandlers<DodajKlientaUiHandlers> {
 		public KlientDTO odbierzZawartoscTextBoxow();
-
 	}
-
 	@NameToken(NameTokens.dodajKlienta)
 	@ProxyStandard
 	interface MyProxy extends ProxyPlace<DodajKlientaPresenter> {
@@ -31,7 +30,6 @@ public class DodajKlientaPresenter extends Presenter<DodajKlientaPresenter.MyVie
 	}
 
 	RestDispatch dispatcher;
-
 	KlientResource klientResource;
 
 	@Inject
@@ -49,7 +47,6 @@ public class DodajKlientaPresenter extends Presenter<DodajKlientaPresenter.MyVie
 
 		dodajDoBazy();
 		removeFromParentSlot();
-
 	}
 
 	private void funkcjaDoFireEvent() {
@@ -68,10 +65,10 @@ public class DodajKlientaPresenter extends Presenter<DodajKlientaPresenter.MyVie
 
 			@Override
 			public void onSuccess(Void result) {
+				Window.alert("DODANO!");
 				funkcjaDoFireEvent();
 			}
 
 		});
 	}
-
 }

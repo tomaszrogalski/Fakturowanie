@@ -1,8 +1,11 @@
 package Fakturowanie.client.place;
 
 public class NameTokens {
+	
 	public static final String menu = "menu";
-
+	
+	public static final String error = "error";
+	
 	public static final String dodajFakture = "dodajFakture";
 
 	public static final String wyswietlFaktury = "wyswietlFaktury";
@@ -53,6 +56,10 @@ public class NameTokens {
 
 	public static String getMenu() {
 		return menu;
+	}
+
+	public static String getError() {
+		return error;
 	}
 
 }

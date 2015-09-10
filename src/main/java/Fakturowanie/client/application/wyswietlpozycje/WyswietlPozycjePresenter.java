@@ -28,31 +28,36 @@ import Fakturowanie.shared.dto.PozycjaDTO;
 public class WyswietlPozycjePresenter
 		extends Presenter<WyswietlPozycjePresenter.MyView, WyswietlPozycjePresenter.MyProxy>
 		implements WyswietlPozycjeUiHandlers, WczytajPozycjeZBazyHandler {
+	
 	interface MyView extends View, HasUiHandlers<WyswietlPozycjeUiHandlers> {
 		DataGrid<PozycjaDTO> getDataGridWyswietlPozycje();
 	}
 
 	static final NestedSlot SLOT_NA_DODAJ_PRODUKT_USLUGE = new NestedSlot();
-
 	@NameToken(NameTokens.wyswietlPozycje)
 	@ProxyStandard
 	interface MyProxy extends ProxyPlace<WyswietlPozycjePresenter> {
 	}
 
 	RestDispatch dispatcher;
-
 	PozycjaResource pozycjaResource;
 
 	@Inject
 	WyswietlPozycjePresenter(EventBus eventBus, MyView view, MyProxy proxy, RestDispatch dispatcher,
 
 	PozycjaResource pozycjaResource) {
-		super(eventBus, view, proxy, RevealType.Root);
+		super(eventBus, view, proxy);
 		this.dispatcher = dispatcher;
 		this.pozycjaResource = pozycjaResource;
-		dodajDoGrida();
+
 		getView().setUiHandlers(this);
 		addRegisteredHandler(WczytajPozycjeZBazyEvent.getType(), this);
+	}
+
+	@Override
+	protected void onReveal() {
+		dodajDoGrida();
+		super.onReveal();
 	}
 
 	@Inject
@@ -85,15 +90,12 @@ public class WyswietlPozycjePresenter
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert("COS NIE DZIAŁA - WCZYTAJ POZYCJE");
-
 			}
 
 			@Override
 			public void onSuccess(List<PozycjaDTO> result) {
 				getView().getDataGridWyswietlPozycje().setRowData(result);
 			}
-
 		});
 	}
-
 }

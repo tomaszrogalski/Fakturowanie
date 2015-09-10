@@ -54,7 +54,6 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 	public PozycjaDTO odbierzZawartoscTextBoxow() {
 
 		PozycjaDTO pozycjaDTO = driver.flush();
-
 		return pozycjaDTO;
 	}
 
@@ -62,6 +61,7 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 	void dodajClick(ClickEvent e) {
 
 		getUiHandlers().buttonAkcjaDodajProdukt();
+		driver.edit(new PozycjaDTO(null, new ProduktDTO(null, null, null)));
 	}
 
 }

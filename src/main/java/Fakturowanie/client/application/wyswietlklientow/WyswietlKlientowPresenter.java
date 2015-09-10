@@ -27,12 +27,12 @@ import Fakturowanie.shared.dto.KlientDTO;
 public class WyswietlKlientowPresenter
 		extends Presenter<WyswietlKlientowPresenter.MyView, WyswietlKlientowPresenter.MyProxy>
 		implements WyswietlKlientowUiHandlers, WczytajKlientowZBazyHandler {
+	
 	interface MyView extends View, HasUiHandlers<WyswietlKlientowUiHandlers> {
 		DataGrid<KlientDTO> getDataGridWyswietlKlientow();
 	}
 
 	static final NestedSlot SLOT_NA_DODAJ_KLIENTA = new NestedSlot();
-
 	@NameToken(NameTokens.wyswietlKlientow)
 	@ProxyStandard
 	interface MyProxy extends ProxyPlace<WyswietlKlientowPresenter> {
@@ -42,7 +42,6 @@ public class WyswietlKlientowPresenter
 	DodajKlientaPresenter dodajKlientaPresenter;
 
 	RestDispatch dispatcher;
-
 	KlientResource klientResource;
 
 	@Inject
@@ -69,7 +68,6 @@ public class WyswietlKlientowPresenter
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert("COS NIE DZIAŁA - WCZYTAJ KLIENTA");
-
 			}
 
 			@Override
@@ -83,8 +81,6 @@ public class WyswietlKlientowPresenter
 
 	@Override
 	public void onWczytajKlientowZBazy(WczytajKlientowZBazyEvent event) {
-		dodajDoGrida();
-		
+		dodajDoGrida();	
 	}
-
 }

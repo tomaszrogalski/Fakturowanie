@@ -40,19 +40,8 @@
 		<hr />
 
 		<g:HorizontalPanel styleName="{style.cos}">
-
-			<g:HTMLPanel ui:field="htmlPanelMenu" styleName="{style.html_panel_wewnetrzne1}">
-
-			</g:HTMLPanel>
-<!-- 			<g:ScrollPanel ui:field="scrollPanel"> -->
-				<g:HTMLPanel ui:field="htmlPanelRoboczy" styleName="{style.html_panel_wewnetrzne2}">
-
-				</g:HTMLPanel>
-<!-- 			</g:ScrollPanel> -->
+			<g:HTMLPanel ui:field="htmlPanelMenu" styleName="{style.html_panel_wewnetrzne1}"></g:HTMLPanel>
+			<g:HTMLPanel ui:field="htmlPanelRoboczy" styleName="{style.html_panel_wewnetrzne2}"></g:HTMLPanel>
 		</g:HorizontalPanel>
-
-
-
-
 	</g:HTMLPanel>
 </ui:UiBinder>

@@ -15,7 +15,7 @@ import Fakturowanie.server.Usluga;
 import Fakturowanie.shared.dto.PozycjaDTO;
 
 @Stateless
-@Remote
+
 public class PozycjaDAO {
 
 	@PersistenceContext(unitName = "cwiczenie2")

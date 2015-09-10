@@ -18,9 +18,9 @@ import Fakturowanie.client.application.wyswietlpozycje.WyswietlPozycjePresenter;
 import Fakturowanie.client.place.NameTokens;
 
 public class MenuPresenter extends Presenter<MenuPresenter.MyView, MenuPresenter.MyProxy>implements MenuUiHandlers {
+
 	interface MyView extends View, HasUiHandlers<MenuUiHandlers> {
 	}
-
 	@NameToken(NameTokens.menu)
 	@ProxyCodeSplit
 	interface MyProxy extends ProxyPlace<MenuPresenter> {
@@ -38,8 +38,10 @@ public class MenuPresenter extends Presenter<MenuPresenter.MyView, MenuPresenter
 
 	@Inject
 	DodajFakturePresenter dodajFakturePresenter;
+
 	@Inject
 	WyswietlFakturyPresenter wyswietlFakturyPresenter;
+
 	@Inject
 	WyswietlKlientowPresenter wyswietlKlientowPresenter;
 

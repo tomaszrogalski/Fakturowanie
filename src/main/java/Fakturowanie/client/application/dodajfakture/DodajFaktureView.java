@@ -13,7 +13,6 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.TextBox;
@@ -29,9 +28,6 @@ import Fakturowanie.shared.dto.PozycjaDTO;
 class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>implements DodajFakturePresenter.MyView {
 	interface Binder extends UiBinder<Widget, DodajFaktureView> {
 	}
-
-	@UiField
-	TextBox textBoxNrFaktury;
 
 	@UiField
 	DataGrid<PozycjaDTO> dataGridListaPozycji;
@@ -61,10 +57,6 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 		bindSlot(DodajFakturePresenter.SLOT_NA_DODAJ_PRODUKT_USLUGE, htmlPanelDodajPozycje);
 		stworzDataGridListaPozycji();
 		stworzDataGridListaKlientow();
-
-		//////////////////////////////
-
-		/////////////////////////////
 	}
 
 	@UiHandler("buttonDodajNowyProdukt")
@@ -110,7 +102,6 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 				return simpleSelectionModel.isSelected(object);
 			}
 			/////////
-
 		};
 
 		TextColumn<KlientDTO> textColumnId = new TextColumn<KlientDTO>() {
@@ -190,7 +181,6 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 			}
 
 		};
-		/////////
 
 		TextColumn<PozycjaDTO> textColumnTyp = new TextColumn<PozycjaDTO>() {
 
@@ -198,8 +188,6 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 			public String getValue(PozycjaDTO pozycjaDTO) {
 				return pozycjaDTO.getTyp();
 			}
-			// enum?
-
 		};
 
 		TextColumn<PozycjaDTO> textColumnNazwa = new TextColumn<PozycjaDTO>() {

@@ -30,18 +30,7 @@
 	<g:HTMLPanel styleName="{style.html_panel}">
 		<h1 align="center">WYŚWIETL FAKTURY</h1>
 		<hr />
-
-
-
 		<c:DataGrid ui:field="dataGridWyswietlFaktury"></c:DataGrid>
-
-
-
-
 		<hr />
-
-		<g:HorizontalPanel styleName="{style.horizontal_panel}">
-			<g:Button text="DODAJ FAKTURE" ui:field="buttonDodajNowaFakture"></g:Button>
-		</g:HorizontalPanel>
 	</g:HTMLPanel>
 </ui:UiBinder>

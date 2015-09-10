@@ -14,8 +14,6 @@ public class PozycjaDTO {
 	private ProduktDTO produktDTO;
 
 	private UslugaDTO uslugaDTO;
-	
-
 
 	/////////////////////////////////
 
@@ -89,10 +87,6 @@ public class PozycjaDTO {
 		} else if (produktDTO.czyJestemPusty()) {
 			setTyp("USLUGA");
 		}
-		// tymczasowe
-		else {
-			setTyp("COS TU NIE DZIAŁA");
-		}
 	}
 
 	public String toStringProdukt() {
@@ -107,14 +101,9 @@ public class PozycjaDTO {
 	public String toString() {
 		if (uslugaDTO.czyJestemPusty()) {
 			return toStringProdukt();
-		} else if (produktDTO.czyJestemPusty()) {
+		} else {
 			return toStringUsluga();
 		}
-		// tymczasowe
-		else {
-			return "cos nie dziala w metodzie to string";
-		}
-
 	}
 
 	public Produkt stworzProdukt() {
@@ -130,5 +119,5 @@ public class PozycjaDTO {
 
 		return usluga;
 	}
-	
+
 }

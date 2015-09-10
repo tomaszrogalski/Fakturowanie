@@ -60,6 +60,7 @@ class DodajUslugeView extends ViewWithUiHandlers<DodajUslugeUiHandlers>
 	void dodajClick(ClickEvent e) {
 
 		getUiHandlers().buttonAkcjaDodajUsluge();
+		driver.edit(new PozycjaDTO(null, new UslugaDTO(null, "23%")));
 	}
 
 }

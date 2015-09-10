@@ -17,6 +17,7 @@ import Fakturowanie.shared.dto.PozycjaDTO;
 
 class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 		implements WyswietlPozycjePresenter.MyView {
+	
 	interface Binder extends UiBinder<Widget, WyswietlPozycjeView> {
 	}
 
@@ -25,6 +26,7 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 
 	@UiField
 	Button buttonDodajNowyProdukt;
+	
 	@UiField
 	Button buttonDodajNowaUsluge;
 
@@ -41,8 +43,6 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 			public String getValue(PozycjaDTO pozycjaDTO) {
 				return pozycjaDTO.getTyp();
 			}
-			// enum?
-
 		};
 
 		TextColumn<PozycjaDTO> textColumnNazwa = new TextColumn<PozycjaDTO>() {
@@ -92,7 +92,6 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 		};
 		dataGridWyswietlPozycje.setWidth("100%");
 		dataGridWyswietlPozycje.setHeight("300px");
-
 		dataGridWyswietlPozycje.addColumn(textColumnNazwa, "NAZWA");
 		dataGridWyswietlPozycje.addColumn(textColumnTyp, "TYP");
 		dataGridWyswietlPozycje.addColumn(textColumnCena, "CENA");
@@ -106,18 +105,10 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 	@UiHandler("buttonDodajNowyProdukt")
 	void dodajProdukt(ClickEvent e) {
 		getUiHandlers().buttonAkcjaDodajProdukt();
-		// final List<PozycjaDTO> list = new ArrayList<>();
-		//
-		// list.add(new PozycjaDTO("asdwewq", new ProduktDTO("asd", "asd",
-		// "asdasd")));
-		// list.add(new PozycjaDTO("asdwewq", new UslugaDTO("asd", "asd")));
-		// dataGridWyswietlPozycje.setRowData(list);
-		// Window.alert("Nie działam");
 	}
 
 	@UiHandler("buttonDodajNowaUsluge")
 	void dodajUsluge(ClickEvent e) {
-		// Window.alert("Nie działam");
 		getUiHandlers().buttonAkcjaDodajUsluge();
 	}
 

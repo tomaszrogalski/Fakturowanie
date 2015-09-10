@@ -19,6 +19,8 @@ import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
 import Fakturowanie.client.application.dodajprodukt.DodajProduktPresenter;
 import Fakturowanie.client.application.dodajusluge.DodajUslugePresenter;
+import Fakturowanie.client.application.eventy.WczytajPozycjeZBazyEvent;
+import Fakturowanie.client.application.eventy.WczytajPozycjeZBazyEvent.WczytajPozycjeZBazyHandler;
 import Fakturowanie.client.place.NameTokens;
 import Fakturowanie.shared.api.FakturaResource;
 import Fakturowanie.shared.api.KlientResource;
@@ -28,7 +30,7 @@ import Fakturowanie.shared.dto.KlientDTO;
 import Fakturowanie.shared.dto.PozycjaDTO;
 
 public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyView, DodajFakturePresenter.MyProxy>
-		implements DodajFaktureUiHandlers {
+		implements DodajFaktureUiHandlers, WczytajPozycjeZBazyHandler {
 	interface MyView extends View, HasUiHandlers<DodajFaktureUiHandlers> {
 		FakturaDTO odbierzZawartoscZGridITextBoxa();
 
@@ -50,14 +52,15 @@ public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyVie
 	KlientResource klientResource;
 
 	@Inject
-	DodajFakturePresenter(EventBus eventBus, MyView view, MyProxy proxy, FakturaResource fakturaResource,
+	DodajFakturePresenter(EventBus eventBus, MyProxy proxy, MyView view, FakturaResource fakturaResource,
 			RestDispatch dispatcher, PozycjaResource pozycjaResource, KlientResource klientResource) {
-		super(eventBus, view, proxy, RevealType.Root);
+		super(eventBus, view, proxy);
 		this.dispatcher = dispatcher;
 		this.fakturaResource = fakturaResource;
 		this.klientResource = klientResource;
 		this.pozycjaResource = pozycjaResource;
 		getView().setUiHandlers(this);
+		addRegisteredHandler(WczytajPozycjeZBazyEvent.getType(), this);
 	}
 
 	@Override
@@ -118,9 +121,6 @@ public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyVie
 
 	@Override
 	public void buttonAkcjaDodajFakture() {
-		Window.alert("PRESENTER");
-		// FakturaDTO faktura = getView().odbierzZawartoscZGridITextBoxa();
-		// Window.alert(getView().odbierzZawartoscZGridITextBoxa().getListaPozycjiDTO().toString());
 		dispatcher.execute(fakturaResource.create(getView().odbierzZawartoscZGridITextBoxa()),
 				new AsyncCallback<Void>() {
 
@@ -132,12 +132,14 @@ public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyVie
 
 					@Override
 					public void onSuccess(Void result) {
-						Window.alert("SUKCES");
+						Window.alert("DODANO!");
 					}
 
 				});
-		Window.alert("PRESENTER2");
-
 	}
 
+	@Override
+	public void onWczytajPozycjeZBazy(WczytajPozycjeZBazyEvent event) {
+		dodajDoGrida();
+	}
 }

@@ -21,7 +21,6 @@ public interface PozycjaResource {
 
 	@POST
 	@Path("/dodajUsluge")
-
 	public RestAction<Void> createUsluge(PozycjaDTO pozycjaDTO);
 
 	@POST

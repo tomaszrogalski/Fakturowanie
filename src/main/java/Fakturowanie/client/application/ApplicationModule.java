@@ -11,10 +11,12 @@ import Fakturowanie.client.application.menu.MenuModule;
 import Fakturowanie.client.application.wyswietlfaktury.WyswietlFakturyModule;
 import Fakturowanie.client.application.wyswietlklientow.WyswietlKlientowModule;
 import Fakturowanie.client.application.wyswietlpozycje.WyswietlPozycjeModule;
+import Fakturowanie.client.application.error.ErrorModule;
 
 public class ApplicationModule extends AbstractPresenterModule {
 	@Override
 	protected void configure() {
+		install(new ErrorModule());
 		install(new MenuModule());
 		install(new DodajFaktureModule());
 		install(new WyswietlFakturyModule());

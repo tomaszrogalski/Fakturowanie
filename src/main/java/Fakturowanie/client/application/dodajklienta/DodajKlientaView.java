@@ -71,7 +71,7 @@ class DodajKlientaView extends ViewWithUiHandlers<DodajKlientaUiHandlers>
 	@UiHandler("buttonDodaj")
 	void dodajClick(ClickEvent e) {
 		getUiHandlers().buttonAkcjaDodajKlienta();
-		
+		driver.edit(new KlientDTO(null, null, new AdresDTO(null, null, null, null)));
 	}
 
 }
