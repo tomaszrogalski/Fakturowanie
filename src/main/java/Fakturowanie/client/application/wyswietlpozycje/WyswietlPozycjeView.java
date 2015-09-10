@@ -41,7 +41,7 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getTyp();
+				return pozycjaDTO.getTyp().toString();
 			}
 		};
 

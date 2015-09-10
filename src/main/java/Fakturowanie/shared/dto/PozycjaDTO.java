@@ -9,7 +9,7 @@ public class PozycjaDTO {
 
 	private String nazwa;
 
-	private String typ;
+	private TypPozycji typ;
 
 	private ProduktDTO produktDTO;
 
@@ -40,16 +40,18 @@ public class PozycjaDTO {
 
 	/////////////////////////////////
 
-	public String getTyp() {
-		return typ;
-	}
-
-	public void setTyp(String typ) {
-		this.typ = typ;
-	}
+	
 
 	public Long getId() {
 		return id;
+	}
+
+	public TypPozycji getTyp() {
+		return typ;
+	}
+
+	public void setTyp(TypPozycji typ) {
+		this.typ = typ;
 	}
 
 	public void setId(Long id) {
@@ -80,12 +82,11 @@ public class PozycjaDTO {
 		this.uslugaDTO = uslugaDTO;
 	}
 
-	// zmienic na enum
 	public void wyliczTyp() {
 		if (uslugaDTO.czyJestemPusty()) {
-			setTyp("PRODUKT");
+			setTyp(TypPozycji.PRODUKT);
 		} else if (produktDTO.czyJestemPusty()) {
-			setTyp("USLUGA");
+			setTyp(TypPozycji.USLUGA);
 		}
 	}
 
@@ -121,3 +122,5 @@ public class PozycjaDTO {
 	}
 
 }
+
+

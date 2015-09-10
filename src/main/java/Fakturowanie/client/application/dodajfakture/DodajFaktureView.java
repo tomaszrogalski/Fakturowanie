@@ -17,6 +17,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.view.client.DefaultSelectionEventManager;
 import com.google.gwt.view.client.MultiSelectionModel;
 import com.google.gwt.view.client.SingleSelectionModel;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
@@ -170,14 +171,15 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 	private void stworzDataGridListaPozycji() {
 
 		///////// Zrobione analogicznie do simpleSelectionModel
-		// Dlaczego działa to jak naciskam ctrl? POPRAWIC!
-		dataGridListaPozycji.setSelectionModel(multiSelectionModel);
+		//Teraz działa lepiej
+		dataGridListaPozycji.setSelectionModel(multiSelectionModel,
+				DefaultSelectionEventManager.<PozycjaDTO> createCheckboxManager());
 
 		Column<PozycjaDTO, Boolean> checkColumn = new Column<PozycjaDTO, Boolean>(new CheckboxCell(true, false)) {
 
 			@Override
 			public Boolean getValue(PozycjaDTO object) {
-				return multiSelectionModel.isSelected(object);
+				return dataGridListaPozycji.getSelectionModel().isSelected(object);
 			}
 
 		};
@@ -186,7 +188,7 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getTyp();
+				return pozycjaDTO.getTyp().toString();
 			}
 		};
 

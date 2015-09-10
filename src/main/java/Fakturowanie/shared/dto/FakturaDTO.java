@@ -76,10 +76,10 @@ public class FakturaDTO {
 			// pozniej zmienic to enum
 			Pozycja pozycja = null;
 
-			if (pozycjaDTO.getTyp().equals("PRODUKT")) {
+			if (pozycjaDTO.getTyp()==TypPozycji.PRODUKT) {
 				pozycja = pozycjaDTO.stworzProdukt();
 
-			} else if (pozycjaDTO.getTyp().equals("USLUGA")) {
+			} else if (pozycjaDTO.getTyp()==TypPozycji.USLUGA) {
 				pozycja = pozycjaDTO.stworzUsluge();
 
 			}
