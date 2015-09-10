@@ -14,6 +14,8 @@ public class PozycjaDTO {
 	private ProduktDTO produktDTO;
 
 	private UslugaDTO uslugaDTO;
+	
+
 
 	/////////////////////////////////
 
@@ -128,4 +130,5 @@ public class PozycjaDTO {
 
 		return usluga;
 	}
+	
 }

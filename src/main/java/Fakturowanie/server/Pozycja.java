@@ -61,4 +61,13 @@ public class Pozycja {
 		this.nazwa = nazwa;
 	}
 
+	public Faktura getFaktura() {
+		return faktura;
+	}
+
+	public void setFaktura(Faktura faktura) {
+		this.faktura = faktura;
+	}
+
+	
 }

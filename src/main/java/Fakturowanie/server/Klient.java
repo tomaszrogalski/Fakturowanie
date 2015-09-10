@@ -2,6 +2,7 @@ package Fakturowanie.server;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -33,7 +34,7 @@ public class Klient {
 	@Embedded
 	private Adres adres;
 
-	@OneToMany(mappedBy = "klient")
+	@OneToMany(mappedBy = "klient",cascade = CascadeType.ALL)
 	private List<Faktura> listaFaktur;
 
 	public Long getId() {
@@ -54,6 +55,28 @@ public class Klient {
 
 	public List<Faktura> getListaFaktur() {
 		return listaFaktur;
+	}
+
+	public void setListaFaktur(List<Faktura> listaFaktur) {
+		this.listaFaktur = listaFaktur;
+	}
+	
+	
+
+	public Klient(Long id, String imie, String nazwisko, Adres adres) {
+		super();
+		this.id = id;
+		this.imie = imie;
+		this.nazwisko = nazwisko;
+		this.adres = adres;
+	}
+
+	public Klient(String imie, String nazwisko, Adres adres, List<Faktura> listaFaktur) {
+		super();
+		this.imie = imie;
+		this.nazwisko = nazwisko;
+		this.adres = adres;
+		this.listaFaktur = listaFaktur;
 	}
 
 	public Klient(String imie, String nazwisko, Adres adres) {
@@ -80,4 +103,6 @@ public class Klient {
 
 	}
 
+	
+	
 }

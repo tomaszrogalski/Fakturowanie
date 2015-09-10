@@ -34,7 +34,7 @@ public class PozycjaDAO {
 	public List<PozycjaDTO> wczytaj() {
 
 		List<PozycjaDTO> listaPozycjiDTO = new ArrayList<>();
-		Query query = entityManager.createQuery("FROM Pozycja");
+		Query query = entityManager.createQuery("Select OBJECT(pozycja) FROM Pozycja pozycja where Pozycja.faktura is NULL");
 		List<Pozycja> listaPozycji = query.getResultList();
 
 		for (Pozycja pozycja : listaPozycji) {

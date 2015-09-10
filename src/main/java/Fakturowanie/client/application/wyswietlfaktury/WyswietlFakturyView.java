@@ -30,8 +30,8 @@ class WyswietlFakturyView extends ViewWithUiHandlers<WyswietlFakturyUiHandlers>
 	DataGrid<FakturaDTO> dataGridWyswietlFaktury;
 
 
-	@UiField
-	Button buttonDodajNowaFakture;
+//	@UiField
+//	Button buttonDodajNowaFakture;
 
 	@Inject
 	WyswietlFakturyView(Binder uiBinder) {
@@ -72,20 +72,25 @@ class WyswietlFakturyView extends ViewWithUiHandlers<WyswietlFakturyUiHandlers>
 		
 	}
 
-	@UiHandler("buttonDodajNowaFakture")
-	void dodajFakture(ClickEvent e) {
+//	@UiHandler("buttonDodajNowaFakture")
+//	void dodajFakture(ClickEvent e) {
+//
+//		List<PozycjaDTO> listaPozycjiDTO = new ArrayList<>();
+//		KlientDTO klientDTO = new KlientDTO();
+//		klientDTO.setId(2L);
+//
+//		listaPozycjiDTO.add(new PozycjaDTO("nazwa", new ProduktDTO("scena", "jednostka", "vat")));
+//		FakturaDTO fakturaDTO = new FakturaDTO(1L, klientDTO, listaPozycjiDTO);
+//
+//		List<FakturaDTO> listFaktur = new ArrayList<>();
+//		listFaktur.add(fakturaDTO);
+//		dataGridWyswietlFaktury.setRowData(listFaktur);
+//		Window.alert("Nie działam");
+//	}
 
-		List<PozycjaDTO> listaPozycjiDTO = new ArrayList<>();
-		KlientDTO klientDTO = new KlientDTO();
-		klientDTO.setId(2L);
-
-		listaPozycjiDTO.add(new PozycjaDTO("nazwa", new ProduktDTO("scena", "jednostka", "vat")));
-		FakturaDTO fakturaDTO = new FakturaDTO(1L, klientDTO, listaPozycjiDTO);
-
-		List<FakturaDTO> listFaktur = new ArrayList<>();
-		listFaktur.add(fakturaDTO);
-		dataGridWyswietlFaktury.setRowData(listFaktur);
-		Window.alert("Nie działam");
+	public DataGrid<FakturaDTO> getDataGridWyswietlFaktury() {
+		return dataGridWyswietlFaktury;
 	}
 
+	
 }

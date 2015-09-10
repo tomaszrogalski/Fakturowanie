@@ -1,5 +1,6 @@
 package Fakturowanie.client.application.dodajfakture;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -50,9 +51,9 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 	@UiField
 	HTMLPanel htmlPanelDodajPozycje;
 
-	final SingleSelectionModel<KlientDTO> simpleSelectionModel = new SingleSelectionModel<KlientDTO>();
+	SingleSelectionModel<KlientDTO> simpleSelectionModel = new SingleSelectionModel<KlientDTO>();
 
-	final MultiSelectionModel<PozycjaDTO> multiSelectionModel = new MultiSelectionModel<PozycjaDTO>();
+	MultiSelectionModel<PozycjaDTO> multiSelectionModel = new MultiSelectionModel<PozycjaDTO>();
 
 	@Inject
 	DodajFaktureView(Binder uiBinder) {
@@ -60,67 +61,41 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 		bindSlot(DodajFakturePresenter.SLOT_NA_DODAJ_PRODUKT_USLUGE, htmlPanelDodajPozycje);
 		stworzDataGridListaPozycji();
 		stworzDataGridListaKlientow();
+
+		//////////////////////////////
+
+		/////////////////////////////
 	}
 
 	@UiHandler("buttonDodajNowyProdukt")
 	void dodajProdukt(ClickEvent e) {
 		getUiHandlers().buttonAkcjaDodajProdukt();
-		// List<KlientDTO> listK = new ArrayList<>();
-		// KlientDTO kli = new KlientDTO("asd", "asdas", new AdresDTO("asd",
-		// "asdads", "asd", "sd"));
-		// kli.setId(2L);
-		// listK.add(kli);
-		// dataGridListaKlientow.setRowData(listK);
-		//
-		// List<PozycjaDTO> list = new ArrayList<>();
-		// list.add(new PozycjaDTO("asdwewq", new ProduktDTO("asd", "asd",
-		// "asdasd")));
-		// list.add(new PozycjaDTO("asdwewq", new UslugaDTO("asd", "asd")));
-		//
-		// Window.alert(multiSelectionModel.getSelectedSet().toString());
-		// Window.alert(simpleSelectionModel.getSelectedObject().toString());
-		//
-		// dataGridListaPozycji.setRowData(list);
 
-		// Window.alert("Nie działam");
 	}
 
 	@UiHandler("buttonDodajNowaUsluge")
 	void dodajUsluge(ClickEvent e) {
 		getUiHandlers().buttonAkcjaDodajUsluge();
-		// Window.alert("Nie działam");
 	}
 
 	@UiHandler("buttonDodajNowaFakture")
 	void dodajFakture(ClickEvent e) {
-		// C
-		Window.alert("Nie działam");
+		getUiHandlers().buttonAkcjaDodajFakture();
+
 	}
 
-	public FakturaDTO OdbierzZawartoscZGridITextBoxa() {
+	public FakturaDTO odbierzZawartoscZGridITextBoxa() {
 		FakturaDTO fakturaDTO = new FakturaDTO();
 		fakturaDTO.setKlientDTO(simpleSelectionModel.getSelectedObject());
-		// CZY MOGE TAK ZROBIC? SPRAWDZIC
-		fakturaDTO.setListaPozycjiDTO((List<PozycjaDTO>) multiSelectionModel.getSelectedSet());
 
-		// TYMCZASOWE
-		fakturaDTO.setNrFaktury(2L);
+		List<PozycjaDTO> listaPozycjiDTO = new ArrayList<>();
+
+		for (PozycjaDTO pozycjaDTO : multiSelectionModel.getSelectedSet()) {
+			listaPozycjiDTO.add(pozycjaDTO);
+		}
+		fakturaDTO.setListaPozycjiDTO(listaPozycjiDTO);
 		return fakturaDTO;
 	}
-
-	//////// Z Internetu, brak zrodła, z projektu robionego wczesniej
-	// @Override
-	// public void addToSlot(Object slot, IsWidget content) {
-	// if (slot == DodajFakturePresenter.SLOT_DodajFakture) {
-	// if (content != null) {
-	// htmlPanelDodajPozycje.add(content);
-	// }
-	// } else {
-	// super.addToSlot(slot, content);
-	// }
-	// }
-
-	////////
 
 	private void stworzDataGridListaKlientow() {
 
@@ -283,6 +258,14 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 		dataGridListaPozycji.addColumn(textColumnVat, "VAT");
 		dataGridListaPozycji.addColumn(textColumnJednostkaPodstawowa, "JEDNOSTKA PODSTAWOWA VAT");
 
+	}
+
+	public DataGrid<PozycjaDTO> getDataGridListaPozycji() {
+		return dataGridListaPozycji;
+	}
+
+	public DataGrid<KlientDTO> getDataGridListaKlientow() {
+		return dataGridListaKlientow;
 	}
 
 }

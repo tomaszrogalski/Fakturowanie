@@ -1,7 +1,9 @@
 package Fakturowanie.shared.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import Fakturowanie.server.Faktura;
 import Fakturowanie.server.Klient;
 
 public class KlientDTO {
@@ -83,15 +85,18 @@ public class KlientDTO {
 		if (getAdresDTO() != null) {
 			return "KlientDTO [id=" + id + "imie=" + imie + ", nazwisko=" + nazwisko + getAdresDTO().toString() + "]";
 		} else {
-			//to chyba usunac moge bo w klient zrobione, SPRAWDZIC
+			// to chyba usunac moge bo w klient zrobione, SPRAWDZIC
 			return "KlientDTO [id=" + id + "imie=" + imie + ", nazwisko=" + nazwisko
 					+ new AdresDTO(null, null, null, null).toString() + "]";
 		}
 	}
+	public Klient stworzKlientaZIdNaPotrzebyFaktury() {
+		Klient klient = new Klient(getId(),getImie(), getNazwisko(), getAdresDTO().stworzAdres());
+		return klient;
+	}
 
 	public Klient stworzKlienta() {
 		Klient klient = new Klient(getImie(), getNazwisko(), getAdresDTO().stworzAdres());
-
 		return klient;
 	}
 }
