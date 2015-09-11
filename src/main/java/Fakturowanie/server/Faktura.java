@@ -67,11 +67,6 @@ public class Faktura {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "Faktura [nrFaktury=" + nrFaktury + ", klient=" + klient.toString() + "]";
-	}
-
 	public FakturaDTO stworzFaktureDTO(List<PozycjaDTO> listaPozycjiDTO) {
 		FakturaDTO fakturaDTO = new FakturaDTO(getNrFaktury(), getKlient().stworzKlientaDTO());
 		fakturaDTO.setListaPozycjiDTO(listaPozycjiDTO);

@@ -51,9 +51,6 @@ public class Produkt extends Pozycja {
 	}
 
 	public PozycjaDTO stworzPozycjaDTO() {
-
 		return new PozycjaDTO(getNazwa(), new ProduktDTO(getCena(), getJednostka(), getVat()));
-
 	}
-
 }

@@ -60,15 +60,8 @@ public class AdresDTO {
 		this.miejscowosc = miejscowosc;
 	}
 
-	@Override
-	public String toString() {
-		return ", AdresDTO [kodPocztowy=" + kodPocztowy + ", ulica=" + ulica + ", nrDomu=" + nrDomu + ", miejscowosc="
-				+ miejscowosc + "]";
-	}
-
 	public Adres stworzAdres(){
 		Adres adres = new Adres(getUlica(), getNrDomu(), getKodPocztowy(), getMiejscowosc());
 		return adres;
 	}
-
 }

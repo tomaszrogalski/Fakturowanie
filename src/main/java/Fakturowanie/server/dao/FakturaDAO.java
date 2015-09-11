@@ -40,12 +40,9 @@ public class FakturaDAO {
 				} else if (pozycja.getClass() == Usluga.class) {
 					listaPozycjiDTO.add(((Usluga) pozycja).stworzPozycjaDTO());
 				}
-
 			}
 			listaFakturDTO.add(faktura.stworzFaktureDTO(listaPozycjiDTO));
-
 		}
 		return listaFakturDTO;
 	}
-
 }

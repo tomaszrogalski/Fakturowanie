@@ -3,7 +3,6 @@ package Fakturowanie.server.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,7 +20,6 @@ public class KlientDAO {
 
 	public void stworzKlienta(Klient klient) {
 		entityManager.merge(klient);
-
 	}
 
 	public List<KlientDTO> wczytaj() {

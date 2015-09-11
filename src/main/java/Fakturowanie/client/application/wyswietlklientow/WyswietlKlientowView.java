@@ -32,7 +32,11 @@ class WyswietlKlientowView extends ViewWithUiHandlers<WyswietlKlientowUiHandlers
 	WyswietlKlientowView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 		bindSlot(WyswietlKlientowPresenter.SLOT_NA_DODAJ_KLIENTA, htmlPanelNaDodajKlienta);
-		// zrobic na to funkcje
+		stworzDataGrid();
+
+	}
+
+	private void stworzDataGrid() {
 		TextColumn<KlientDTO> textColumnId = new TextColumn<KlientDTO>() {
 
 			@Override

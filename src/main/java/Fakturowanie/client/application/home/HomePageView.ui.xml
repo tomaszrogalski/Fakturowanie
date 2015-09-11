@@ -2,15 +2,17 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:with field="resources" type="Fakturowanie.client.resources.AppResources" />
-	
+
 	<g:HTMLPanel styleName="{resources.style.home_html_panel_glowny}">
-		<h1 align="center">STRONA STARTOWA</h1>
+		<h1 align="center">
+			<b>F A K T U R O W A N I E</b>
+		</h1>
 		<hr />
 
 		<g:HorizontalPanel>
 			<g:HTMLPanel ui:field="htmlPanelMenu"
 				styleName="{resources.style.home_html_panel_menu}"></g:HTMLPanel>
-				
+
 			<g:HTMLPanel ui:field="htmlPanelRoboczy"
 				styleName="{resources.style.home_html_panel_roboczy}"></g:HTMLPanel>
 		</g:HorizontalPanel>

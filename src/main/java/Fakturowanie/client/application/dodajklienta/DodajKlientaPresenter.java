@@ -19,10 +19,11 @@ import Fakturowanie.shared.dto.KlientDTO;
 
 public class DodajKlientaPresenter extends Presenter<DodajKlientaPresenter.MyView, DodajKlientaPresenter.MyProxy>
 		implements DodajKlientaUiHandlers {
-	
+
 	interface MyView extends View, HasUiHandlers<DodajKlientaUiHandlers> {
 		public KlientDTO odbierzZawartoscTextBoxow();
 	}
+
 	@NameToken(NameTokens.dodajKlienta)
 	@ProxyStandard
 	interface MyProxy extends ProxyPlace<DodajKlientaPresenter> {

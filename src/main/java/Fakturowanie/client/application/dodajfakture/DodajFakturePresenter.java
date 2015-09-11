@@ -100,7 +100,6 @@ public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyVie
 
 			@Override
 			public void onSuccess(List<KlientDTO> result) {
-				funkcjaDoFireEvent();
 				getView().getDataGridListaKlientow().setRowData(result);
 
 			}
@@ -140,6 +139,7 @@ public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyVie
 					@Override
 					public void onSuccess(Void result) {
 						Window.alert("DODANO!");
+						funkcjaDoFireEvent();
 					}
 
 				});

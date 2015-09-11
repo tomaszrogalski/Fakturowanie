@@ -3,7 +3,6 @@ package Fakturowanie.server.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,18 +22,17 @@ public class PozycjaDAO {
 
 	public void stworzProdukt(Produkt produkt) {
 		entityManager.merge(produkt);
-
 	}
 
 	public void stworzUsluge(Usluga usluga) {
 		entityManager.merge(usluga);
-
 	}
 
 	public List<PozycjaDTO> wczytaj() {
 
 		List<PozycjaDTO> listaPozycjiDTO = new ArrayList<>();
-		Query query = entityManager.createQuery("Select OBJECT(pozycja) FROM Pozycja pozycja where Pozycja.faktura is NULL");
+		Query query = entityManager
+				.createQuery("Select OBJECT(pozycja) FROM Pozycja pozycja where Pozycja.faktura is NULL");
 		List<Pozycja> listaPozycji = query.getResultList();
 
 		for (Pozycja pozycja : listaPozycji) {
@@ -43,10 +41,7 @@ public class PozycjaDAO {
 			} else if (pozycja.getClass() == Usluga.class) {
 				listaPozycjiDTO.add(((Usluga) pozycja).stworzPozycjaDTO());
 			}
-
 		}
-
 		return listaPozycjiDTO;
 	}
-
 }

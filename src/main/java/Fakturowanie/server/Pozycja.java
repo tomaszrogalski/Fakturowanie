@@ -68,6 +68,4 @@ public class Pozycja {
 	public void setFaktura(Faktura faktura) {
 		this.faktura = faktura;
 	}
-
-	
 }

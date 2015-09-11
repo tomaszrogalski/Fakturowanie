@@ -5,7 +5,6 @@ import java.util.List;
 
 import Fakturowanie.server.Faktura;
 import Fakturowanie.server.Pozycja;
-import Fakturowanie.server.Produkt;
 
 public class FakturaDTO {
 
@@ -16,8 +15,6 @@ public class FakturaDTO {
 	private List<PozycjaDTO> listaPozycjiDTO;
 
 	/////////////////////////////////
-	
-	
 
 	public FakturaDTO(Long nrFaktury, KlientDTO klientDTO, List<PozycjaDTO> listaPozycjiDTO) {
 		super();
@@ -62,31 +59,22 @@ public class FakturaDTO {
 		this.listaPozycjiDTO = listaPozycjiDTO;
 	}
 
-	@Override
-	public String toString() {
-		return "FakturaDTO [nrFaktury=" + nrFaktury + ", klientDTO=" + klientDTO + ", listaPozycji=" + listaPozycjiDTO
-				+ "]";
-	}
-
 	public Faktura stworzFakture() {
 		Faktura faktura = new Faktura();
 		faktura.setKlient(getKlientDTO().stworzKlientaZIdNaPotrzebyFaktury());
 		List<Pozycja> listaPozycji = new ArrayList<>();
 		for (PozycjaDTO pozycjaDTO : listaPozycjiDTO) {
-			// pozniej zmienic to enum
+
 			Pozycja pozycja = null;
 
-			if (pozycjaDTO.getTyp()==TypPozycji.PRODUKT) {
+			if (pozycjaDTO.getTyp() == TypPozycji.PRODUKT) {
 				pozycja = pozycjaDTO.stworzProdukt();
-
-			} else if (pozycjaDTO.getTyp()==TypPozycji.USLUGA) {
+			} else if (pozycjaDTO.getTyp() == TypPozycji.USLUGA) {
 				pozycja = pozycjaDTO.stworzUsluge();
-
 			}
 			pozycja.setFaktura(faktura);
 			listaPozycji.add(pozycja);
 		}
-
 		faktura.setPozycja(listaPozycji);
 		return faktura;
 	}

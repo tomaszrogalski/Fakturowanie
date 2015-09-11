@@ -17,7 +17,7 @@ import Fakturowanie.shared.dto.PozycjaDTO;
 
 class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 		implements WyswietlPozycjePresenter.MyView {
-	
+
 	interface Binder extends UiBinder<Widget, WyswietlPozycjeView> {
 	}
 
@@ -26,7 +26,7 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 
 	@UiField
 	Button buttonDodajNowyProdukt;
-	
+
 	@UiField
 	Button buttonDodajNowaUsluge;
 
@@ -37,6 +37,10 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 	WyswietlPozycjeView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 		bindSlot(WyswietlPozycjePresenter.SLOT_NA_DODAJ_PRODUKT_USLUGE, htmlPanelNaDodajProduktLubUsluge);
+		stworzDataGrid();
+	}
+
+	private void stworzDataGrid() {
 		TextColumn<PozycjaDTO> textColumnTyp = new TextColumn<PozycjaDTO>() {
 
 			@Override

@@ -22,7 +22,6 @@ public class KlientResourceImpl {
 	@Path("/dodaj")
 	public void create(KlientDTO klientDTO) {
 		klientDAO.stworzKlienta(klientDTO.stworzKlienta());
-
 	}
 
 	@POST

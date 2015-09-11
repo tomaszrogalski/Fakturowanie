@@ -8,7 +8,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.google.web.bindery.event.shared.EventBus;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
-import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
@@ -17,7 +16,6 @@ import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
 import Fakturowanie.client.application.eventy.WczytajFakturyZBazyEvent;
-import Fakturowanie.client.application.eventy.WczytajKlientowZBazyEvent;
 import Fakturowanie.client.application.eventy.WczytajFakturyZBazyEvent.WczytajFakturyZBazyHandler;
 import Fakturowanie.client.place.NameTokens;
 import Fakturowanie.shared.api.FakturaResource;
@@ -25,9 +23,9 @@ import Fakturowanie.shared.dto.FakturaDTO;
 
 public class WyswietlFakturyPresenter
 		extends Presenter<WyswietlFakturyPresenter.MyView, WyswietlFakturyPresenter.MyProxy>
-		implements WyswietlFakturyUiHandlers, WczytajFakturyZBazyHandler {
+		implements WczytajFakturyZBazyHandler {
 
-	interface MyView extends View, HasUiHandlers<WyswietlFakturyUiHandlers> {
+	interface MyView extends View {
 		DataGrid<FakturaDTO> getDataGridWyswietlFaktury();
 	}
 
@@ -48,7 +46,6 @@ public class WyswietlFakturyPresenter
 		this.dispatcher = dispatcher;
 		this.fakturaResource = fakturaResource;
 		dodajDoGrida();
-		getView().setUiHandlers(this);
 		addRegisteredHandler(WczytajFakturyZBazyEvent.getType(), this);
 	}
 

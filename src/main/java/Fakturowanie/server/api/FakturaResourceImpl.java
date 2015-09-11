@@ -22,12 +22,12 @@ public class FakturaResourceImpl {
 	public void create(FakturaDTO fakturaDTO){
 		fakturaDAO.stworzFakture(fakturaDTO.stworzFakture());
 	}
+	
 	@POST
 	@Path("/wczytaj")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<FakturaDTO> wczytaj() {
-
 		return fakturaDAO.wczytaj();
 
 	}

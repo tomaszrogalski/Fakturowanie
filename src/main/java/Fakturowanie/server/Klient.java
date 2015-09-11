@@ -60,8 +60,6 @@ public class Klient {
 	public void setListaFaktur(List<Faktura> listaFaktur) {
 		this.listaFaktur = listaFaktur;
 	}
-	
-	
 
 	public Klient(Long id, String imie, String nazwisko, Adres adres) {
 		super();
@@ -88,21 +86,12 @@ public class Klient {
 
 	public Klient() {
 	}
-
-	@Override
-	public String toString() {
-		return "Klient [id=" + id + ", imie=" + imie + ", nazwisko=" + nazwisko + ", adres=" + adres.toString() + "]";
-	}
-
+	
 	public KlientDTO stworzKlientaDTO() {
 		if (getAdres() != null) {
 			return new KlientDTO(getId(), getImie(), getNazwisko(), getAdres().stworzAdresDTO());
 		} else {
 			return new KlientDTO(getId(), getImie(), getNazwisko(), new Adres(null, null, null, null).stworzAdresDTO());
 		}
-
-	}
-
-	
-	
+	}	
 }

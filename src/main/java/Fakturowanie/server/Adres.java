@@ -48,15 +48,7 @@ public class Adres {
 		super();
 	}
 
-	@Override
-	public String toString() {
-		return "Adres [ulica=" + ulica + ", nrDomu=" + nrDomu + ", kodPocztowy=" + kodPocztowy + ", miejscowosc="
-				+ miejscowosc + "]";
-	}
-
 	public AdresDTO stworzAdresDTO() {
 		return new AdresDTO(getKodPocztowy(), getUlica(), getNrDomu(), getMiejscowosc());
-
 	}
-
 }

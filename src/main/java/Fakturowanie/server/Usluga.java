@@ -23,15 +23,11 @@ public class Usluga extends Pozycja {
 		this.jednostkaPodstawowaVAT = jednostkaPodstawowaVAT;
 	}
 	
-	
-
 	public Usluga(String nazwa, Faktura faktura, String cenaZaGodzine, String jednostkaPodstawowaVAT) {
 		super(nazwa, faktura);
 		this.cenaZaGodzine = cenaZaGodzine;
 		this.jednostkaPodstawowaVAT = jednostkaPodstawowaVAT;
 	}
-
-
 
 	public Usluga() {
 		super();
@@ -48,8 +44,5 @@ public class Usluga extends Pozycja {
 	public PozycjaDTO stworzPozycjaDTO() {
 
 		return new PozycjaDTO(getNazwa(), new UslugaDTO(getCenaZaGodzine(), getJednostkaPodstawowaVAT()));
-
 	}
-
-	
 }

@@ -40,8 +40,6 @@ public class PozycjaDTO {
 
 	/////////////////////////////////
 
-	
-
 	public Long getId() {
 		return id;
 	}
@@ -91,11 +89,11 @@ public class PozycjaDTO {
 	}
 
 	public String toStringProdukt() {
-		return "PozycjaDTO [nazwa=" + nazwa + "," + getProduktDTO().toString() + "]";
+		return "Nazwa: " + nazwa + ", " + getProduktDTO().toString();
 	}
 
 	public String toStringUsluga() {
-		return "PozycjaDTO [nazwa=" + nazwa + "," + getUslugaDTO().toString() + "]";
+		return "Nazwa: " + nazwa + ", " + getUslugaDTO().toString();
 	}
 
 	@Override
@@ -110,17 +108,12 @@ public class PozycjaDTO {
 	public Produkt stworzProdukt() {
 		Produkt produkt = new Produkt(getNazwa(), getProduktDTO().getCena(), getProduktDTO().getJednostka(),
 				getProduktDTO().getVat());
-
 		return produkt;
 	}
 
 	public Usluga stworzUsluge() {
 		Usluga usluga = new Usluga(getNazwa(), getUslugaDTO().getCenaZaGodzine(),
 				getUslugaDTO().getJednostkaPodstawowaVAT());
-
 		return usluga;
 	}
-
 }
-
-

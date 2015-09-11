@@ -7,8 +7,6 @@ public class UslugaDTO {
 	private String jednostkaPodstawowaVAT;
 
 	/////////////////////////////////
-	
-	
 
 	public UslugaDTO(String cenaZaGodzine, String jednostkaPodstawowaVAT) {
 
@@ -44,16 +42,12 @@ public class UslugaDTO {
 			return true;
 		} else {
 			return false;
-
 		}
-
 	}
-	
-	
 
 	@Override
 	public String toString() {
-		return "UslugaDTO [cenaZaGodzine=" + cenaZaGodzine + ", jednostkaPodstawowaVAT=" + jednostkaPodstawowaVAT + "]";
+		return "CenaZaGodzine: " + cenaZaGodzine + ", JednostkaPodstawowaVAT: " + jednostkaPodstawowaVAT;
 	}
 
 }

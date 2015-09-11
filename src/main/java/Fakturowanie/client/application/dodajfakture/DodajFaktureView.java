@@ -15,7 +15,6 @@ import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.DefaultSelectionEventManager;
 import com.google.gwt.view.client.MultiSelectionModel;
@@ -157,7 +156,7 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 
 		dataGridListaKlientow.setWidth("100%");
 		dataGridListaKlientow.setHeight("300px");
-		dataGridListaKlientow.addColumn(checkColumn, "checkcolumn");
+		dataGridListaKlientow.addColumn(checkColumn, "*");
 		dataGridListaKlientow.addColumn(textColumnId, "ID");
 		dataGridListaKlientow.addColumn(textColumnImie, "IMIE");
 		dataGridListaKlientow.addColumn(textColumnNazwisko, "NAZWISKO");
@@ -171,7 +170,7 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 	private void stworzDataGridListaPozycji() {
 
 		///////// Zrobione analogicznie do simpleSelectionModel
-		//Teraz działa lepiej
+		// Teraz działa lepiej
 		dataGridListaPozycji.setSelectionModel(multiSelectionModel,
 				DefaultSelectionEventManager.<PozycjaDTO> createCheckboxManager());
 
@@ -239,7 +238,7 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 		};
 		dataGridListaPozycji.setWidth("100%");
 		dataGridListaPozycji.setHeight("300px");
-		dataGridListaPozycji.addColumn(checkColumn, "CheckBox");
+		dataGridListaPozycji.addColumn(checkColumn, "*");
 		dataGridListaPozycji.addColumn(textColumnNazwa, "NAZWA");
 		dataGridListaPozycji.addColumn(textColumnTyp, "TYP");
 		dataGridListaPozycji.addColumn(textColumnCena, "CENA");

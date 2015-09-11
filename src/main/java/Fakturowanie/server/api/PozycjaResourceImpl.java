@@ -22,7 +22,6 @@ public class PozycjaResourceImpl {
 	@Path("/dodajProdukt")
 	public void createProdukt(PozycjaDTO pozycjaDTO) {
 		pozycjaDAO.stworzProdukt(pozycjaDTO.stworzProdukt());
-
 	}
 
 	@POST
@@ -36,7 +35,6 @@ public class PozycjaResourceImpl {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<PozycjaDTO> wczytaj() {
-
 		return pozycjaDAO.wczytaj();
 
 	}
