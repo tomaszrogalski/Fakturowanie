@@ -4,8 +4,8 @@
 	<inherits name='com.google.gwt.user.User' />
 	<inherits name='com.google.gwt.inject.Inject' />
 	<inherits name='com.google.gwt.editor.Editor' />
-
 	<!-- Default css -->
+
 	<inherits name='com.google.gwt.user.theme.standard.Standard' />
 	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
 	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/> -->
@@ -17,7 +17,9 @@
 	<source path='server' />
 	<source path='client' />
 	<source path='shared' />
-
+	<set-configuration-property name="CssResource.enableGss"
+	value="true" />
+		<set-configuration-property name="CssResource.legacy" value="true" />
 	<extend-configuration-property name="gin.ginjector.modules"
 		value="Fakturowanie.client.gin.ClientModule" />
 </module>

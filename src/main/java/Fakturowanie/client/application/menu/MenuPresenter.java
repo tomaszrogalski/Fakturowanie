@@ -21,6 +21,7 @@ public class MenuPresenter extends Presenter<MenuPresenter.MyView, MenuPresenter
 
 	interface MyView extends View, HasUiHandlers<MenuUiHandlers> {
 	}
+	
 	@NameToken(NameTokens.menu)
 	@ProxyCodeSplit
 	interface MyProxy extends ProxyPlace<MenuPresenter> {
@@ -29,7 +30,6 @@ public class MenuPresenter extends Presenter<MenuPresenter.MyView, MenuPresenter
 	@Inject
 	MenuPresenter(EventBus eventBus, MyView view, MyProxy proxy) {
 		super(eventBus, view, proxy);
-
 		getView().setUiHandlers(this);
 	}
 

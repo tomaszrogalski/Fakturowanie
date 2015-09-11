@@ -10,6 +10,7 @@ import com.gwtplatform.mvp.client.gin.DefaultModule;
 
 import Fakturowanie.client.application.ApplicationModule;
 import Fakturowanie.client.place.NameTokens;
+import Fakturowanie.client.resources.ResourceLoader;
 
 public class ClientModule extends AbstractPresenterModule {
 	@Override
@@ -20,10 +21,12 @@ public class ClientModule extends AbstractPresenterModule {
 		RestDispatchAsyncModule.Builder dispatchBuilder = new RestDispatchAsyncModule.Builder();
 		install(dispatchBuilder.build());
 
-		bindConstant().annotatedWith(RestApplicationPath.class).to("http://localhost:8080/Fakturowanie-1.5/Fakturowanie");
+		bindConstant().annotatedWith(RestApplicationPath.class)
+				.to("http://localhost:8080/Fakturowanie-1.5/Fakturowanie");
 		bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.home);
 		bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.error);
 		bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.error);
+		bind(ResourceLoader.class).asEagerSingleton();
 
 	}
 }

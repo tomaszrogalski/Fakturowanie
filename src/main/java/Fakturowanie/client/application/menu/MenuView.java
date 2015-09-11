@@ -17,13 +17,14 @@ class MenuView extends ViewWithUiHandlers<MenuUiHandlers>implements MenuPresente
 
 	@UiField
 	Button buttonWyswietlKlientow;
+	
 	@UiField
 	Button buttonWyswietlFaktury;
 
 	@UiField
 	Button buttonDodajNowaFakture;
+	
 	@UiField
-
 	Button buttonWyswietlPozycje;
 
 	@UiField
@@ -32,9 +33,7 @@ class MenuView extends ViewWithUiHandlers<MenuUiHandlers>implements MenuPresente
 	@Inject
 	MenuView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
-		// to chyba nie moze tu tak byc, zrobic w css tymczasowo
 		verticalPanel.getElement().setAttribute("align", "center");
-
 	}
 
 	@UiHandler("buttonWyswietlPozycje")

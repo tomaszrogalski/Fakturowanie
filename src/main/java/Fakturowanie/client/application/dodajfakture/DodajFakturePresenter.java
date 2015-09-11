@@ -19,6 +19,7 @@ import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
 import Fakturowanie.client.application.dodajprodukt.DodajProduktPresenter;
 import Fakturowanie.client.application.dodajusluge.DodajUslugePresenter;
+import Fakturowanie.client.application.eventy.WczytajFakturyZBazyEvent;
 import Fakturowanie.client.application.eventy.WczytajPozycjeZBazyEvent;
 import Fakturowanie.client.application.eventy.WczytajPozycjeZBazyEvent.WczytajPozycjeZBazyHandler;
 import Fakturowanie.client.place.NameTokens;
@@ -63,6 +64,11 @@ public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyVie
 		addRegisteredHandler(WczytajPozycjeZBazyEvent.getType(), this);
 	}
 
+	private void funkcjaDoFireEvent() {
+
+		WczytajFakturyZBazyEvent.fire(this);
+	}
+
 	@Override
 	protected void onReveal() {
 		dodajDoGrida();
@@ -94,6 +100,7 @@ public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyVie
 
 			@Override
 			public void onSuccess(List<KlientDTO> result) {
+				funkcjaDoFireEvent();
 				getView().getDataGridListaKlientow().setRowData(result);
 
 			}

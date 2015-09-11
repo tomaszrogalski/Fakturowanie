@@ -16,19 +16,23 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
+import Fakturowanie.client.application.eventy.WczytajFakturyZBazyEvent;
+import Fakturowanie.client.application.eventy.WczytajKlientowZBazyEvent;
+import Fakturowanie.client.application.eventy.WczytajFakturyZBazyEvent.WczytajFakturyZBazyHandler;
 import Fakturowanie.client.place.NameTokens;
 import Fakturowanie.shared.api.FakturaResource;
 import Fakturowanie.shared.dto.FakturaDTO;
 
 public class WyswietlFakturyPresenter
 		extends Presenter<WyswietlFakturyPresenter.MyView, WyswietlFakturyPresenter.MyProxy>
-		implements WyswietlFakturyUiHandlers {
+		implements WyswietlFakturyUiHandlers, WczytajFakturyZBazyHandler {
 
 	interface MyView extends View, HasUiHandlers<WyswietlFakturyUiHandlers> {
 		DataGrid<FakturaDTO> getDataGridWyswietlFaktury();
 	}
 
 	public static final NestedSlot SLOT_WyswietlFaktury = new NestedSlot();
+
 	@NameToken(NameTokens.wyswietlFaktury)
 	@ProxyStandard
 	interface MyProxy extends ProxyPlace<WyswietlFakturyPresenter> {
@@ -43,14 +47,9 @@ public class WyswietlFakturyPresenter
 		super(eventBus, view, proxy);
 		this.dispatcher = dispatcher;
 		this.fakturaResource = fakturaResource;
-
-		getView().setUiHandlers(this);
-	}
-
-	@Override
-	protected void onReveal() {
 		dodajDoGrida();
-		super.onReveal();
+		getView().setUiHandlers(this);
+		addRegisteredHandler(WczytajFakturyZBazyEvent.getType(), this);
 	}
 
 	private void dodajDoGrida() {
@@ -67,5 +66,10 @@ public class WyswietlFakturyPresenter
 			}
 
 		});
+	}
+
+	@Override
+	public void onWczytajFakturyZBazy(WczytajFakturyZBazyEvent event) {
+		dodajDoGrida();
 	}
 }

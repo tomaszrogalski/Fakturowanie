@@ -49,15 +49,9 @@ public class WyswietlPozycjePresenter
 		super(eventBus, view, proxy);
 		this.dispatcher = dispatcher;
 		this.pozycjaResource = pozycjaResource;
-
+		dodajDoGrida();
 		getView().setUiHandlers(this);
 		addRegisteredHandler(WczytajPozycjeZBazyEvent.getType(), this);
-	}
-
-	@Override
-	protected void onReveal() {
-		dodajDoGrida();
-		super.onReveal();
 	}
 
 	@Inject
