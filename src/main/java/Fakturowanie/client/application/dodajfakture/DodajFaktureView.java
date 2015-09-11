@@ -164,7 +164,6 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 		dataGridListaKlientow.addColumn(textColumnNrDomu, "NR DOMU");
 		dataGridListaKlientow.addColumn(textColumnMiejscowosc, "MIEJSCOWOŚĆ");
 		dataGridListaKlientow.addColumn(textColumnKodPocztowy, "KOD POCZTOWY");
-
 	}
 
 	private void stworzDataGridListaPozycji() {
@@ -246,7 +245,6 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 		dataGridListaPozycji.addColumn(textColumnJednostka, "JEDNOSTKA");
 		dataGridListaPozycji.addColumn(textColumnVat, "VAT");
 		dataGridListaPozycji.addColumn(textColumnJednostkaPodstawowa, "JEDNOSTKA PODSTAWOWA VAT");
-
 	}
 
 	public DataGrid<PozycjaDTO> getDataGridListaPozycji() {
