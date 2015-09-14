@@ -13,6 +13,8 @@ import com.gwtplatform.dispatch.rest.shared.RestAction;
 import Fakturowanie.shared.dto.PozycjaDTO;
 
 @Path("/Pozycja")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public interface PozycjaResource {
 
 	@POST
@@ -25,8 +27,6 @@ public interface PozycjaResource {
 
 	@POST
 	@Path("/wczytaj")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public RestAction<List<PozycjaDTO>> wczytaj();
 
 }

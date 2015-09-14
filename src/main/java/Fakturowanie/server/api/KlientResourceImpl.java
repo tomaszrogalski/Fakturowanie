@@ -13,6 +13,8 @@ import Fakturowanie.server.dao.KlientDAO;
 import Fakturowanie.shared.dto.KlientDTO;
 
 @Path("/Klient")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class KlientResourceImpl {
 
 	@EJB
@@ -26,8 +28,6 @@ public class KlientResourceImpl {
 
 	@POST
 	@Path("/wczytaj")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public List<KlientDTO> wczytaj() {
 
 		return klientDAO.wczytaj();

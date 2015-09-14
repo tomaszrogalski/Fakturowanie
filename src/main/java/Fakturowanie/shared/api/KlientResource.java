@@ -13,6 +13,8 @@ import com.gwtplatform.dispatch.rest.shared.RestAction;
 import Fakturowanie.shared.dto.KlientDTO;
 
 @Path("/Klient")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public interface KlientResource {
 
 	@POST
@@ -21,7 +23,5 @@ public interface KlientResource {
 
 	@POST
 	@Path("/wczytaj")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public RestAction<List<KlientDTO>> wczytaj();
 }

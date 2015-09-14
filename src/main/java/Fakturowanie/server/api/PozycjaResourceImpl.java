@@ -13,6 +13,8 @@ import Fakturowanie.server.dao.PozycjaDAO;
 import Fakturowanie.shared.dto.PozycjaDTO;
 
 @Path("/Pozycja")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class PozycjaResourceImpl {
 
 	@EJB
@@ -32,8 +34,6 @@ public class PozycjaResourceImpl {
 
 	@POST
 	@Path("/wczytaj")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public List<PozycjaDTO> wczytaj() {
 		return pozycjaDAO.wczytaj();
 
