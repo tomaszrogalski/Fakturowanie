@@ -6,7 +6,7 @@
 
 	<g:HTMLPanel styleName="{resources.style.error_i_dodaj_html_panel}">
 		<hr />
-		<h1 align="center">ERROR</h1>
+		<h1>ERROR</h1>
 		<hr />
 	</g:HTMLPanel>
 </ui:UiBinder>

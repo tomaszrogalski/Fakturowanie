@@ -32,6 +32,8 @@ public interface AppResources extends ClientBundle {
 		String home_html_panel_roboczy();
 
 		String dodaj_horizontal_panel();
+		
+		String buttony_wyswietl_dodaj();
 	}
 
 	@Source("css/style.css")

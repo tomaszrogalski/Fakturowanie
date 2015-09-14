@@ -7,13 +7,13 @@
 		<g:VerticalPanel ui:field="verticalPanel"
 			styleName="{resources.style.menu_vertical_panel}">
 
-			<g:Button text="WYSWIETL KLIENTOW" ui:field="buttonWyswietlKlientow"
+			<g:Button text="WYŚWIETL KLIENTÓW" ui:field="buttonWyswietlKlientow"
 				styleName="{resources.style.menu_button_rozmiary}" />
 
-			<g:Button text="WYSWIETL PRODUKTY I USLUGI" ui:field="buttonWyswietlPozycje"
+			<g:Button text="WYŚWIETL PRODUKTY I USŁUGI" ui:field="buttonWyswietlPozycje"
 				styleName="{resources.style.menu_button_rozmiary}" />
 
-			<g:Button text="WYSWIETL FAKTURY" ui:field="buttonWyswietlFaktury"
+			<g:Button text="WYŚWIETL FAKTURY" ui:field="buttonWyswietlFaktury"
 				styleName="{resources.style.menu_button_rozmiary}" />
 
 			<g:Button text="DODAJ FAKTURE" ui:field="buttonDodajNowaFakture"

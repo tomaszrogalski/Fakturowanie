@@ -4,7 +4,7 @@
 	<ui:with field="resources" type="Fakturowanie.client.resources.AppResources" />
 
 	<g:HTMLPanel styleName="{resources.style.wyswietl_html_panel}">
-		<h1 align="center">WYŚWIETL FAKTURY</h1>
+		<h1>WYŚWIETL FAKTURY</h1>
 		<hr />
 		
 		<c:DataGrid ui:field="dataGridWyswietlFaktury"/>

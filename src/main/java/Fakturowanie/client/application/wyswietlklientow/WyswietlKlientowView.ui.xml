@@ -4,7 +4,7 @@
 	<ui:with field="resources" type="Fakturowanie.client.resources.AppResources" />
 
 	<g:HTMLPanel styleName="{resources.style.wyswietl_html_panel}">
-		<h1 align="center">WYŚWIETL KLIENTOW</h1>
+		<h1>WYŚWIETL KLIENTÓW</h1>
 		<hr />
 
 		<c:DataGrid ui:field='dataGridWyswietlKlientow' />
@@ -12,7 +12,7 @@
 
 		<g:HorizontalPanel
 			styleName="{resources.style.horizontal_panel_buttony}">
-			<g:Button text="DODAJ NOWEGO KLIENTA" ui:field="buttonDodajNowegoKlienta" />
+			<g:Button text="DODAJ KLIENTA" ui:field="buttonDodajNowegoKlienta" styleName="{resources.style.buttony_wyswietl_dodaj}"/>
 		</g:HorizontalPanel>
 		<br/>
 

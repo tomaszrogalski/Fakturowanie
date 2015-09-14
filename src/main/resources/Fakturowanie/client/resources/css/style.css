@@ -1,3 +1,8 @@
+h1 {
+	color: #606060;
+	text-align: center;
+}
+
 .home_html_panel_glowny {
 	background-color: #D0D0D0;
 	position: fixed;
@@ -29,15 +34,29 @@
 }
 
 .menu_html_Panel {
+	position: absolute;
 	background-color: #C0C0C0;
 	width: 100%;
 	height: 100%;
+	background-color: #C0C0C0;
 }
 
 .menu_button_rozmiary {
+	background-color: #888888;
 	margin-top: 20px;
 	height: 50px;
-	width: 200px;
+	width: 100%;
+	color: #F8F8F8;
+	border-style: none;
+}
+
+.buttony_wyswietl_dodaj {
+	background-color: #888888;
+	color: #F8F8F8;
+	border-style: none;
+	height: 30px;
+	width: 150px;
+	margin-left: 5px;
 }
 
 .menu_vertical_panel {
@@ -58,7 +77,6 @@
 	background-color: #C0C0C0;
 	width: 100%;
 	height: 100%;
-
 }
 
 .label {

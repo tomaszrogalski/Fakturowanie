@@ -4,7 +4,7 @@
 	<ui:with field="resources" type="Fakturowanie.client.resources.AppResources" />
 
 	<g:HTMLPanel styleName="{resources.style.error_i_dodaj_html_panel}">
-		<h1 align="center">DODAJ FAKTURE</h1>
+		<h1>DODAJ FAKTURE</h1>
 		<hr />
 
 		<c:DataGrid ui:field="dataGridListaPozycji" />
@@ -14,11 +14,14 @@
 		<hr />
 
 		<g:HorizontalPanel styleName="{resources.style.horizontal_panel_buttony}">
-			<g:Button text="DODAJ PRODUKT" ui:field="buttonDodajNowyProdukt" />
-			<g:Button text="DODAJ USLUGE" ui:field="buttonDodajNowaUsluge" />
-			<g:Button text="DODAJ FAKTURE" ui:field="buttonDodajNowaFakture" />
+			<g:Button text="DODAJ PRODUKT" ui:field="buttonDodajNowyProdukt"
+				styleName="{resources.style.buttony_wyswietl_dodaj}" />
+			<g:Button text="DODAJ USLUGE" ui:field="buttonDodajNowaUsluge"
+				styleName="{resources.style.buttony_wyswietl_dodaj}" />
+			<g:Button text="DODAJ FAKTURE" ui:field="buttonDodajNowaFakture"
+				styleName="{resources.style.buttony_wyswietl_dodaj}" />
 		</g:HorizontalPanel>
-		<br/>
+		<br />
 
 		<g:HTMLPanel ui:field="htmlPanelDodajPozycje">
 		</g:HTMLPanel>

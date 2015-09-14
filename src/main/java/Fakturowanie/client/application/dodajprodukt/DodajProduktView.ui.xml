@@ -5,7 +5,7 @@
 	<ui:with field="resources" type="Fakturowanie.client.resources.AppResources" />
 
 	<g:HTMLPanel styleName="{resources.style.error_i_dodaj_html_panel}">
-		<h1 align="center">DODAJ PRODUKT</h1>
+		<h1>DODAJ PRODUKT</h1>
 		<hr />
 
 		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
@@ -31,7 +31,7 @@
 		<hr />
 
 		<g:HorizontalPanel styleName="{resources.style.horizontal_panel_buttony}">
-			<g:Button text="DODAJ" ui:field="buttonDodaj" />
+			<g:Button text="DODAJ" ui:field="buttonDodaj" styleName="{resources.style.buttony_wyswietl_dodaj}"/>
 		</g:HorizontalPanel>
 		<br />
 

@@ -4,8 +4,8 @@
 	<ui:with field="resources" type="Fakturowanie.client.resources.AppResources" />
 
 	<g:HTMLPanel styleName="{resources.style.home_html_panel_glowny}">
-		<h1 align="center">
-			<b>F A K T U R O W A N I E</b>
+		<h1>
+			FAKTUROWANIE
 		</h1>
 		<hr />
 
