@@ -22,6 +22,10 @@ public interface KlientResource {
 	public RestAction<Void> create(KlientDTO klientDTO);
 
 	@POST
-	@Path("/wczytaj")
-	public RestAction<List<KlientDTO>> wczytaj();
+	@Path("/wczytajWszystkich")
+	public RestAction<List<KlientDTO>> wczytajWszystkichKlientow();
+	
+	@POST
+	@Path("/wczytajOstatnioDodanego")
+	public RestAction<KlientDTO> wczytajOstatnioDodanego();
 }

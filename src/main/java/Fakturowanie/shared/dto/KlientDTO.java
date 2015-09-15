@@ -2,14 +2,18 @@ package Fakturowanie.shared.dto;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import Fakturowanie.server.Klient;
 
 public class KlientDTO {
 
 	private Long id;
-
+	
+	@NotNull(message = "Imie nie może być puste.")
 	private String imie;
-
+	
+	@NotNull(message = "Nazwisko nie może być puste.")
 	private String nazwisko;
 
 	private AdresDTO adresDTO;

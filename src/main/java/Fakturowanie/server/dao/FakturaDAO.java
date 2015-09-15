@@ -25,7 +25,7 @@ public class FakturaDAO {
 		entityManager.merge(faktura);
 	}
 
-	public List<FakturaDTO> wczytaj() {
+	public List<FakturaDTO> wczytajWszystkieFaktury() {
 		List<FakturaDTO> listaFakturDTO = new ArrayList<>();
 		Query query = entityManager.createQuery("FROM Faktura");
 		List<Faktura> listaFaktur = query.getResultList();
@@ -44,5 +44,24 @@ public class FakturaDAO {
 			listaFakturDTO.add(faktura.stworzFaktureDTO(listaPozycjiDTO));
 		}
 		return listaFakturDTO;
+	}
+
+	public FakturaDTO wczytajOstatnioDodana() {
+
+		Query query = entityManager.createQuery(
+				"Select OBJECT(faktura) FROM Faktura faktura where faktura.nrFaktury=(select max(faktura2.nrFaktury) from Faktura faktura2)");
+		Faktura faktura = (Faktura) query.getSingleResult();
+
+		List<PozycjaDTO> listaPozycjiDTO = new ArrayList<>();
+		for (Pozycja pozycja : faktura.getPozycja()) {
+
+			if (pozycja.getClass() == Produkt.class) {
+				listaPozycjiDTO.add(((Produkt) pozycja).stworzPozycjaDTO());
+			} else if (pozycja.getClass() == Usluga.class) {
+				listaPozycjiDTO.add(((Usluga) pozycja).stworzPozycjaDTO());
+			}
+		}
+		FakturaDTO fakturaDTO = faktura.stworzFaktureDTO(listaPozycjiDTO);
+		return fakturaDTO;
 	}
 }

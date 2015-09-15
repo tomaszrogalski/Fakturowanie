@@ -12,7 +12,7 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-import Fakturowanie.client.application.eventy.WczytajKlientowZBazyEvent;
+import Fakturowanie.client.application.eventy.DodajDodanegoKlientaDoGridaEvent;
 import Fakturowanie.client.place.NameTokens;
 import Fakturowanie.shared.api.KlientResource;
 import Fakturowanie.shared.dto.KlientDTO;
@@ -45,23 +45,22 @@ public class DodajKlientaPresenter extends Presenter<DodajKlientaPresenter.MyVie
 
 	@Override
 	public void buttonAkcjaDodajKlienta() {
-
-		dodajDoBazy();
+		KlientDTO klientDTO = getView().odbierzZawartoscTextBoxow();
+		dodajDoBazy(klientDTO);
+		
 		removeFromParentSlot();
 	}
-
 	private void funkcjaDoFireEvent() {
 
-		WczytajKlientowZBazyEvent.fire(this);
+		DodajDodanegoKlientaDoGridaEvent.fire(this);
 	}
 
-	private void dodajDoBazy() {
-		dispatcher.execute(klientResource.create(getView().odbierzZawartoscTextBoxow()), new AsyncCallback<Void>() {
+	private void dodajDoBazy(final KlientDTO klientDTO) {
+		dispatcher.execute(klientResource.create(klientDTO), new AsyncCallback<Void>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert("COS NIE DZIAŁA - DODAJ KLIENTA");
-
 			}
 
 			@Override
@@ -69,7 +68,6 @@ public class DodajKlientaPresenter extends Presenter<DodajKlientaPresenter.MyVie
 				Window.alert("DODANO!");
 				funkcjaDoFireEvent();
 			}
-
 		});
 	}
 }

@@ -104,13 +104,6 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 			/////////
 		};
 
-		TextColumn<KlientDTO> textColumnId = new TextColumn<KlientDTO>() {
-
-			@Override
-			public String getValue(KlientDTO klient) {
-				return klient.getId().toString();
-			}
-		};
 		TextColumn<KlientDTO> textColumnImie = new TextColumn<KlientDTO>() {
 
 			@Override
@@ -156,8 +149,7 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 
 		dataGridListaKlientow.setWidth("100%");
 		dataGridListaKlientow.setHeight("300px");
-		dataGridListaKlientow.addColumn(checkColumn, "*");
-		dataGridListaKlientow.addColumn(textColumnId, "ID");
+		dataGridListaKlientow.addColumn(checkColumn, "*");	
 		dataGridListaKlientow.addColumn(textColumnImie, "IMIE");
 		dataGridListaKlientow.addColumn(textColumnNazwisko, "NAZWISKO");
 		dataGridListaKlientow.addColumn(textColumnUlica, "ULICA");

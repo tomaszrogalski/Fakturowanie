@@ -72,5 +72,4 @@ public class Faktura {
 		fakturaDTO.setListaPozycjiDTO(listaPozycjiDTO);
 		return fakturaDTO;
 	}
-
 }

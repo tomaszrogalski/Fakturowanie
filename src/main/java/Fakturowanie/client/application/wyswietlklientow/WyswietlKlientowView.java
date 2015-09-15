@@ -37,13 +37,6 @@ class WyswietlKlientowView extends ViewWithUiHandlers<WyswietlKlientowUiHandlers
 	}
 
 	private void stworzDataGrid() {
-		TextColumn<KlientDTO> textColumnId = new TextColumn<KlientDTO>() {
-
-			@Override
-			public String getValue(KlientDTO klient) {
-				return klient.getId().toString();
-			}
-		};
 		TextColumn<KlientDTO> textColumnImie = new TextColumn<KlientDTO>() {
 
 			@Override
@@ -90,7 +83,6 @@ class WyswietlKlientowView extends ViewWithUiHandlers<WyswietlKlientowUiHandlers
 		dataGridWyswietlKlientow.setWidth("100%");
 		dataGridWyswietlKlientow.setHeight("300px");
 
-		dataGridWyswietlKlientow.addColumn(textColumnId, "ID");
 		dataGridWyswietlKlientow.addColumn(textColumnImie, "IMIE");
 		dataGridWyswietlKlientow.addColumn(textColumnNazwisko, "NAZWISKO");
 		dataGridWyswietlKlientow.addColumn(textColumnUlica, "ULICA");

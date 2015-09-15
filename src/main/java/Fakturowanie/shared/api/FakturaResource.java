@@ -22,7 +22,11 @@ public interface FakturaResource {
 	public RestAction<Void> create(FakturaDTO fakturaDTO);
 
 	@POST
-	@Path("/wczytaj")
-	public RestAction<List<FakturaDTO>> wczytaj();
+	@Path("/wczytajWszystkich")
+	public RestAction<List<FakturaDTO>> wczytajWszystkieFaktury();
+
+	@POST
+	@Path("/wczytajOstatnioDodana")
+	public RestAction<FakturaDTO> wczytajOstatnioDodana();
 
 }

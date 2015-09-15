@@ -1,15 +1,19 @@
 package Fakturowanie.shared.dto;
 
+import javax.validation.constraints.NotNull;
+
 import Fakturowanie.server.Adres;
 
 public class AdresDTO {
-
+	@NotNull(message = "Kod pocztowy nie może być pusty.")
 	private String kodPocztowy;
-
+	
 	private String ulica;
-
+	
+	@NotNull(message = "Nr domu nie może być pusty.")
 	private String nrDomu;
-
+	
+	@NotNull(message = "Miejscowosc nie może być pusta.")
 	private String miejscowosc;
 
 	/////////////////////////////////

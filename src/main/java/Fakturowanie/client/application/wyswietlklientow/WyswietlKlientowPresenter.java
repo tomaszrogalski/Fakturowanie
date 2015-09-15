@@ -1,5 +1,6 @@
 package Fakturowanie.client.application.wyswietlklientow;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.user.cellview.client.DataGrid;
@@ -18,21 +19,22 @@ import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
 import Fakturowanie.client.application.dodajklienta.DodajKlientaPresenter;
-import Fakturowanie.client.application.eventy.WczytajKlientowZBazyEvent;
-import Fakturowanie.client.application.eventy.WczytajKlientowZBazyEvent.WczytajKlientowZBazyHandler;
+import Fakturowanie.client.application.eventy.DodajDodanegoKlientaDoGridaEvent;
+import Fakturowanie.client.application.eventy.DodajDodanegoKlientaDoGridaEvent.DodajDodanegoKlientaDoGridaHandler;
 import Fakturowanie.client.place.NameTokens;
 import Fakturowanie.shared.api.KlientResource;
 import Fakturowanie.shared.dto.KlientDTO;
 
 public class WyswietlKlientowPresenter
 		extends Presenter<WyswietlKlientowPresenter.MyView, WyswietlKlientowPresenter.MyProxy>
-		implements WyswietlKlientowUiHandlers, WczytajKlientowZBazyHandler {
-	
+		implements WyswietlKlientowUiHandlers, DodajDodanegoKlientaDoGridaHandler {
+
 	interface MyView extends View, HasUiHandlers<WyswietlKlientowUiHandlers> {
 		DataGrid<KlientDTO> getDataGridWyswietlKlientow();
 	}
 
 	static final NestedSlot SLOT_NA_DODAJ_KLIENTA = new NestedSlot();
+
 	@NameToken(NameTokens.wyswietlKlientow)
 	@ProxyStandard
 	interface MyProxy extends ProxyPlace<WyswietlKlientowPresenter> {
@@ -52,10 +54,8 @@ public class WyswietlKlientowPresenter
 		this.klientResource = klientResource;
 		getView().setUiHandlers(this);
 		dodajDoGrida();
-		addRegisteredHandler(WczytajKlientowZBazyEvent.getType(), this);
-
+		addRegisteredHandler(DodajDodanegoKlientaDoGridaEvent.getType(), this);
 	}
-	
 
 	@Override
 	public void buttonAkcjaDodajKlienta() {
@@ -63,7 +63,7 @@ public class WyswietlKlientowPresenter
 	}
 
 	private void dodajDoGrida() {
-		dispatcher.execute(klientResource.wczytaj(), new AsyncCallback<List<KlientDTO>>() {
+		dispatcher.execute(klientResource.wczytajWszystkichKlientow(), new AsyncCallback<List<KlientDTO>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -78,9 +78,30 @@ public class WyswietlKlientowPresenter
 		});
 	}
 
-
 	@Override
-	public void onWczytajKlientowZBazy(WczytajKlientowZBazyEvent event) {
-		dodajDoGrida();	
+	public void onDodajDodanegoKlientaDoGrida(DodajDodanegoKlientaDoGridaEvent event) {
+		
+//		List<KlientDTO> listaKlientow = new ArrayList<>();
+//		listaKlientow.addAll(getView().getDataGridWyswietlKlientow().getVisibleItems());
+//		listaKlientow.add(event.getKlientDTO());
+//		getView().getDataGridWyswietlKlientow().setRowData(listaKlientow);
+		
+		dispatcher.execute(klientResource.wczytajOstatnioDodanego(), new AsyncCallback<KlientDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("COS NIE DZIAŁA - WCZYTAJ KLIENTA");
+			}
+
+			@Override
+			public void onSuccess(KlientDTO result) {
+				//tu chciałbym aby do datagrida dodawany byl 1 element nie nadpisywany jaka metoda???
+				List<KlientDTO> listaKlientow = new ArrayList<>();
+				listaKlientow.addAll(getView().getDataGridWyswietlKlientow().getVisibleItems());
+				listaKlientow.add(result);
+				getView().getDataGridWyswietlKlientow().setRowData(listaKlientow);
+				
+			}
+		});
 	}
 }

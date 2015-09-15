@@ -1,13 +1,14 @@
 package Fakturowanie.shared.dto;
 
-public class ProduktDTO {
-
+public class ProduktDTO{
+	
 	private String cena;
 
 	private String jednostka;
 
 	private String vat;
 
+	
 	/////////////////////////////////
 
 	public ProduktDTO(String cena, String jednostka, String vat) {

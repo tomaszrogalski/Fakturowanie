@@ -5,7 +5,11 @@
 	<inherits name='com.google.gwt.inject.Inject' />
 	<inherits name='com.google.gwt.editor.Editor' />
 	<!-- Default css -->
-
+	<inherits name="org.hibernate.validator.HibernateValidator" />
+	<replace-with
+		class="Fakturowanie.client.walidacja.SampleValidatorFactory">
+		<when-type-is class="javax.validation.ValidatorFactory" />
+	</replace-with>
 	<inherits name='com.google.gwt.user.theme.standard.Standard' />
 	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
 	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/> -->
@@ -18,8 +22,9 @@
 	<source path='client' />
 	<source path='shared' />
 	<set-configuration-property name="CssResource.enableGss"
-	value="true" />
-		<set-configuration-property name="CssResource.legacy" value="true" />
+		value="true" />
+	<set-configuration-property name="CssResource.legacy"
+		value="true" />
 	<extend-configuration-property name="gin.ginjector.modules"
 		value="Fakturowanie.client.gin.ClientModule" />
 </module>

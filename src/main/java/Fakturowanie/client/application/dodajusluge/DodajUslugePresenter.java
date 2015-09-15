@@ -12,7 +12,7 @@ import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-import Fakturowanie.client.application.eventy.WczytajPozycjeZBazyEvent;
+import Fakturowanie.client.application.eventy.DodajOstatnioDodanaPozycjeDoWyswietleniaEvent;
 import Fakturowanie.client.place.NameTokens;
 import Fakturowanie.shared.api.PozycjaResource;
 import Fakturowanie.shared.dto.PozycjaDTO;
@@ -42,13 +42,13 @@ public class DodajUslugePresenter extends Presenter<DodajUslugePresenter.MyView,
 		getView().setUiHandlers(this);
 	}
 
-	private void funkcjaDoFireEvent() {
+	private void funkcjaDoFireEvent(PozycjaDTO pozycjaDTO) {
 
-		WczytajPozycjeZBazyEvent.fire(this);
+		DodajOstatnioDodanaPozycjeDoWyswietleniaEvent.fire(this,pozycjaDTO);
 	}
 
-	private void dodajDoBazy() {
-		dispatcher.execute(pozycjaResource.createUsluge(getView().odbierzZawartoscTextBoxow()),
+	private void dodajDoBazy(final PozycjaDTO pozycjaDTO) {
+		dispatcher.execute(pozycjaResource.createUsluge(pozycjaDTO),
 				new AsyncCallback<Void>() {
 
 					@Override
@@ -60,7 +60,7 @@ public class DodajUslugePresenter extends Presenter<DodajUslugePresenter.MyView,
 					@Override
 					public void onSuccess(Void result) {
 						Window.alert("DODANO!");
-						funkcjaDoFireEvent();
+						funkcjaDoFireEvent(pozycjaDTO);
 					}
 
 				});
@@ -68,7 +68,8 @@ public class DodajUslugePresenter extends Presenter<DodajUslugePresenter.MyView,
 
 	@Override
 	public void buttonAkcjaDodajUsluge() {
-		dodajDoBazy();
+		PozycjaDTO pozycjaDTO=getView().odbierzZawartoscTextBoxow();
+		dodajDoBazy(pozycjaDTO);
 		removeFromParentSlot();
 	}
 

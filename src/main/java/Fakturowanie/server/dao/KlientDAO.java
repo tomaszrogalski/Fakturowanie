@@ -22,7 +22,7 @@ public class KlientDAO {
 		entityManager.merge(klient);
 	}
 
-	public List<KlientDTO> wczytaj() {
+	public List<KlientDTO> wczytajWszystkichKlientow() {
 
 		List<KlientDTO> listaKlientowDTO = new ArrayList<>();
 		Query query = entityManager.createQuery("FROM Klient");
@@ -31,7 +31,18 @@ public class KlientDAO {
 		for (Klient klient : listaKlientow) {
 			listaKlientowDTO.add(klient.stworzKlientaDTO());
 		}
-
 		return listaKlientowDTO;
 	}
+	
+
+public KlientDTO wczytajOstatnioDodanego() {
+		KlientDTO klientDTO = null;
+		Klient klient = null;
+		Query query = entityManager.createQuery(
+				"Select OBJECT(klient) FROM Klient klient where klient.id=(select max(klient2.id) from Klient klient2)");
+		klient = (Klient) query.getSingleResult();
+		klientDTO = klient.stworzKlientaDTO();
+		return klientDTO;
+	}
+
 }

@@ -26,9 +26,17 @@ public class FakturaResourceImpl {
 	}
 	
 	@POST
-	@Path("/wczytaj")
-	public List<FakturaDTO> wczytaj() {
-		return fakturaDAO.wczytaj();
+	@Path("/wczytajWszystkich")
+	public List<FakturaDTO> wczytajWszystkieFaktury() {
+		return fakturaDAO.wczytajWszystkieFaktury();
+
+	}
+	
+	@POST
+	@Path("/wczytajOstatnioDodana")
+	public FakturaDTO wczytajOstatnioDodana() {
+
+		return fakturaDAO.wczytajOstatnioDodana();
 
 	}
 }

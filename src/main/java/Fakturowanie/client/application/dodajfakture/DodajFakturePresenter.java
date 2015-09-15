@@ -1,5 +1,6 @@
 package Fakturowanie.client.application.dodajfakture;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.user.cellview.client.DataGrid;
@@ -19,9 +20,11 @@ import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
 import Fakturowanie.client.application.dodajprodukt.DodajProduktPresenter;
 import Fakturowanie.client.application.dodajusluge.DodajUslugePresenter;
-import Fakturowanie.client.application.eventy.WczytajFakturyZBazyEvent;
-import Fakturowanie.client.application.eventy.WczytajPozycjeZBazyEvent;
-import Fakturowanie.client.application.eventy.WczytajPozycjeZBazyEvent.WczytajPozycjeZBazyHandler;
+import Fakturowanie.client.application.eventy.DodajDodanegoKlientaDoGridaEvent;
+import Fakturowanie.client.application.eventy.DodajDodanegoKlientaDoGridaEvent.DodajDodanegoKlientaDoGridaHandler;
+import Fakturowanie.client.application.eventy.DodajOstatnioDodanaPozycjeDoWyswietleniaEvent;
+import Fakturowanie.client.application.eventy.DodajOstatnioDodanaPozycjeDoWyswietleniaEvent.DodajOstatnioDodanaPozycjeDoWyswietleniaHandler;
+import Fakturowanie.client.application.eventy.WczytajOstatniaFaktureZBazyEvent;
 import Fakturowanie.client.place.NameTokens;
 import Fakturowanie.shared.api.FakturaResource;
 import Fakturowanie.shared.api.KlientResource;
@@ -31,7 +34,7 @@ import Fakturowanie.shared.dto.KlientDTO;
 import Fakturowanie.shared.dto.PozycjaDTO;
 
 public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyView, DodajFakturePresenter.MyProxy>
-		implements DodajFaktureUiHandlers, WczytajPozycjeZBazyHandler {
+		implements DodajFaktureUiHandlers, DodajOstatnioDodanaPozycjeDoWyswietleniaHandler,DodajDodanegoKlientaDoGridaHandler {
 	interface MyView extends View, HasUiHandlers<DodajFaktureUiHandlers> {
 		FakturaDTO odbierzZawartoscZGridITextBoxa();
 
@@ -61,21 +64,17 @@ public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyVie
 		this.klientResource = klientResource;
 		this.pozycjaResource = pozycjaResource;
 		getView().setUiHandlers(this);
-		addRegisteredHandler(WczytajPozycjeZBazyEvent.getType(), this);
+		addRegisteredHandler(DodajOstatnioDodanaPozycjeDoWyswietleniaEvent.getType(), this);
+		addRegisteredHandler(DodajDodanegoKlientaDoGridaEvent.getType(), this);
+		dodajDoGrida();
 	}
 
 	private void funkcjaDoFireEvent() {
 
-		WczytajFakturyZBazyEvent.fire(this);
+		WczytajOstatniaFaktureZBazyEvent.fire(this);
 	}
 
-	@Override
-	protected void onReveal() {
-		dodajDoGrida();
-		super.onReveal();
-	}
-
-	private void dodajDoGrida() {
+	private void dodajDoGrida() {	
 		dispatcher.execute(pozycjaResource.wczytaj(), new AsyncCallback<List<PozycjaDTO>>() {
 
 			@Override
@@ -90,7 +89,7 @@ public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyVie
 			}
 
 		});
-		dispatcher.execute(klientResource.wczytaj(), new AsyncCallback<List<KlientDTO>>() {
+		dispatcher.execute(klientResource.wczytajWszystkichKlientow(), new AsyncCallback<List<KlientDTO>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -127,7 +126,12 @@ public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyVie
 
 	@Override
 	public void buttonAkcjaDodajFakture() {
-		dispatcher.execute(fakturaResource.create(getView().odbierzZawartoscZGridITextBoxa()),
+		FakturaDTO fakturaDTO = getView().odbierzZawartoscZGridITextBoxa();
+		dodajDoBazy(fakturaDTO);
+	}
+	
+	private void dodajDoBazy(final FakturaDTO fakturaDTO){
+		dispatcher.execute(fakturaResource.create(fakturaDTO),
 				new AsyncCallback<Void>() {
 
 					@Override
@@ -146,7 +150,32 @@ public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyVie
 	}
 
 	@Override
-	public void onWczytajPozycjeZBazy(WczytajPozycjeZBazyEvent event) {
-		dodajDoGrida();
+	public void onDodajOstatnioDodanaPozycjeDoWyswietlenia(DodajOstatnioDodanaPozycjeDoWyswietleniaEvent event) {
+		List<PozycjaDTO> listaPozycji = new ArrayList<>();
+		listaPozycji.addAll(getView().getDataGridListaPozycji().getVisibleItems());
+		listaPozycji.add(event.getPozycjaDTO());
+		getView().getDataGridListaPozycji().setRowData(listaPozycji);
+	}
+
+	@Override
+	public void onDodajDodanegoKlientaDoGrida(DodajDodanegoKlientaDoGridaEvent event) {
+		dispatcher.execute(klientResource.wczytajOstatnioDodanego(), new AsyncCallback<KlientDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("COS NIE DZIAŁA - WCZYTAJ KLIENTA");
+			}
+
+			@Override
+			public void onSuccess(KlientDTO result) {
+				//tu chciałbym aby do datagrida dodawany byl 1 element nie nadpisywany jaka metoda???
+				List<KlientDTO> listaKlientow = new ArrayList<>();
+				listaKlientow.addAll(getView().getDataGridListaKlientow().getVisibleItems());
+				listaKlientow.add(result);
+				getView().getDataGridListaKlientow().setRowData(listaKlientow);
+				
+			}
+		});
+		
 	}
 }

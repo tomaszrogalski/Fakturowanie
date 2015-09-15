@@ -1,5 +1,6 @@
 package Fakturowanie.client.application.wyswietlfaktury;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.user.cellview.client.DataGrid;
@@ -15,15 +16,15 @@ import com.gwtplatform.mvp.client.annotations.ProxyStandard;
 import com.gwtplatform.mvp.client.presenter.slots.NestedSlot;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 
-import Fakturowanie.client.application.eventy.WczytajFakturyZBazyEvent;
-import Fakturowanie.client.application.eventy.WczytajFakturyZBazyEvent.WczytajFakturyZBazyHandler;
+import Fakturowanie.client.application.eventy.WczytajOstatniaFaktureZBazyEvent;
+import Fakturowanie.client.application.eventy.WczytajOstatniaFaktureZBazyEvent.WczytajOstatniaFaktureZBazyHandler;
 import Fakturowanie.client.place.NameTokens;
 import Fakturowanie.shared.api.FakturaResource;
 import Fakturowanie.shared.dto.FakturaDTO;
 
 public class WyswietlFakturyPresenter
 		extends Presenter<WyswietlFakturyPresenter.MyView, WyswietlFakturyPresenter.MyProxy>
-		implements WczytajFakturyZBazyHandler {
+		implements WczytajOstatniaFaktureZBazyHandler {
 
 	interface MyView extends View {
 		DataGrid<FakturaDTO> getDataGridWyswietlFaktury();
@@ -46,11 +47,11 @@ public class WyswietlFakturyPresenter
 		this.dispatcher = dispatcher;
 		this.fakturaResource = fakturaResource;
 		dodajDoGrida();
-		addRegisteredHandler(WczytajFakturyZBazyEvent.getType(), this);
+		addRegisteredHandler(WczytajOstatniaFaktureZBazyEvent.getType(), this);
 	}
 
 	private void dodajDoGrida() {
-		dispatcher.execute(fakturaResource.wczytaj(), new AsyncCallback<List<FakturaDTO>>() {
+		dispatcher.execute(fakturaResource.wczytajWszystkieFaktury(), new AsyncCallback<List<FakturaDTO>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -66,7 +67,24 @@ public class WyswietlFakturyPresenter
 	}
 
 	@Override
-	public void onWczytajFakturyZBazy(WczytajFakturyZBazyEvent event) {
-		dodajDoGrida();
+	public void onWczytajOstatniaFaktureZBazy(WczytajOstatniaFaktureZBazyEvent event) {
+		
+		dispatcher.execute(fakturaResource.wczytajOstatnioDodana(), new AsyncCallback<FakturaDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("COS NIE DZIAŁA - WCZYTAJ FAKTURE");
+			}
+
+			@Override
+			public void onSuccess(FakturaDTO result) {
+				List<FakturaDTO> listaFaktur = new ArrayList<>();
+				listaFaktur.addAll(getView().getDataGridWyswietlFaktury().getVisibleItems());
+				listaFaktur.add(result);
+				getView().getDataGridWyswietlFaktury().setRowData(listaFaktur);
+
+			}
+		});
+
 	}
 }

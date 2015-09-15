@@ -1,5 +1,6 @@
 package Fakturowanie.client.application.wyswietlpozycje;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.user.cellview.client.DataGrid;
@@ -19,21 +20,22 @@ import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 
 import Fakturowanie.client.application.dodajprodukt.DodajProduktPresenter;
 import Fakturowanie.client.application.dodajusluge.DodajUslugePresenter;
-import Fakturowanie.client.application.eventy.WczytajPozycjeZBazyEvent;
-import Fakturowanie.client.application.eventy.WczytajPozycjeZBazyEvent.WczytajPozycjeZBazyHandler;
+import Fakturowanie.client.application.eventy.DodajOstatnioDodanaPozycjeDoWyswietleniaEvent;
+import Fakturowanie.client.application.eventy.DodajOstatnioDodanaPozycjeDoWyswietleniaEvent.DodajOstatnioDodanaPozycjeDoWyswietleniaHandler;
 import Fakturowanie.client.place.NameTokens;
 import Fakturowanie.shared.api.PozycjaResource;
 import Fakturowanie.shared.dto.PozycjaDTO;
 
 public class WyswietlPozycjePresenter
 		extends Presenter<WyswietlPozycjePresenter.MyView, WyswietlPozycjePresenter.MyProxy>
-		implements WyswietlPozycjeUiHandlers, WczytajPozycjeZBazyHandler {
-	
+		implements WyswietlPozycjeUiHandlers, DodajOstatnioDodanaPozycjeDoWyswietleniaHandler {
+
 	interface MyView extends View, HasUiHandlers<WyswietlPozycjeUiHandlers> {
 		DataGrid<PozycjaDTO> getDataGridWyswietlPozycje();
 	}
 
 	static final NestedSlot SLOT_NA_DODAJ_PRODUKT_USLUGE = new NestedSlot();
+
 	@NameToken(NameTokens.wyswietlPozycje)
 	@ProxyStandard
 	interface MyProxy extends ProxyPlace<WyswietlPozycjePresenter> {
@@ -51,7 +53,7 @@ public class WyswietlPozycjePresenter
 		this.pozycjaResource = pozycjaResource;
 		dodajDoGrida();
 		getView().setUiHandlers(this);
-		addRegisteredHandler(WczytajPozycjeZBazyEvent.getType(), this);
+		addRegisteredHandler(DodajOstatnioDodanaPozycjeDoWyswietleniaEvent.getType(), this);
 	}
 
 	@Inject
@@ -73,9 +75,11 @@ public class WyswietlPozycjePresenter
 	}
 
 	@Override
-	public void onWczytajPozycjeZBazy(WczytajPozycjeZBazyEvent event) {
-		dodajDoGrida();
-
+	public void onDodajOstatnioDodanaPozycjeDoWyswietlenia(DodajOstatnioDodanaPozycjeDoWyswietleniaEvent event) {
+		List<PozycjaDTO> listaPozycji = new ArrayList<>();
+		listaPozycji.addAll(getView().getDataGridWyswietlPozycje().getVisibleItems());
+		listaPozycji.add(event.getPozycjaDTO());
+		getView().getDataGridWyswietlPozycje().setRowData(listaPozycji);
 	}
 
 	private void dodajDoGrida() {

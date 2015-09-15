@@ -27,10 +27,18 @@ public class KlientResourceImpl {
 	}
 
 	@POST
-	@Path("/wczytaj")
-	public List<KlientDTO> wczytaj() {
+	@Path("/wczytajWszystkich")
+	public List<KlientDTO> wczytajWszystkichKlientow() {
 
-		return klientDAO.wczytaj();
+		return klientDAO.wczytajWszystkichKlientow();
+
+	}
+	
+	@POST
+	@Path("/wczytajOstatnioDodanego")
+	public KlientDTO wczytajOstatnioDodanego() {
+
+		return klientDAO.wczytajOstatnioDodanego();
 
 	}
 }
