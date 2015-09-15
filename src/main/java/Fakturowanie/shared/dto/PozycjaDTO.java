@@ -89,11 +89,11 @@ public class PozycjaDTO {
 	}
 
 	public String toStringProdukt() {
-		return "Nazwa: " + nazwa + ", " + getProduktDTO().toString();
+		return "Nazwa: " + nazwa + ", " + "Typ: " + typ + ", " + getProduktDTO().toString();
 	}
 
 	public String toStringUsluga() {
-		return "Nazwa: " + nazwa + ", " + getUslugaDTO().toString();
+		return "Nazwa: " + nazwa + ", " + "Typ: " + typ + ", " + getUslugaDTO().toString();
 	}
 
 	@Override

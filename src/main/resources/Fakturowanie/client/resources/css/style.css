@@ -56,10 +56,16 @@ h1 {
 
 .buttony_wyswietl_dodaj:HOVER {
 	color: yellow;
+	border-width: 1px;
+	border-style: solid;
+	border-color: yellow;
 }
 
 .menu_button_rozmiary:HOVER {
 	color: yellow;
+	border-width: 1px;
+	border-style: solid;
+	border-color: yellow;
 }
 
 .buttony_wyswietl_dodaj {
@@ -85,6 +91,7 @@ h1 {
 
 .horizontal_panel_buttony {
 	float: right;
+	padding-bottom: 1%;
 }
 
 .error_i_dodaj_html_panel {
