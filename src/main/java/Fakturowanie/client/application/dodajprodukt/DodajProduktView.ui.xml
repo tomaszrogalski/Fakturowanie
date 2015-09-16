@@ -20,7 +20,7 @@
 
 		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
 			<g:Label text="JEDNOSTKA" styleName="{resources.style.label}" />
-			<g:TextBox ui:field="textBoxJednostka" />
+			<g:ValueListBox ui:field="valueListBoxJednostka" styleName="{resources.style.valueListBox}"/>
 		</g:HorizontalPanel>
 
 		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
@@ -31,7 +31,8 @@
 		<hr />
 
 		<g:HorizontalPanel styleName="{resources.style.horizontal_panel_buttony}">
-			<g:Button text="DODAJ" ui:field="buttonDodaj" styleName="{resources.style.buttony_wyswietl_dodaj}"/>
+			<g:Button text="DODAJ" ui:field="buttonDodaj"
+				styleName="{resources.style.buttony_wyswietl_dodaj}" />
 		</g:HorizontalPanel>
 		<br />
 

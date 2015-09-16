@@ -37,6 +37,11 @@ h1 {
 	padding-right: 1%;
 }
 
+.valueListBox {
+	width: 143px;
+	height: 23px;
+}
+
 .menu_html_Panel {
 	position: absolute;
 	background-color: #C0C0C0;
@@ -95,6 +100,7 @@ h1 {
 }
 
 .error_i_dodaj_html_panel {
+	padding-top: 1%;
 	background-color: #C0C0C0;
 	width: 100%;
 	height: 100%;

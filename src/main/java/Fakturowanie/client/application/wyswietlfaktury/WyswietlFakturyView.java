@@ -67,7 +67,7 @@ class WyswietlFakturyView extends ViewImpl implements WyswietlFakturyPresenter.M
 			}
 
 		};
-		
+
 		final DynamicSelectionCell listBoxZPozycjami = new DynamicSelectionCell(new ArrayList<String>());
 		Column<FakturaDTO, String> columnListaPozycji = new Column<FakturaDTO, String>(listBoxZPozycjami) {
 
@@ -98,7 +98,9 @@ class WyswietlFakturyView extends ViewImpl implements WyswietlFakturyPresenter.M
 	}
 
 }
-//http://stackoverflow.com/questions/4565790/how-to-dynamically-update-the-choices-in-a-selectioncell-using-gwt
+
+// Zrodlo:
+// http://stackoverflow.com/questions/4565790/how-to-dynamically-update-the-choices-in-a-selectioncell-using-gwt
 class DynamicSelectionCell extends AbstractInputCell<String, String> {
 
 	interface Template extends SafeHtmlTemplates {

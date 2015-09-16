@@ -26,6 +26,7 @@ public class PozycjaDTO {
 		this.nazwa = nazwa;
 		this.uslugaDTO = uslugaDTO;
 		produktDTO = new ProduktDTO(null, null, null);
+//		Window.alert(produktDTO.toString());
 		wyliczTyp();
 
 	}
@@ -36,6 +37,7 @@ public class PozycjaDTO {
 		this.produktDTO = produktDTO;
 		uslugaDTO = new UslugaDTO(null, null);
 		wyliczTyp();
+//		Window.alert(uslugaDTO.toString());
 	}
 
 	/////////////////////////////////
@@ -106,7 +108,7 @@ public class PozycjaDTO {
 	}
 
 	public Produkt stworzProdukt() {
-		Produkt produkt = new Produkt(getNazwa(), getProduktDTO().getCena(), getProduktDTO().getJednostka(),
+		Produkt produkt = new Produkt(getNazwa(), getProduktDTO().getCena(), getProduktDTO().getJednostka().toString(),
 				getProduktDTO().getVat());
 		return produkt;
 	}

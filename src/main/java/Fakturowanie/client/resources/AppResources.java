@@ -11,6 +11,8 @@ public interface AppResources extends ClientBundle {
 
 	interface Style extends CssResource {
 
+		String valueListBox();
+		
 		String menu_html_Panel();
 
 		String menu_button_rozmiary();

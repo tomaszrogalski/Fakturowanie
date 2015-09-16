@@ -202,14 +202,14 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getUslugaDTO().getCenaZaGodzine();
+				return pozycjaDTO.getUslugaDTO().getCenaZaGodzine().toString();
 			}
 		};
 		TextColumn<PozycjaDTO> textColumnJednostka = new TextColumn<PozycjaDTO>() {
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getProduktDTO().getJednostka();
+				return pozycjaDTO.getProduktDTO().getJednostka().toString();
 			}
 		};
 

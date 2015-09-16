@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+import Fakturowanie.shared.dto.Jednostka;
 import Fakturowanie.shared.dto.PozycjaDTO;
 import Fakturowanie.shared.dto.ProduktDTO;
 
@@ -51,6 +52,6 @@ public class Produkt extends Pozycja {
 	}
 
 	public PozycjaDTO stworzPozycjaDTO() {
-		return new PozycjaDTO(getNazwa(), new ProduktDTO(getCena(), getJednostka(), getVat()));
+		return new PozycjaDTO(getNazwa(), new ProduktDTO(getCena(), Jednostka.valueOf(getJednostka()), getVat()));
 	}
 }

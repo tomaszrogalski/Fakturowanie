@@ -1,17 +1,16 @@
 package Fakturowanie.shared.dto;
 
-public class ProduktDTO{
-	
+public class ProduktDTO {
+
 	private String cena;
 
-	private String jednostka;
+	private Jednostka jednostka;
 
 	private String vat;
 
-	
 	/////////////////////////////////
 
-	public ProduktDTO(String cena, String jednostka, String vat) {
+	public ProduktDTO(String cena, Jednostka jednostka, String vat) {
 
 		this.cena = cena;
 		this.jednostka = jednostka;
@@ -32,11 +31,11 @@ public class ProduktDTO{
 		this.cena = cena;
 	}
 
-	public String getJednostka() {
+	public Jednostka getJednostka() {
 		return jednostka;
 	}
 
-	public void setJednostka(String jednostka) {
+	public void setJednostka(Jednostka jednostka) {
 		this.jednostka = jednostka;
 	}
 

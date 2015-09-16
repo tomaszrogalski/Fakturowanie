@@ -69,14 +69,14 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getUslugaDTO().getCenaZaGodzine();
+				return pozycjaDTO.getUslugaDTO().getCenaZaGodzine().toString();
 			}
 		};
 		TextColumn<PozycjaDTO> textColumnJednostka = new TextColumn<PozycjaDTO>() {
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getProduktDTO().getJednostka();
+				return pozycjaDTO.getProduktDTO().getJednostka().toString();
 			}
 		};
 
@@ -94,6 +94,7 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 				return pozycjaDTO.getProduktDTO().getVat();
 			}
 		};
+
 		dataGridWyswietlPozycje.setWidth("100%");
 		dataGridWyswietlPozycje.setHeight("300px");
 		dataGridWyswietlPozycje.addColumn(textColumnNazwa, "NAZWA");
