@@ -149,7 +149,7 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 
 		dataGridListaKlientow.setWidth("100%");
 		dataGridListaKlientow.setHeight("300px");
-		dataGridListaKlientow.addColumn(checkColumn, "*");	
+		dataGridListaKlientow.addColumn(checkColumn, "*");
 		dataGridListaKlientow.addColumn(textColumnImie, "IMIE");
 		dataGridListaKlientow.addColumn(textColumnNazwisko, "NAZWISKO");
 		dataGridListaKlientow.addColumn(textColumnUlica, "ULICA");
@@ -209,34 +209,26 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getProduktDTO().getJednostka().toString();
+				return pozycjaDTO.getProduktDTO().getJednostka().getSkrotJednostki();
 			}
 		};
 
-		TextColumn<PozycjaDTO> textColumnJednostkaPodstawowa = new TextColumn<PozycjaDTO>() {
-
-			@Override
-			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getUslugaDTO().getJednostkaPodstawowaVAT();
-			}
-		};
 		TextColumn<PozycjaDTO> textColumnVat = new TextColumn<PozycjaDTO>() {
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getProduktDTO().getVat();
+				return pozycjaDTO.getVat();
 			}
 		};
 		dataGridListaPozycji.setWidth("100%");
 		dataGridListaPozycji.setHeight("300px");
 		dataGridListaPozycji.addColumn(checkColumn, "*");
-		dataGridListaPozycji.addColumn(textColumnNazwa, "NAZWA");
 		dataGridListaPozycji.addColumn(textColumnTyp, "TYP");
-		dataGridListaPozycji.addColumn(textColumnCena, "CENA");
-		dataGridListaPozycji.addColumn(textColumnCenaZaGodzine, "CENA ZA GODZINE");
+		dataGridListaPozycji.addColumn(textColumnNazwa, "NAZWA");
+		dataGridListaPozycji.addColumn(textColumnCena, "CENA(zł)");
+		dataGridListaPozycji.addColumn(textColumnCenaZaGodzine, "CENA ZA GODZINE(zł/h)");
 		dataGridListaPozycji.addColumn(textColumnJednostka, "JEDNOSTKA");
-		dataGridListaPozycji.addColumn(textColumnVat, "VAT");
-		dataGridListaPozycji.addColumn(textColumnJednostkaPodstawowa, "JEDNOSTKA PODSTAWOWA VAT");
+		dataGridListaPozycji.addColumn(textColumnVat, "VAT(%)");
 	}
 
 	public DataGrid<PozycjaDTO> getDataGridListaPozycji() {

@@ -17,27 +17,40 @@ public class Produkt extends Pozycja {
 
 	@Column(name = "jednostka")
 	private String jednostka;
-
-	@Column(name = "vat")
-	private String vat;
+	//
+	// @Column(name = "vat")
+	// private String vat;
 
 	public Produkt() {
 		super();
 	}
 
-	public Produkt(String nazwa, Faktura faktura, String cena, String jednostka, String vat) {
-		super(nazwa, faktura);
+	public Produkt(String nazwa, Faktura faktura, String vat, String cena, String jednostka) {
+		super(nazwa, faktura, vat);
 		this.cena = cena;
 		this.jednostka = jednostka;
-		this.vat = vat;
 	}
 
-	public Produkt(String nazwa, String cena, String jednostka, String vat) {
-		super(nazwa);
+	public Produkt(String nazwa, String vat, String cena, String jednostka) {
+		super(nazwa, vat);
 		this.cena = cena;
 		this.jednostka = jednostka;
-		this.vat = vat;
 	}
+
+	// public Produkt(String nazwa, Faktura faktura, String cena, String
+	// jednostka, String vat) {
+	// super(nazwa, faktura);
+	// this.cena = cena;
+	// this.jednostka = jednostka;
+	// this.vat = vat;
+	// }
+	//
+	// public Produkt(String nazwa, String cena, String jednostka, String vat) {
+	// super(nazwa);
+	// this.cena = cena;
+	// this.jednostka = jednostka;
+	// this.vat = vat;
+	// }
 
 	public String getCena() {
 		return cena;
@@ -47,11 +60,11 @@ public class Produkt extends Pozycja {
 		return jednostka;
 	}
 
-	public String getVat() {
-		return vat;
-	}
+	// public String getVat() {
+	// return vat;
+	// }
 
 	public PozycjaDTO stworzPozycjaDTO() {
-		return new PozycjaDTO(getNazwa(), new ProduktDTO(getCena(), Jednostka.valueOf(getJednostka()), getVat()));
+		return new PozycjaDTO(getNazwa(),getVat(), new ProduktDTO(getCena(), Jednostka.valueOf(getJednostka())));
 	}
 }

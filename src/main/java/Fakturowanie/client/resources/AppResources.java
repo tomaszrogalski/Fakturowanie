@@ -22,8 +22,10 @@ public interface AppResources extends ClientBundle {
 		String wyswietl_html_panel();
 
 		String label();
-
-		String error_i_dodaj_html_panel();
+		
+		String error_page();
+ 
+		String dodaj_html_panel();
 
 		String horizontal_panel_buttony();
 

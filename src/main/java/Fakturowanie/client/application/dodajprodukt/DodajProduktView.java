@@ -1,6 +1,8 @@
 package Fakturowanie.client.application.dodajprodukt;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
@@ -54,7 +56,7 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 	});
 
 	@UiField
-	@Path("produktDTO.vat")
+	@Path("vat")
 	TextBox textBoxVAT;
 
 	@UiField
@@ -64,9 +66,14 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 	DodajProduktView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 		driver.initialize(this);
-		driver.edit(new PozycjaDTO(null, new ProduktDTO(null, null, null)));
+		driver.edit(new PozycjaDTO(null, null, new ProduktDTO(null, null)));
 		valueListBoxJednostka.setValue(Jednostka.KILOGRAM);
-		valueListBoxJednostka.setAcceptableValues(java.util.Arrays.asList(Jednostka.values()));
+
+		List<Jednostka> listaJednostek = new ArrayList<Jednostka>();
+		listaJednostek.addAll(java.util.Arrays.asList(Jednostka.values()));
+		listaJednostek.remove(Jednostka.BRAK);
+
+		valueListBoxJednostka.setAcceptableValues(listaJednostek);
 	}
 
 	public PozycjaDTO odbierzZawartoscTextBoxow() {
@@ -78,7 +85,7 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 	void dodajClick(ClickEvent e) {
 
 		getUiHandlers().buttonAkcjaDodajProdukt();
-		driver.edit(new PozycjaDTO(null, new ProduktDTO(null, null, null)));
+		driver.edit(new PozycjaDTO(null, null, new ProduktDTO(null, null)));
 	}
 
 }

@@ -35,7 +35,7 @@ class DodajUslugeView extends ViewWithUiHandlers<DodajUslugeUiHandlers>
 	TextBox textBoxCenaZaGodzine;
 
 	@UiField
-	@Path("uslugaDTO.jednostkaPodstawowaVAT")
+	@Path("vat")
 	TextBox textBoxJednostkaPodstawowaVAT;
 
 	@UiField
@@ -46,7 +46,7 @@ class DodajUslugeView extends ViewWithUiHandlers<DodajUslugeUiHandlers>
 		initWidget(uiBinder.createAndBindUi(this));
 		driver.initialize(this);
 		textBoxJednostkaPodstawowaVAT.setEnabled(false);
-		driver.edit(new PozycjaDTO(null, new UslugaDTO(null, "23%")));
+		driver.edit(new PozycjaDTO(null, "23", new UslugaDTO(null)));
 	}
 
 	public PozycjaDTO odbierzZawartoscTextBoxow() {
@@ -60,7 +60,8 @@ class DodajUslugeView extends ViewWithUiHandlers<DodajUslugeUiHandlers>
 	void dodajClick(ClickEvent e) {
 
 		getUiHandlers().buttonAkcjaDodajUsluge();
-		driver.edit(new PozycjaDTO(null, new UslugaDTO(null, "23%")));
+		driver.edit(new PozycjaDTO(null, "23", new UslugaDTO(null)));
+	
 	}
 
 }

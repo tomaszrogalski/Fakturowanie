@@ -4,7 +4,7 @@
 
 	<ui:with field="resources" type="Fakturowanie.client.resources.AppResources" />
 
-	<g:HTMLPanel styleName="{resources.style.error_i_dodaj_html_panel}">
+	<g:HTMLPanel styleName="{resources.style.error_page}">
 		<hr />
 		<h1>ERROR</h1>
 		<hr />

@@ -9,6 +9,8 @@ public class PozycjaDTO {
 
 	private String nazwa;
 
+	private String vat;
+
 	private TypPozycji typ;
 
 	private ProduktDTO produktDTO;
@@ -21,23 +23,22 @@ public class PozycjaDTO {
 		super();
 	}
 
-	public PozycjaDTO(String nazwa, UslugaDTO uslugaDTO) {
+	public PozycjaDTO(String nazwa, String vat, UslugaDTO uslugaDTO) {
 		super();
 		this.nazwa = nazwa;
+		this.vat = vat;
 		this.uslugaDTO = uslugaDTO;
-		produktDTO = new ProduktDTO(null, null, null);
-//		Window.alert(produktDTO.toString());
-		wyliczTyp();
-
+		this.produktDTO = new ProduktDTO("-", Jednostka.BRAK);
+		this.typ = TypPozycji.USLUGA;
 	}
 
-	public PozycjaDTO(String nazwa, ProduktDTO produktDTO) {
+	public PozycjaDTO(String nazwa, String vat, ProduktDTO produktDTO) {
 		super();
 		this.nazwa = nazwa;
+		this.vat = vat;
 		this.produktDTO = produktDTO;
-		uslugaDTO = new UslugaDTO(null, null);
-		wyliczTyp();
-//		Window.alert(uslugaDTO.toString());
+		this.uslugaDTO = new UslugaDTO("-");
+		this.typ = TypPozycji.PRODUKT;
 	}
 
 	/////////////////////////////////
@@ -70,6 +71,14 @@ public class PozycjaDTO {
 		return produktDTO;
 	}
 
+	public String getVat() {
+		return vat;
+	}
+
+	public void setVat(String vat) {
+		this.vat = vat;
+	}
+
 	public void setProduktDTO(ProduktDTO produktDTO) {
 		this.produktDTO = produktDTO;
 	}
@@ -82,40 +91,33 @@ public class PozycjaDTO {
 		this.uslugaDTO = uslugaDTO;
 	}
 
-	public void wyliczTyp() {
-		if (uslugaDTO.czyJestemPusty()) {
-			setTyp(TypPozycji.PRODUKT);
-		} else if (produktDTO.czyJestemPusty()) {
-			setTyp(TypPozycji.USLUGA);
-		}
-	}
-
 	public String toStringProdukt() {
-		return "Nazwa: " + nazwa + ", " + "Typ: " + typ + ", " + getProduktDTO().toString();
+		return "Typ: " + typ + ", " + "Nazwa: " + nazwa + ", " + "VAT: " + vat + "%, " + getProduktDTO().toString();
 	}
 
 	public String toStringUsluga() {
-		return "Nazwa: " + nazwa + ", " + "Typ: " + typ + ", " + getUslugaDTO().toString();
+		return "Typ: " + typ + ", " + "Nazwa: " + nazwa + ", " + "VAT: " + vat + "%, " + getUslugaDTO().toString();
 	}
 
 	@Override
 	public String toString() {
-		if (uslugaDTO.czyJestemPusty()) {
+		if (typ == TypPozycji.PRODUKT) {
 			return toStringProdukt();
-		} else {
+		} else if (typ == TypPozycji.USLUGA) {
 			return toStringUsluga();
+		} else {
+			return "BLEDY, WSZEDZIE BLEDY";
 		}
 	}
 
 	public Produkt stworzProdukt() {
-		Produkt produkt = new Produkt(getNazwa(), getProduktDTO().getCena(), getProduktDTO().getJednostka().toString(),
-				getProduktDTO().getVat());
+		Produkt produkt = new Produkt(getNazwa(), getVat(), getProduktDTO().getCena(),
+				getProduktDTO().getJednostka().toString());
 		return produkt;
 	}
 
 	public Usluga stworzUsluge() {
-		Usluga usluga = new Usluga(getNazwa(), getUslugaDTO().getCenaZaGodzine(),
-				getUslugaDTO().getJednostkaPodstawowaVAT());
+		Usluga usluga = new Usluga(getNazwa(), getVat(), getUslugaDTO().getCenaZaGodzine());
 		return usluga;
 	}
 }

@@ -99,7 +99,13 @@ h1 {
 	padding-bottom: 1%;
 }
 
-.error_i_dodaj_html_panel {
+.error_page {
+	background-color: #C0C0C0;
+	width: 100%;
+	height: 100%;
+}
+
+.dodaj_html_panel {
 	padding-top: 1%;
 	background-color: #C0C0C0;
 	width: 100%;
@@ -108,6 +114,9 @@ h1 {
 
 .label {
 	width: 150px;
+	height: 20px;
+	padding-top: 3px;
+	margin-left: 3px;
 }
 
 .dodaj_horizontal_panel {

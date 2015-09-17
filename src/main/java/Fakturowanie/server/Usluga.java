@@ -14,35 +14,43 @@ public class Usluga extends Pozycja {
 	@Column(name = "cena_za_godzine")
 	private String cenaZaGodzine;
 
-	@Column(name = "jednostka_podstawowa_vat")
-	private String jednostkaPodstawowaVAT;
+	// @Column(name = "jednostka_podstawowa_vat")
+	// private String jednostkaPodstawowaVAT;
 
-	public Usluga(String nazwa, String cenaZaGodzine, String jednostkaPodstawowaVAT) {
-		super(nazwa);
-		this.cenaZaGodzine = cenaZaGodzine;
-		this.jednostkaPodstawowaVAT = jednostkaPodstawowaVAT;
-	}
-	
-	public Usluga(String nazwa, Faktura faktura, String cenaZaGodzine, String jednostkaPodstawowaVAT) {
-		super(nazwa, faktura);
-		this.cenaZaGodzine = cenaZaGodzine;
-		this.jednostkaPodstawowaVAT = jednostkaPodstawowaVAT;
-	}
+	// public Usluga(String nazwa, String cenaZaGodzine, String
+	// jednostkaPodstawowaVAT) {
+	// super(nazwa);
+	// this.cenaZaGodzine = cenaZaGodzine;
+	// this.jednostkaPodstawowaVAT = jednostkaPodstawowaVAT;
+	// }
+	//
+	// public Usluga(String nazwa, Faktura faktura, String cenaZaGodzine, String
+	// jednostkaPodstawowaVAT) {
+	// super(nazwa, faktura);
+	// this.cenaZaGodzine = cenaZaGodzine;
+	// this.jednostkaPodstawowaVAT = jednostkaPodstawowaVAT;
+	// }
 
 	public Usluga() {
 		super();
+	}
+
+	public Usluga(String nazwa, String vat, String cenaZaGodzine) {
+		super(nazwa, vat);
+		this.cenaZaGodzine = cenaZaGodzine;
+	}
+
+	public Usluga(String nazwa, Faktura faktura, String vat, String cenaZaGodzine) {
+		super(nazwa, faktura, vat);
+		this.cenaZaGodzine = cenaZaGodzine;
 	}
 
 	public String getCenaZaGodzine() {
 		return cenaZaGodzine;
 	}
 
-	public String getJednostkaPodstawowaVAT() {
-		return jednostkaPodstawowaVAT;
-	}
-
 	public PozycjaDTO stworzPozycjaDTO() {
 
-		return new PozycjaDTO(getNazwa(), new UslugaDTO(getCenaZaGodzine(), getJednostkaPodstawowaVAT()));
+		return new PozycjaDTO(getNazwa(),getVat(), new UslugaDTO(getCenaZaGodzine()));
 	}
 }

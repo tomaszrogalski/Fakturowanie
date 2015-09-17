@@ -4,7 +4,7 @@
 
 	<ui:with field="resources" type="Fakturowanie.client.resources.AppResources" />
 
-	<g:HTMLPanel styleName="{resources.style.error_i_dodaj_html_panel}">
+	<g:HTMLPanel styleName="{resources.style.dodaj_html_panel}">
 		<h1>DODAJ PRODUKT</h1>
 		<hr />
 
@@ -16,6 +16,7 @@
 		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
 			<g:Label text="CENA" styleName="{resources.style.label}" />
 			<g:TextBox ui:field="textBoxCena" />
+			<g:Label text="ZŁ" styleName="{resources.style.label}" />
 		</g:HorizontalPanel>
 
 		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
@@ -26,6 +27,7 @@
 		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
 			<g:Label text="VAT" styleName="{resources.style.label}" />
 			<g:TextBox ui:field="textBoxVAT" />
+			<g:Label text="%" styleName="{resources.style.label}" />
 		</g:HorizontalPanel>
 
 		<hr />

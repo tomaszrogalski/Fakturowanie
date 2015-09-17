@@ -76,34 +76,26 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getProduktDTO().getJednostka().toString();
+				return pozycjaDTO.getProduktDTO().getJednostka().getSkrotJednostki();
 			}
 		};
 
-		TextColumn<PozycjaDTO> textColumnJednostkaPodstawowa = new TextColumn<PozycjaDTO>() {
-
-			@Override
-			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getUslugaDTO().getJednostkaPodstawowaVAT();
-			}
-		};
 		TextColumn<PozycjaDTO> textColumnVat = new TextColumn<PozycjaDTO>() {
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getProduktDTO().getVat();
+				return pozycjaDTO.getVat();
 			}
 		};
 
 		dataGridWyswietlPozycje.setWidth("100%");
 		dataGridWyswietlPozycje.setHeight("300px");
-		dataGridWyswietlPozycje.addColumn(textColumnNazwa, "NAZWA");
 		dataGridWyswietlPozycje.addColumn(textColumnTyp, "TYP");
-		dataGridWyswietlPozycje.addColumn(textColumnCena, "CENA");
-		dataGridWyswietlPozycje.addColumn(textColumnCenaZaGodzine, "CENA ZA GODZINE");
+		dataGridWyswietlPozycje.addColumn(textColumnNazwa, "NAZWA");
+		dataGridWyswietlPozycje.addColumn(textColumnCena, "CENA(zł)");
+		dataGridWyswietlPozycje.addColumn(textColumnCenaZaGodzine, "CENA ZA GODZINE(zł/h)");
 		dataGridWyswietlPozycje.addColumn(textColumnJednostka, "JEDNOSTKA");
-		dataGridWyswietlPozycje.addColumn(textColumnVat, "VAT");
-		dataGridWyswietlPozycje.addColumn(textColumnJednostkaPodstawowa, "JEDNOSTKA PODSTAWOWA VAT");
+		dataGridWyswietlPozycje.addColumn(textColumnVat, "VAT(%)");
 
 	}
 

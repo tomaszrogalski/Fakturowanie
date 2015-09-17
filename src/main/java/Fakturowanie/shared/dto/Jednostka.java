@@ -1,5 +1,16 @@
 package Fakturowanie.shared.dto;
 
 public enum Jednostka {
-	CENTYMETR, KILOGRAM, SZTUKI, LITRY;
+	CENTYMETR("cm"), KILOGRAM("Kg"), SZTUKI("Sztuki"), LITR("l"), BRAK("-");
+
+	private String skrotJednostki;
+
+	private Jednostka(String skrotJednostki) {
+		this.skrotJednostki = skrotJednostki;
+	}
+
+	public String getSkrotJednostki() {
+		return skrotJednostki;
+	}
+
 }

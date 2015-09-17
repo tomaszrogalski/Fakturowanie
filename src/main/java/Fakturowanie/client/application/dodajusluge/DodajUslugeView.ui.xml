@@ -3,7 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:with field="resources" type="Fakturowanie.client.resources.AppResources" />
 	
-	<g:HTMLPanel styleName="{resources.style.error_i_dodaj_html_panel}">
+	<g:HTMLPanel styleName="{resources.style.dodaj_html_panel}">
 		<h1>DODAJ USLUGE</h1>
 		<hr />
 
@@ -15,11 +15,13 @@
 		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
 			<g:Label text="CENA/H" styleName="{resources.style.label}"/>
 			<g:TextBox ui:field="textBoxCenaZaGodzine"/>
+			<g:Label text=" ZŁ/GODZINE" styleName="{resources.style.label}"/>
 		</g:HorizontalPanel>
 
 		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
-			<g:Label text="JEDNOSTKA PODSTAWOWA VAT" styleName="{resources.style.label}"/>
+			<g:Label text="VAT" styleName="{resources.style.label}"/>
 			<g:TextBox ui:field="textBoxJednostkaPodstawowaVAT"/>
+			<g:Label text=" %" styleName="{resources.style.label}"/>
 		</g:HorizontalPanel>
 		<hr />
 

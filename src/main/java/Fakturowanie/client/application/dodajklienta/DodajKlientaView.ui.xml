@@ -3,7 +3,7 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:with field="resources" type="Fakturowanie.client.resources.AppResources" />
 
-	<g:HTMLPanel styleName="{resources.style.error_i_dodaj_html_panel}">
+	<g:HTMLPanel styleName="{resources.style.dodaj_html_panel}">
 		<h1>DODAJ KLIENTA</h1>
 		<hr />
 

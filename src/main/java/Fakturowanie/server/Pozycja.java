@@ -32,6 +32,17 @@ public class Pozycja {
 	@JoinColumn(name = "nr_faktury")
 	private Faktura faktura;
 
+	@Column(name = "vat")
+	private String vat;
+
+	public String getVat() {
+		return vat;
+	}
+
+	public void setVat(String vat) {
+		this.vat = vat;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -46,6 +57,21 @@ public class Pozycja {
 
 	public void setNazwa(String nazwa) {
 		this.nazwa = nazwa;
+	}
+	
+	
+
+	public Pozycja(String nazwa, String vat) {
+		super();
+		this.nazwa = nazwa;
+		this.vat = vat;
+	}
+
+	public Pozycja(String nazwa, Faktura faktura, String vat) {
+		super();
+		this.nazwa = nazwa;
+		this.faktura = faktura;
+		this.vat = vat;
 	}
 
 	public Pozycja(String nazwa, Faktura faktura) {
