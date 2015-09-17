@@ -53,6 +53,8 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 	@Ignore
 	Label errorLabel;
 
+	CheckboxCell checkBoxCell = new CheckboxCell();
+
 	SingleSelectionModel<KlientDTO> simpleSelectionModel = new SingleSelectionModel<KlientDTO>();
 
 	MultiSelectionModel<PozycjaDTO> multiSelectionModel = new MultiSelectionModel<PozycjaDTO>();
@@ -103,9 +105,10 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 
 		///////// Zrobione na podstawie:
 		///////// http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwDataGrid
-		dataGridListaKlientow.setSelectionModel(simpleSelectionModel);
+		dataGridListaKlientow.setSelectionModel(simpleSelectionModel,
+				DefaultSelectionEventManager.<KlientDTO> createCheckboxManager());
 
-		Column<KlientDTO, Boolean> checkColumn = new Column<KlientDTO, Boolean>(new CheckboxCell(true, false)) {
+		Column<KlientDTO, Boolean> checkColumn = new Column<KlientDTO, Boolean>(checkBoxCell) {
 
 			@Override
 			public Boolean getValue(KlientDTO object) {
