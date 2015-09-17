@@ -9,10 +9,13 @@ import com.google.gwt.validation.client.impl.AbstractGwtValidator;
 
 import Fakturowanie.shared.dto.AdresDTO;
 import Fakturowanie.shared.dto.KlientDTO;
+import Fakturowanie.shared.dto.PozycjaDTO;
+import Fakturowanie.shared.dto.ProduktDTO;
+import Fakturowanie.shared.dto.UslugaDTO;
 
 public final class SampleValidatorFactory extends AbstractGwtValidatorFactory {
 
-	@GwtValidation(value = { KlientDTO.class, AdresDTO.class })
+	@GwtValidation(value = { KlientDTO.class, AdresDTO.class,PozycjaDTO.class,UslugaDTO.class,ProduktDTO.class })
 	public interface GwtValidator extends Validator {
 		
 	}

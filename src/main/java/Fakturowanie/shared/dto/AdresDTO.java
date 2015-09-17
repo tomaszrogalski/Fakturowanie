@@ -2,17 +2,17 @@ package Fakturowanie.shared.dto;
 
 import javax.validation.constraints.NotNull;
 
-import Fakturowanie.server.Adres;
+import Fakturowanie.server.model.Adres;
 
 public class AdresDTO {
 	@NotNull(message = "Kod pocztowy nie może być pusty.")
 	private String kodPocztowy;
-	
+
 	private String ulica;
-	
+
 	@NotNull(message = "Nr domu nie może być pusty.")
 	private String nrDomu;
-	
+
 	@NotNull(message = "Miejscowosc nie może być pusta.")
 	private String miejscowosc;
 
@@ -64,7 +64,7 @@ public class AdresDTO {
 		this.miejscowosc = miejscowosc;
 	}
 
-	public Adres stworzAdres(){
+	public Adres stworzAdres() {
 		Adres adres = new Adres(getUlica(), getNrDomu(), getKodPocztowy(), getMiejscowosc());
 		return adres;
 	}

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.google.gwt.cell.client.CheckboxCell;
+import com.google.gwt.editor.client.Editor.Ignore;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -15,6 +16,7 @@ import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.DefaultSelectionEventManager;
 import com.google.gwt.view.client.MultiSelectionModel;
@@ -47,6 +49,10 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 	@UiField
 	HTMLPanel htmlPanelDodajPozycje;
 
+	@UiField
+	@Ignore
+	Label errorLabel;
+
 	SingleSelectionModel<KlientDTO> simpleSelectionModel = new SingleSelectionModel<KlientDTO>();
 
 	MultiSelectionModel<PozycjaDTO> multiSelectionModel = new MultiSelectionModel<PozycjaDTO>();
@@ -72,8 +78,12 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 
 	@UiHandler("buttonDodajNowaFakture")
 	void dodajFakture(ClickEvent e) {
-		getUiHandlers().buttonAkcjaDodajFakture();
-
+		if (waliduj()) {
+			getUiHandlers().buttonAkcjaDodajFakture();
+			errorLabel.setText("");
+		} else {
+			errorLabel.setText("Zaznacz minimum 1 pozycje i mininum 1 klienta");
+		}
 	}
 
 	public FakturaDTO odbierzZawartoscZGridITextBoxa() {
@@ -100,6 +110,7 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 			@Override
 			public Boolean getValue(KlientDTO object) {
 				return simpleSelectionModel.isSelected(object);
+
 			}
 			/////////
 		};
@@ -194,15 +205,22 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-
-				return pozycjaDTO.getProduktDTO().getCena();
+				if (pozycjaDTO.getProduktDTO().getCena() == 0.0) {
+					return "-";
+				} else {
+					return pozycjaDTO.getProduktDTO().getCena().toString();
+				}
 			}
 		};
 		TextColumn<PozycjaDTO> textColumnCenaZaGodzine = new TextColumn<PozycjaDTO>() {
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getUslugaDTO().getCenaZaGodzine().toString();
+				if (pozycjaDTO.getUslugaDTO().getCenaZaGodzine() == 0.0) {
+					return "-";
+				} else {
+					return pozycjaDTO.getUslugaDTO().getCenaZaGodzine().toString();
+				}
 			}
 		};
 		TextColumn<PozycjaDTO> textColumnJednostka = new TextColumn<PozycjaDTO>() {
@@ -217,7 +235,7 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getVat();
+				return pozycjaDTO.getVat().toString();
 			}
 		};
 		dataGridListaPozycji.setWidth("100%");
@@ -239,4 +257,11 @@ class DodajFaktureView extends ViewWithUiHandlers<DodajFaktureUiHandlers>impleme
 		return dataGridListaKlientow;
 	}
 
+	private boolean waliduj() {
+		if (simpleSelectionModel.getSelectedObject() != null && !multiSelectionModel.getSelectedSet().isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

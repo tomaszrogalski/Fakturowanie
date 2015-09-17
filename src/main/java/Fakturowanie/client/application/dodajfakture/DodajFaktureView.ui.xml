@@ -11,8 +11,13 @@
 		<hr />
 
 		<c:DataGrid ui:field="dataGridListaKlientow" />
-		<hr />
 
+		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
+			<g:Label text="" styleName="{resources.style.errorLabel}"
+				ui:field="errorLabel" />
+		</g:HorizontalPanel>
+		<hr />
+		
 		<g:HorizontalPanel styleName="{resources.style.horizontal_panel_buttony}">
 			<g:Button text="DODAJ PRODUKT" ui:field="buttonDodajNowyProdukt"
 				styleName="{resources.style.buttony_wyswietl_dodaj}" />

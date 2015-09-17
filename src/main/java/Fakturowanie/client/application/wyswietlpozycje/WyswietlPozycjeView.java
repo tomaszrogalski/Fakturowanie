@@ -61,15 +61,23 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-
-				return pozycjaDTO.getProduktDTO().getCena();
+				if (pozycjaDTO.getProduktDTO().getCena() == 0.0) {
+					return "-";
+				} else {
+					return pozycjaDTO.getProduktDTO().getCena().toString();
+				}
 			}
 		};
 		TextColumn<PozycjaDTO> textColumnCenaZaGodzine = new TextColumn<PozycjaDTO>() {
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getUslugaDTO().getCenaZaGodzine().toString();
+				if (pozycjaDTO.getUslugaDTO().getCenaZaGodzine() == 0.0) {
+					return "-";
+				} else {
+					return pozycjaDTO.getUslugaDTO().getCenaZaGodzine().toString();
+				}
+
 			}
 		};
 		TextColumn<PozycjaDTO> textColumnJednostka = new TextColumn<PozycjaDTO>() {
@@ -84,7 +92,7 @@ class WyswietlPozycjeView extends ViewWithUiHandlers<WyswietlPozycjeUiHandlers>
 
 			@Override
 			public String getValue(PozycjaDTO pozycjaDTO) {
-				return pozycjaDTO.getVat();
+				return pozycjaDTO.getVat().toString();
 			}
 		};
 

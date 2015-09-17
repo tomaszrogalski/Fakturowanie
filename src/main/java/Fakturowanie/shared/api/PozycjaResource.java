@@ -28,5 +28,4 @@ public interface PozycjaResource {
 	@POST
 	@Path("/wczytaj")
 	public RestAction<List<PozycjaDTO>> wczytaj();
-
 }

@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import Fakturowanie.server.Klient;
+import Fakturowanie.server.model.Klient;
 import Fakturowanie.shared.dto.KlientDTO;
 
 @Stateless

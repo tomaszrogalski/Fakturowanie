@@ -12,5 +12,4 @@ public enum Jednostka {
 	public String getSkrotJednostki() {
 		return skrotJednostki;
 	}
-
 }

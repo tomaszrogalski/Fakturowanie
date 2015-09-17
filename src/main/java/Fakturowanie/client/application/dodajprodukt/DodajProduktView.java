@@ -3,6 +3,12 @@ package Fakturowanie.client.application.dodajprodukt;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
@@ -13,6 +19,8 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DoubleBox;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.ValueListBox;
 import com.google.gwt.user.client.ui.Widget;
@@ -31,15 +39,21 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 	interface Driver extends SimpleBeanEditorDriver<PozycjaDTO, DodajProduktView> {
 	}
 
+	private ValidatorFactory factory = Validation.byDefaultProvider().configure().buildValidatorFactory();
+	Validator validator = this.factory.getValidator();
+
 	Driver driver = GWT.create(Driver.class);
+
 	@UiField
 	@Path("nazwa")
 	TextBox textBoxNazwa;
 
 	@UiField
 	@Path("produktDTO.cena")
-	TextBox textBoxCena;
+	DoubleBox doubleBoxCena;
 
+	// Zrodlo:
+	// Poprzedni projekt, internet
 	@UiField(provided = true)
 	@Path("produktDTO.jednostka")
 	ValueListBox<Jednostka> valueListBoxJednostka = new ValueListBox<Jednostka>(new Renderer<Jednostka>() {
@@ -57,16 +71,27 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 
 	@UiField
 	@Path("vat")
-	TextBox textBoxVAT;
+	DoubleBox doubleBoxVAT;
 
 	@UiField
 	Button buttonDodaj;
+
+	@UiField
+	@Ignore
+	Label errorLabel;
 
 	@Inject
 	DodajProduktView(Binder uiBinder) {
 		initWidget(uiBinder.createAndBindUi(this));
 		driver.initialize(this);
 		driver.edit(new PozycjaDTO(null, null, new ProduktDTO(null, null)));
+
+		ustawPlaceHoldery();
+
+		zapelnijValueListBox();
+	}
+
+	private void zapelnijValueListBox() {
 		valueListBoxJednostka.setValue(Jednostka.KILOGRAM);
 
 		List<Jednostka> listaJednostek = new ArrayList<Jednostka>();
@@ -74,6 +99,14 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 		listaJednostek.remove(Jednostka.BRAK);
 
 		valueListBoxJednostka.setAcceptableValues(listaJednostek);
+
+	}
+
+	private void ustawPlaceHoldery() {
+		textBoxNazwa.getElement().setPropertyString("placeholder", "Nazwa");
+		doubleBoxCena.getElement().setPropertyString("placeholder", "0.0");
+		doubleBoxVAT.getElement().setPropertyString("placeholder", "0.0");
+
 	}
 
 	public PozycjaDTO odbierzZawartoscTextBoxow() {
@@ -83,9 +116,30 @@ class DodajProduktView extends ViewWithUiHandlers<DodajProduktUiHandlers>
 
 	@UiHandler("buttonDodaj")
 	void dodajClick(ClickEvent e) {
-
-		getUiHandlers().buttonAkcjaDodajProdukt();
-		driver.edit(new PozycjaDTO(null, null, new ProduktDTO(null, null)));
+		if (waliduj()) {
+			getUiHandlers().buttonAkcjaDodajProdukt();
+			driver.edit(new PozycjaDTO(null, null, new ProduktDTO(null, null)));
+		}
 	}
 
+	private boolean waliduj() {
+		PozycjaDTO pozycjaDTO = driver.flush();
+		Set<ConstraintViolation<PozycjaDTO>> violations = validator.validate(pozycjaDTO);
+		Set<ConstraintViolation<ProduktDTO>> violations2 = validator.validate(pozycjaDTO.getProduktDTO());
+		StringBuilder builder = new StringBuilder();
+		for (ConstraintViolation<PozycjaDTO> violation : violations) {
+			builder.append(violation.getMessage());
+		}
+		for (ConstraintViolation<ProduktDTO> violation : violations2) {
+			builder.append(violation.getMessage());
+		}
+
+		errorLabel.setText(builder.toString());
+
+		if (violations.isEmpty() && violations2.isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

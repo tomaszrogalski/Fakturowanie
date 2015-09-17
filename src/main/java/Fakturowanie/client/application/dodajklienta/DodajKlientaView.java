@@ -74,6 +74,18 @@ class DodajKlientaView extends ViewWithUiHandlers<DodajKlientaUiHandlers>
 		initWidget(uiBinder.createAndBindUi(this));
 		driver.initialize(this);
 		driver.edit(new KlientDTO(null, null, new AdresDTO(null, null, null, null)));
+
+		ustawPlaceHoldery();
+	}
+
+	private void ustawPlaceHoldery() {
+		textBoxImie.getElement().setPropertyString("placeholder", "Imie");
+		textBoxNazwisko.getElement().setPropertyString("placeholder", "Nazwisko");
+		textBoxUlica.getElement().setPropertyString("placeholder", "Ulica");
+		textBoxMiejscowosc.getElement().setPropertyString("placeholder", "Miejscowosc");
+		textBoxKodPocztowy.getElement().setPropertyString("placeholder", "Kod pocztowy(00-000)");
+		textBoxNrDomu.getElement().setPropertyString("placeholder", "NrDomu");
+
 	}
 
 	public KlientDTO odbierzZawartoscTextBoxow() {

@@ -7,11 +7,11 @@
 	<persistence-unit name="cwiczenie2" transaction-type="JTA">
 		<jta-data-source>java:/PostgresDS</jta-data-source>
 
-		<class>Fakturowanie.server.Faktura</class>
-		<class>Fakturowanie.server.Klient</class>
-		<class>Fakturowanie.server.Pozycja</class>
-		<class>Fakturowanie.server.Produkt</class>
-		<class>Fakturowanie.server.Usluga</class>
+		<class>Fakturowanie.server.model.Faktura</class>
+		<class>Fakturowanie.server.model.Klient</class>
+		<class>Fakturowanie.server.model.Pozycja</class>
+		<class>Fakturowanie.server.model.Produkt</class>
+		<class>Fakturowanie.server.model.Usluga</class>
 		
 		<properties>
 

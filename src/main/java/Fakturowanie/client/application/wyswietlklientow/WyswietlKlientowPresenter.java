@@ -81,11 +81,6 @@ public class WyswietlKlientowPresenter
 	@Override
 	public void onDodajDodanegoKlientaDoGrida(DodajDodanegoKlientaDoGridaEvent event) {
 		
-//		List<KlientDTO> listaKlientow = new ArrayList<>();
-//		listaKlientow.addAll(getView().getDataGridWyswietlKlientow().getVisibleItems());
-//		listaKlientow.add(event.getKlientDTO());
-//		getView().getDataGridWyswietlKlientow().setRowData(listaKlientow);
-		
 		dispatcher.execute(klientResource.wczytajOstatnioDodanego(), new AsyncCallback<KlientDTO>() {
 
 			@Override
@@ -95,7 +90,6 @@ public class WyswietlKlientowPresenter
 
 			@Override
 			public void onSuccess(KlientDTO result) {
-				//tu chciałbym aby do datagrida dodawany byl 1 element nie nadpisywany jaka metoda???
 				List<KlientDTO> listaKlientow = new ArrayList<>();
 				listaKlientow.addAll(getView().getDataGridWyswietlKlientow().getVisibleItems());
 				listaKlientow.add(result);

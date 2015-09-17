@@ -8,10 +8,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import Fakturowanie.server.Faktura;
-import Fakturowanie.server.Pozycja;
-import Fakturowanie.server.Produkt;
-import Fakturowanie.server.Usluga;
+import Fakturowanie.server.model.Faktura;
+import Fakturowanie.server.model.Pozycja;
+import Fakturowanie.server.model.Produkt;
+import Fakturowanie.server.model.Usluga;
 import Fakturowanie.shared.dto.FakturaDTO;
 import Fakturowanie.shared.dto.PozycjaDTO;
 

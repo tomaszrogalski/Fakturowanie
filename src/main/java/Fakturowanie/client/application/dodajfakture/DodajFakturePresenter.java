@@ -168,12 +168,11 @@ public class DodajFakturePresenter extends Presenter<DodajFakturePresenter.MyVie
 
 			@Override
 			public void onSuccess(KlientDTO result) {
-				//tu chciałbym aby do datagrida dodawany byl 1 element nie nadpisywany jaka metoda???
 				List<KlientDTO> listaKlientow = new ArrayList<>();
 				listaKlientow.addAll(getView().getDataGridListaKlientow().getVisibleItems());
 				listaKlientow.add(result);
 				getView().getDataGridListaKlientow().setRowData(listaKlientow);
-				
+	
 			}
 		});
 		

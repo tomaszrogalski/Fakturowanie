@@ -1,13 +1,17 @@
 package Fakturowanie.shared.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class UslugaDTO {
 
-	private String cenaZaGodzine;
-
+	@NotNull(message = "Cena/h nie może być pusta. ")
+	@Min(value = 0, message = "Cena/h musi być cyfra > 0. ")
+	private Double cenaZaGodzine;
 
 	/////////////////////////////////
 
-	public UslugaDTO(String cenaZaGodzine) {
+	public UslugaDTO(Double cenaZaGodzine) {
 
 		this.cenaZaGodzine = cenaZaGodzine;
 	}
@@ -18,18 +22,17 @@ public class UslugaDTO {
 
 	/////////////////////////////////
 
-	public String getCenaZaGodzine() {
+	public Double getCenaZaGodzine() {
 		return cenaZaGodzine;
 	}
 
-	
-	public void setCenaZaGodzine(String cenaZaGodzine) {
+	public void setCenaZaGodzine(Double cenaZaGodzine) {
 		this.cenaZaGodzine = cenaZaGodzine;
 	}
 
 	@Override
 	public String toString() {
-		return "CenaZaGodzine: " + cenaZaGodzine+"zł/h";
+		return "CenaZaGodzine: " + cenaZaGodzine + "zł/h";
 	}
 
 }

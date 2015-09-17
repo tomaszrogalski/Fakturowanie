@@ -1,15 +1,23 @@
 package Fakturowanie.shared.dto;
 
-import Fakturowanie.server.Produkt;
-import Fakturowanie.server.Usluga;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import Fakturowanie.server.model.Produkt;
+import Fakturowanie.server.model.Usluga;
 
 public class PozycjaDTO {
 
 	private Long id;
 
+	@NotNull(message = "Nazwa nie może być pusta.")
 	private String nazwa;
 
-	private String vat;
+	@NotNull(message = "Vat nie może być pusty. ")
+	@Min(value = 0, message = "Vat musi być >0. ")
+	@Max(value = 100, message = "Vat musi być <100. ")
+	private Double vat;
 
 	private TypPozycji typ;
 
@@ -23,21 +31,21 @@ public class PozycjaDTO {
 		super();
 	}
 
-	public PozycjaDTO(String nazwa, String vat, UslugaDTO uslugaDTO) {
+	public PozycjaDTO(String nazwa, Double vat, UslugaDTO uslugaDTO) {
 		super();
 		this.nazwa = nazwa;
 		this.vat = vat;
 		this.uslugaDTO = uslugaDTO;
-		this.produktDTO = new ProduktDTO("-", Jednostka.BRAK);
+		this.produktDTO = new ProduktDTO(0.0, Jednostka.BRAK);
 		this.typ = TypPozycji.USLUGA;
 	}
 
-	public PozycjaDTO(String nazwa, String vat, ProduktDTO produktDTO) {
+	public PozycjaDTO(String nazwa, Double vat, ProduktDTO produktDTO) {
 		super();
 		this.nazwa = nazwa;
 		this.vat = vat;
 		this.produktDTO = produktDTO;
-		this.uslugaDTO = new UslugaDTO("-");
+		this.uslugaDTO = new UslugaDTO(0.0);
 		this.typ = TypPozycji.PRODUKT;
 	}
 
@@ -71,11 +79,11 @@ public class PozycjaDTO {
 		return produktDTO;
 	}
 
-	public String getVat() {
+	public Double getVat() {
 		return vat;
 	}
 
-	public void setVat(String vat) {
+	public void setVat(Double vat) {
 		this.vat = vat;
 	}
 

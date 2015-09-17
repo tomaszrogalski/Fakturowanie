@@ -3,8 +3,8 @@ package Fakturowanie.shared.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import Fakturowanie.server.Faktura;
-import Fakturowanie.server.Pozycja;
+import Fakturowanie.server.model.Faktura;
+import Fakturowanie.server.model.Pozycja;
 
 public class FakturaDTO {
 

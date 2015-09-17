@@ -1,14 +1,19 @@
 package Fakturowanie.shared.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class ProduktDTO {
 
-	private String cena;
+	@NotNull(message = "Cena nie może być pusta. ")
+	@Min(value = 0, message = "Cena musi być cyfra > 0. ")
+	private Double cena;
 
 	private Jednostka jednostka;
 
 	/////////////////////////////////
 
-	public ProduktDTO(String cena, Jednostka jednostka) {
+	public ProduktDTO(Double cena, Jednostka jednostka) {
 
 		this.cena = cena;
 		this.jednostka = jednostka;
@@ -19,15 +24,12 @@ public class ProduktDTO {
 	}
 
 	/////////////////////////////////
-	
-	
 
-	public String getCena() {
+	public Double getCena() {
 		return cena;
 	}
 
-
-	public void setCena(String cena) {
+	public void setCena(Double cena) {
 		this.cena = cena;
 	}
 

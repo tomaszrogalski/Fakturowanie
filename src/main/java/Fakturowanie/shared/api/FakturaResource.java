@@ -28,5 +28,4 @@ public interface FakturaResource {
 	@POST
 	@Path("/wczytajOstatnioDodana")
 	public RestAction<FakturaDTO> wczytajOstatnioDodana();
-
 }

@@ -19,10 +19,11 @@ import Fakturowanie.shared.dto.PozycjaDTO;
 
 public class DodajProduktPresenter extends Presenter<DodajProduktPresenter.MyView, DodajProduktPresenter.MyProxy>
 		implements DodajProduktUiHandlers {
-	
+
 	interface MyView extends View, HasUiHandlers<DodajProduktUiHandlers> {
 		PozycjaDTO odbierzZawartoscTextBoxow();
 	}
+
 	@NameToken(NameTokens.dodajProdukt)
 	@ProxyStandard
 	interface MyProxy extends ProxyPlace<DodajProduktPresenter> {
@@ -43,31 +44,30 @@ public class DodajProduktPresenter extends Presenter<DodajProduktPresenter.MyVie
 
 	private void funkcjaDoFireEvent(PozycjaDTO pozycjaDTO) {
 
-		DodajOstatnioDodanaPozycjeDoWyswietleniaEvent.fire(this,pozycjaDTO);
+		DodajOstatnioDodanaPozycjeDoWyswietleniaEvent.fire(this, pozycjaDTO);
 	}
 
 	private void dodajDoBazy(final PozycjaDTO pozycjaDTO) {
-		dispatcher.execute(pozycjaResource.createProdukt(pozycjaDTO),
-				new AsyncCallback<Void>() {
+		dispatcher.execute(pozycjaResource.createProdukt(pozycjaDTO), new AsyncCallback<Void>() {
 
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("COS NIE DZIAŁA - DODAJ PRODUKT");
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("COS NIE DZIAŁA - DODAJ PRODUKT");
 
-					}
+			}
 
-					@Override
-					public void onSuccess(Void result) {
-						Window.alert("DODANO!");
-						funkcjaDoFireEvent(pozycjaDTO);
-					}
+			@Override
+			public void onSuccess(Void result) {
+				Window.alert("DODANO!");
+				funkcjaDoFireEvent(pozycjaDTO);
+			}
 
-				});
+		});
 	}
 
 	@Override
 	public void buttonAkcjaDodajProdukt() {
-		PozycjaDTO pozycjaDTO=getView().odbierzZawartoscTextBoxow();
+		PozycjaDTO pozycjaDTO = getView().odbierzZawartoscTextBoxow();
 		dodajDoBazy(pozycjaDTO);
 		removeFromParentSlot();
 	}

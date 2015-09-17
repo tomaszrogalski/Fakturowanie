@@ -18,20 +18,20 @@ import Fakturowanie.shared.dto.FakturaDTO;
 public class FakturaResourceImpl {
 	@EJB
 	FakturaDAO fakturaDAO;
-	
+
 	@POST
 	@Path("/dodaj")
-	public void create(FakturaDTO fakturaDTO){
+	public void create(FakturaDTO fakturaDTO) {
 		fakturaDAO.stworzFakture(fakturaDTO.stworzFakture());
 	}
-	
+
 	@POST
 	@Path("/wczytajWszystkich")
 	public List<FakturaDTO> wczytajWszystkieFaktury() {
 		return fakturaDAO.wczytajWszystkieFaktury();
 
 	}
-	
+
 	@POST
 	@Path("/wczytajOstatnioDodana")
 	public FakturaDTO wczytajOstatnioDodana() {

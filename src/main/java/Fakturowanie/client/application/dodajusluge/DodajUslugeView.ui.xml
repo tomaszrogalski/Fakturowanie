@@ -14,14 +14,18 @@
 
 		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
 			<g:Label text="CENA/H" styleName="{resources.style.label}"/>
-			<g:TextBox ui:field="textBoxCenaZaGodzine"/>
+			<g:DoubleBox ui:field="doubleBoxCenaZaGodzine"/>
 			<g:Label text=" ZŁ/GODZINE" styleName="{resources.style.label}"/>
 		</g:HorizontalPanel>
 
 		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
 			<g:Label text="VAT" styleName="{resources.style.label}"/>
-			<g:TextBox ui:field="textBoxJednostkaPodstawowaVAT"/>
+			<g:DoubleBox ui:field="doubleBoxVAT" />
 			<g:Label text=" %" styleName="{resources.style.label}"/>
+		</g:HorizontalPanel>
+	<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
+			<g:Label text="" styleName="{resources.style.errorLabel}"
+				ui:field="errorLabel" />
 		</g:HorizontalPanel>
 		<hr />
 

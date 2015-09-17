@@ -15,7 +15,7 @@
 
 		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
 			<g:Label text="CENA" styleName="{resources.style.label}" />
-			<g:TextBox ui:field="textBoxCena" />
+			<g:DoubleBox ui:field="doubleBoxCena" />
 			<g:Label text="ZŁ" styleName="{resources.style.label}" />
 		</g:HorizontalPanel>
 
@@ -26,8 +26,12 @@
 
 		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
 			<g:Label text="VAT" styleName="{resources.style.label}" />
-			<g:TextBox ui:field="textBoxVAT" />
+			<g:DoubleBox ui:field="doubleBoxVAT" />
 			<g:Label text="%" styleName="{resources.style.label}" />
+		</g:HorizontalPanel>
+		<g:HorizontalPanel styleName="{resources.style.dodaj_horizontal_panel}">
+			<g:Label text="" styleName="{resources.style.errorLabel}"
+				ui:field="errorLabel" />
 		</g:HorizontalPanel>
 
 		<hr />

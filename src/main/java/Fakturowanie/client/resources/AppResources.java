@@ -4,6 +4,7 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 
 public interface AppResources extends ClientBundle {
+	
 	// zrodlo:
 	// http://blog.arcbees.com/2015/04/14/getting-started-with-css-gss-gwt/
 	interface Normalize extends CssResource {
